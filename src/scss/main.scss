@@ -1,0 +1,8 @@
+@use "variables";
+@use "grid";
+@use "utilities";
+
+body {
+  font-family: variables.$font-family-base;
+  color: variables.$primary;
+}
