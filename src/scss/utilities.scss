@@ -94,3 +94,18 @@ $axis: (
     row-gap: $value;
   }
 }
+@each $key, $value in variables.$spacings {
+  .column-gap-#{$key} {
+    column-gap: $value;
+  }
+}
+@each $key, $value in variables.$order-values {
+  .order-values-#{$key}{
+    order: $value;
+  }
+}
+@each $key, $value in variables.$flex-grow-values {
+  .flex-grow-#{$key} {
+    flex-grow: $value;
+  }
+}

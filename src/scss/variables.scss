@@ -52,3 +52,13 @@ $align-content-values: (
   end: flex-end,
   between: space-between
 );
+$order-values: (
+  0: 0,
+  1: 1,
+  2: 2,
+  3: 3
+);
+$flex-grow-values: (
+  0: 0,
+  1: 1
+);
