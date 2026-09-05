@@ -109,3 +109,13 @@ $axis: (
     flex-grow: $value;
   }
 }
+@each $key, $value in variables.$colors {
+  .text-#{$key} {
+    color: $value;
+  }
+}
+@each $key, $value in variables.$colors {
+  .bg-#{$key} {
+    background-color: $value;
+  }
+}
