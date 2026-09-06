@@ -59,16 +59,8 @@ $axis: (
     justify-content: $value;
   }
 }
-@each $name, $value in variables.$justify-values {
-  .justify-#{$name} {
-    justify-content: $value;
-  }
-}
-@each $name, $value in variables.$justify-values {
-  .justify-#{$name} {
-    justify-content: $value;
-  }
-}
+
+
 @each $name, $value in variables.$align-values {
   .align-#{$name} {
     align-items: $value;
@@ -100,7 +92,7 @@ $axis: (
   }
 }
 @each $key, $value in variables.$order-values {
-  .order-values-#{$key}{
+  .order-#{$key}{
     order: $value;
   }
 }
@@ -117,5 +109,13 @@ $axis: (
 @each $key, $value in variables.$colors {
   .bg-#{$key} {
     background-color: $value;
+  }
+}
+.border {
+  border: 1px solid;
+}
+@each $key, $value in variables.$colors {
+  .border-#{$key} {
+    border-color: $value;
   }
 }
