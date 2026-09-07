@@ -1,0 +1,41 @@
+@use "sass:map";
+@use "../variables" as variables;
+.alert{
+    margin: map.get(variables.$spacings, 4);
+    padding: 2rem;
+    border: 2px solid black;
+    border-radius:2px;
+    
+}
+.alert-primary{
+    background-color: variables.$primary;
+}
+
+.alert.alert-secondary{
+    background-color: variables.$secondary;
+}
+
+.alert.alert-success{
+    background-color: variables.$success;
+}
+
+.alert.alert-danger{
+    background-color: variables.$danger;
+}
+
+.alert.alert-warning{
+    background-color: variables.$warning;
+}
+
+.alert.alert-info{
+    background-color: variables.$info;
+}
+
+.alert.alert-white{
+    background-color: variables.$white;
+}
+.alert.alert-black{
+    background-color: variables.$black;
+}
+
+

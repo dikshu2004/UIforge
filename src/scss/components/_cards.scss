@@ -1,4 +1,4 @@
-
+@use "sass:map";
 @use "../variables.scss";
 .card{
     display: block;
@@ -10,6 +10,7 @@
     color:white;
     max-width: 24rem;
    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2);
+    margin: map.get(variables.$spacings, 4);
 }
 
 .card-body {
