@@ -1,0 +1,45 @@
+
+@use "../variables.scss";
+.badge {
+    display: inline-block;
+
+    padding: 0.4rem 0.75rem;
+
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    vertical-align: middle;
+
+    color: variables.$white;
+    background-color: variables.$primary;
+
+    border: 1px solid variables.$primary;
+    border-radius: 50rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+.badge-primary{
+    background-color:variables.$primary ;
+}
+.badge-secondary{
+    background-color:variables.$secondary ;
+}
+.badge-danger{
+    background-color:variables.$danger ;
+}
+.badge-success{
+    background-color:variables.$success ;
+}
+.badge-warning{
+    background-color:variables.$warning;
+}
+.badge-info{
+    background-color:variables.$info ;
+}
+.badge-white{
+    background-color: variables.$white;
+}
+.badge-black{
+    background-color: variables.$black;
+}
+
+      
