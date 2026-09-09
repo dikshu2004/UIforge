@@ -2,6 +2,13 @@ import Button from "./Button";
 import Alert from "./Alert";
 import Badge from "./Badge";
 import Card from "./Card";
+import Navbar from "./navbar";
+const navLinks = [
+    { text: "Home", link: "#" },
+    { text: "Components", link: "#" },
+    { text: "About", link: "#" },
+    { text: "Contact", link: "#" }
+];
 
 export default function ComponentShowcase() {
   return (
@@ -20,6 +27,7 @@ export default function ComponentShowcase() {
       </div>
       
       <Card />
+      <Navbar brand="UIForge" links ={navLinks} />
       <Alert>Your profile was updated successfully!</Alert>
       <Alert variant="primary">a simple primary alert</Alert>
       <Alert variant="success">a simple success alert</Alert>
@@ -35,5 +43,6 @@ export default function ComponentShowcase() {
       <Badge variant="white">White</Badge>
       <Badge variant="black">Black</Badge>
     </div>
+    
   );
 }
