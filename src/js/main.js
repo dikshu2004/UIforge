@@ -76,12 +76,22 @@ function renderApp() {
       </div>
 
       <div class="card">
-        <div class="card-body">
-          <h3>UIForge</h3>
-          <p>My own UI library.</p>
-          ${renderButton("Learn More")}
-        </div>
-      </div>
+  <div class="card-body">
+    <span class="card-tag">UI COMPONENT</span>
+
+    <h3>Build Faster</h3>
+
+    <p>
+      Create clean and reusable interfaces with UIForge components
+      designed for modern web applications.
+    </p>
+
+    <div class="card-footer">
+      <span class="card-meta">Reusable • SCSS</span>
+      <button class="btn btn-primary">Explore</button>
+    </div>
+  </div>
+</div>
 
       <nav class="navbar">
         <h2>UIForge</h2>

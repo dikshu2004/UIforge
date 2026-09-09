@@ -1,18 +1,66 @@
-@use "sass:map";
-@use "../variables" as variables;
-
 .card {
   display: block;
-  padding: 3rem;
-  border-radius: 5px;
-  border: 3px solid black;
-  background-color: blue;
-  color: white;
   max-width: 24rem;
-  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2);
-  margin: map.get(variables.$spacings, 4);
+  margin: 1.5rem;
+  overflow: hidden;
+
+  border: 3px solid #e2e8f0;
+  border-radius: 0.75rem;
+
+  background: #f8fafc;
+
 }
 
 .card-body {
-  padding: 1rem;
+  padding: 1.5rem;
+}
+
+.card-tag {
+  display: inline-block;
+
+  margin-bottom: 1rem;
+  padding: 0.35rem 0.65rem;
+
+  border-radius: 0.4rem;
+
+  background: #eef2ff;
+  color: #4338ca;
+
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.card h3 {
+  margin: 0 0 0.75rem;
+
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+
+  color: #0f172a;
+}
+
+.card p {
+  margin: 0;
+
+  color: #64748b;
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+
+  border-top: 2px solid #e2e8f0;
+}
+
+.card-meta {
+  color: #94a3b8;
+  font-size: 0.75rem;
 }

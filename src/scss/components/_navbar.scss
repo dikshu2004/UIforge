@@ -2,10 +2,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem 1.5rem ;
   gap: 1rem;
   background: #f8fafc;
-  border: 1px solid #e2e8f0;
+  border: 2px solid #e2e8f0;
   border-radius: 0.75rem;
   box-shadow: 0 0.5rem 1.5rem rgba(15, 23, 42, 0.08);
 }
@@ -14,13 +14,13 @@
   margin: 0;
   color: #3730a3;
   font-size: 1.5rem;
-  font-weight: 700;
+  // font-weight: 700;
   letter-spacing: -0.02em;
 }
 
 .nav-link {
   display: flex;
-  align-items: center;
+  // align-items: center;
   gap: 0.25rem;
 }
 

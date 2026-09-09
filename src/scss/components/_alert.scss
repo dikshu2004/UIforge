@@ -1,15 +1,59 @@
 @use "sass:map";
+@use "sass:color";
 @use "../variables" as variables;
 
 .alert {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
   margin: map.get(variables.$spacings, 4);
-  padding: 2rem;
-  border: 2px solid black;
-  border-radius: 5px;
+  padding: 1rem 1.25rem 1rem 1rem;
+  border: 1px solid #fed7aa;
+  border-left: 0.4rem solid #f59e0b;
+  border-radius: 0.35rem 0.9rem 0.35rem 0.9rem;
+  background: #fff7ed;
+  color: #7c2d12;
+  font-weight: 600;
+  line-height: 1.5;
+  box-shadow: 0 0.25rem 0.75rem rgba(15, 23, 42, 0.08);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.alert::before {
+  display: grid;
+  flex: 0 0 1.5rem;
+  place-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: #f59e0b;
+  color: #451a03;
+  content: "!";
+  font-weight: 800;
+}
+
+.alert:hover {
+  box-shadow: 0 0.5rem 1.25rem rgba(15, 23, 42, 0.14);
+  transform: translateY(-2px);
 }
 
 @each $name, $color in variables.$colors {
   .alert.alert-#{$name} {
-    background-color: $color;
+    border-color: color.scale($color, $lightness: 55%);
+    border-left-color: $color;
+    background-color: color.scale($color, $lightness: 88%);
+    color: #1e293b;
   }
+
+  .alert.alert-#{$name}::before {
+    background: $color;
+    color: #ffffff;
+  }
+}
+
+.alert.alert-warning::before,
+.alert.alert-info::before,
+.alert.alert-white::before {
+  color: #1e293b;
 }
