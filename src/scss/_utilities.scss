@@ -1,0 +1,96 @@
+@use "variables";
+
+@mixin spacing($property, $prefix) {
+  @each $key, $value in variables.$spacings {
+    .#{$prefix}-#{$key} {
+      #{$property}: $value;
+    }
+  }
+}
+
+@include spacing(margin, m);
+@include spacing(padding, p);
+
+$axes: (
+  mx: (margin-left, margin-right),
+  my: (margin-top, margin-bottom),
+  px: (padding-left, padding-right),
+  py: (padding-top, padding-bottom)
+);
+
+@each $prefix, $properties in $axes {
+  @each $key, $value in variables.$spacings {
+    .#{$prefix}-#{$key} {
+      @each $property in $properties {
+        #{$property}: $value;
+      }
+    }
+  }
+}
+
+$directions: (
+  mt: margin-top,
+  mb: margin-bottom,
+  ms: margin-left,
+  me: margin-right,
+  pt: padding-top,
+  pb: padding-bottom,
+  ps: padding-left,
+  pe: padding-right
+);
+
+@each $prefix, $property in $directions {
+  @each $key, $value in variables.$spacings {
+    .#{$prefix}-#{$key} {
+      #{$property}: $value;
+    }
+  }
+}
+
+$display-values: (none: none, block: block, inline: inline, inline-block: inline-block, flex: flex, grid: grid);
+$flex-directions: (row: row, column: column);
+$justify-values: (start: flex-start, center: center, end: flex-end, between: space-between);
+$align-values: (start: flex-start, center: center, end: flex-end);
+$wrap-values: (nowrap: nowrap, wrap: wrap);
+
+@each $name, $value in $display-values {
+  .d-#{$name} { display: $value; }
+}
+
+@each $name, $value in $flex-directions {
+  .flex-#{$name} { flex-direction: $value; }
+}
+
+@each $name, $value in $justify-values {
+  .justify-#{$name} { justify-content: $value; }
+}
+
+@each $name, $value in $align-values {
+  .align-#{$name} { align-items: $value; }
+}
+
+@each $name, $value in $wrap-values {
+  .flex-#{$name} { flex-wrap: $value; }
+}
+
+@each $key, $value in variables.$spacings {
+  .gap-#{$key} { gap: $value; }
+  .row-gap-#{$key} { row-gap: $value; }
+  .column-gap-#{$key} { column-gap: $value; }
+}
+
+@each $key, $value in (0: 0, 1: 1, 2: 2, 3: 3) {
+  .order-#{$key} { order: $value; }
+}
+
+@each $key, $value in (0: 0, 1: 1) {
+  .flex-grow-#{$key} { flex-grow: $value; }
+}
+
+@each $key, $value in variables.$colors {
+  .text-#{$key} { color: $value; }
+  .bg-#{$key} { background-color: $value; }
+  .border-#{$key} { border-color: $value; }
+}
+
+.border { border: 1px solid; }

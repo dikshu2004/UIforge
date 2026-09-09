@@ -1,0 +1,25 @@
+@use "sass:math";
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+  box-sizing: border-box;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+}
+
+[class^="col-"] {
+  padding: 0 15px;
+  box-sizing: border-box;
+}
+
+@for $column from 1 through 12 {
+  .col-#{$column} {
+    width: math.percentage(math.div($column, 12));
+  }
+}
