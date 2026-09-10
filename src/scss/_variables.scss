@@ -1,15 +1,35 @@
 $primary: #6c63ff;
-$secondary: #6c757d;
+$brand-100: #eef2ff;
+$brand-200: #e0e7ff;
+$brand-300: #c7d2fe;
+$brand-400: #818cf8;
+$brand-500: #3730a3;
+$brand-600: #312e81;
+$brand-700: #2e276f;
+$brand-800: #25205c;
+$brand-900: #1e1a4d;
+$secondary: #618aad;
 $success: #198754;
 $danger: #dc3545;
 $warning: #ffc107;
 $info: #0dcaf0;
-$white: #ffffff;
+$white: #261276;
 $black: #000000;
 
 $colors: (
   primary: $primary,
   secondary: $secondary,
+
+  brand-100: $brand-100,
+  brand-200: $brand-200,
+  brand-300: $brand-300,
+  brand-400: $brand-400,
+  brand-500: $brand-500,
+  brand-600: $brand-600,
+  brand-700: $brand-700,
+  brand-800: $brand-800,
+  brand-900: $brand-900,
+
   success: $success,
   danger: $danger,
   warning: $warning,

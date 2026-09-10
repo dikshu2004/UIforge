@@ -1,3 +1,5 @@
+@use "../variables" as variables;
+
 .card {
   display: block;
   max-width: 24rem;
@@ -38,7 +40,7 @@
   font-weight: 700;
   letter-spacing: -0.03em;
 
-  color: #0f172a;
+  color: variables.$brand-500;
 }
 
 .card p {
