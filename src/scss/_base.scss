@@ -1,0 +1,9 @@
+@use "variables";
+
+body {
+  font-family: variables.$font-family-base;
+  font-size: variables.$font-size-base;
+  font-weight: variables.$font-weight-regular;
+line-height: variables.$line-height-normal;
+letter-spacing: variables.$letter-spacing-normal;
+}
