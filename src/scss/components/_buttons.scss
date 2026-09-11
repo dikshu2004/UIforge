@@ -1,139 +1,86 @@
 @use "../variables" as variables;
 
 .btn {
-
   display: inline-flex;
-
   align-items: center;
-
   justify-content: center;
-
   min-height: 2.75rem;
-
   padding: 0.65rem 1.1rem;
 
   font-family: inherit;
-
-  font-size: 0.9rem;
-
-  font-weight: 700;
-
-  letter-spacing: 0.02em;
+  font-size: variables.$font-size-base;
+  font-weight: variables.$font-weight-bold;
+  line-height: variables.$line-height-tight;
+  letter-spacing: variables.$letter-spacing-normal;
 
   border: 1px solid transparent;
-
   border-radius: 0.35rem 0.9rem 0.35rem 0.9rem;
-
   cursor: pointer;
 
   box-shadow: 0 0.25rem 0 rgba(15, 23, 42, 0.2);
-
   transition: transform 160ms ease, box-shadow 160ms ease, filter 160ms ease;
-
 }
 
 .btn:hover {
-
   filter: brightness(1.08);
-
   transform: translateY(-2px);
-
   box-shadow: 0 0.4rem 0 rgba(15, 23, 42, 0.2);
-
 }
 
 .btn:active {
-
   transform: translateY(1px);
-
   box-shadow: 0 0.1rem 0 rgba(15, 23, 42, 0.2);
-
 }
 
 .btn:focus-visible {
-
   outline: 3px solid #fbbf24;
-
   outline-offset: 3px;
-
 }
 
 .btn-primary {
-
   background-color: variables.$brand-500;
-
   border-color: variables.$brand-500;
-
   color: variables.$white;
-
 }
 
 .btn-secondary {
-
   background-color: variables.$secondary;
-
   border-color: variables.$secondary;
-
   color: variables.$white;
-
 }
 
 .btn-success {
-
   background-color: variables.$success;
-
   border-color: variables.$success;
-
   color: variables.$white;
-
 }
 
 .btn-danger {
-
   background-color: variables.$danger;
-
   border-color: variables.$danger;
-
   color: variables.$white;
-
 }
 
 .btn-warning {
-
   background-color: variables.$warning;
-
   border-color: variables.$warning;
-
   color: variables.$neutral-900;
-
 }
 
 .btn-info {
-
   background-color: variables.$info;
-
   border-color: variables.$info;
-
   color: variables.$neutral-900;
-
 }
 
 .btn-black {
-
   background-color: variables.$black;
-
   border-color: variables.$black;
-
   color: variables.$white;
-
 }
 
 .btn-white {
-
   background-color: variables.$white;
-
   border-color: variables.$neutral-300;
-
   color: variables.$neutral-900;
-
 }

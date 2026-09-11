@@ -1,75 +1,54 @@
 @use "../variables" as variables;
 
 .navbar {
-
   display: flex;
-
   align-items: center;
-
   justify-content: space-between;
 
   padding: 0.75rem 1.5rem;
-
   gap: 1rem;
 
   background: variables.$neutral-100;
-
   border: 2px solid variables.$neutral-300;
-
   border-radius: 0.75rem;
-
   box-shadow: 0 0.5rem 1.5rem rgba(15, 23, 42, 0.08);
-
 }
 
 .navbar h2 {
-
   margin: 0;
 
   color: variables.$brand-500;
-
-  font-size: 1.5rem;
-
-  // font-weight: 700;
-
-  letter-spacing: -0.02em;
-
+  font-size: variables.$font-size-xl;
+  font-weight: variables.$font-weight-bold;
+  line-height: variables.$line-height-tight;
+  letter-spacing: variables.$letter-spacing-tight;
 }
 
 .nav-link {
-
   display: flex;
 
   // align-items: center;
-
   gap: 0.25rem;
-
 }
 
 .nav-link a {
-
   padding: 0.5rem 0.75rem;
 
   color: variables.$neutral-700;
-
   text-decoration: none;
 
-  font-weight: 500;
+  font-size: variables.$font-size-base;
+  font-weight: variables.$font-weight-medium;
+  line-height: variables.$line-height-normal;
+  letter-spacing: variables.$letter-spacing-normal;
 
   border-radius: 0.5rem;
-
   transition: color 160ms ease, background-color 160ms ease, transform 160ms ease;
-
 }
 
 .nav-link a:hover,
-
 .nav-link a:focus-visible {
-
   color: variables.$brand-500;
-
   background-color: variables.$brand-200;
-
   transform: translateY(-1px);
-
 }

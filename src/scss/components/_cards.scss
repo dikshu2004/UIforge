@@ -1,97 +1,66 @@
 @use "../variables" as variables;
 
 .card {
-
   display: block;
-
   max-width: 24rem;
-
   margin: 1.5rem;
-
   overflow: hidden;
-
   border: 3px solid variables.$neutral-300;
-
   border-radius: 0.75rem;
-
   background: variables.$neutral-100;
-
 }
 
 .card-body {
-
   padding: 1.5rem;
-
 }
 
 .card-tag {
-
   display: inline-block;
-
   margin-bottom: 1rem;
-
   padding: 0.35rem 0.65rem;
-
   border-radius: 0.4rem;
-
   background: variables.$brand-100;
-
   color: variables.$brand-600;
 
-  font-size: 0.7rem;
-
-  font-weight: 700;
-
-  letter-spacing: 0.08em;
-
+  font-size: variables.$font-size-sm;
+  font-weight: variables.$font-weight-bold;
+  line-height: variables.$line-height-tight;
+  letter-spacing: variables.$letter-spacing-wide;
 }
 
 .card h3 {
-
   margin: 0 0 0.75rem;
 
-  font-size: 1.6rem;
-
-  font-weight: 700;
-
-  letter-spacing: -0.03em;
+  font-size: variables.$font-size-xl;
+  font-weight: variables.$font-weight-bold;
+  line-height: variables.$line-height-tight;
+  letter-spacing: variables.$letter-spacing-tight;
 
   color: variables.$brand-500;
-
 }
 
 .card p {
-
   margin: 0;
-
   color: variables.$neutral-600;
 
-  font-size: 0.95rem;
-
-  line-height: 1.65;
-
+  font-size: variables.$font-size-base;
+  line-height: variables.$line-height-relaxed;
+  letter-spacing: variables.$letter-spacing-normal;
 }
 
 .card-footer {
-
   display: flex;
-
   align-items: center;
-
   justify-content: space-between;
-
   margin-top: 1.5rem;
-
   padding-top: 1rem;
-
   border-top: 2px solid variables.$neutral-300;
-
 }
 
 .card-meta {
-
   color: variables.$neutral-500;
 
-  font-size: 0.75rem;
-
+  font-size: variables.$font-size-sm;
+  line-height: variables.$line-height-tight;
+  letter-spacing: variables.$letter-spacing-normal;
 }
