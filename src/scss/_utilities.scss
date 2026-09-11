@@ -92,5 +92,26 @@ $wrap-values: (nowrap: nowrap, wrap: wrap);
   .bg-#{$key} { background-color: $value; }
   .border-#{$key} { border-color: $value; }
 }
+@each $key, $value in variables.$font-sizes {
+  .text-#{$key} {
+    font-size: $value;
+  }
+}
+@each $key, $value in variables.$font-weights {
+  .fw-#{$key} {
+    font-weight: $value;
+  }
+}
+
+@each $key, $value in variables.$line-heights {
+  .lh-#{$key} {
+    line-height: $value;
+  }
+}
+@each $key, $value in variables.$letter-spacings {
+  .ls-#{$key} {
+    letter-spacing: $value;
+  }
+}
 
 .border { border: 1px solid; }

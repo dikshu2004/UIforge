@@ -76,10 +76,35 @@ $font-weight-medium: 500;
 $font-weight-semibold: 600;
 $font-weight-bold: 700;
 
+$font-weights: (
+  regular: $font-weight-regular,
+  medium: $font-weight-medium,
+  semibold: $font-weight-semibold,
+  bold: $font-weight-bold
+);
+
 $line-height-tight: 1.25;
 $line-height-normal: 1.5;
 $line-height-relaxed: 1.75;
 
+$line-heights: (
+  tight: $line-height-tight,
+  normal: $line-height-normal,
+  relaxed: $line-height-relaxed
+);
 $letter-spacing-tight: -0.025em;
 $letter-spacing-normal: 0;
 $letter-spacing-wide: 0.025em;
+
+$letter-spacings: (
+  tight: $letter-spacing-tight,
+  normal: $letter-spacing-normal,
+  wide: $letter-spacing-wide
+);
+$font-sizes: (
+  sm: $font-size-sm,
+  base: $font-size-base,
+  lg: $font-size-lg,
+  xl: $font-size-xl,
+  2xl: $font-size-2xl
+);
