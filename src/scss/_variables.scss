@@ -1,4 +1,4 @@
-$primary: #6c63ff;
+
 $brand-100: #eef2ff;
 $brand-200: #e0e7ff;
 $brand-300: #c7d2fe;
@@ -8,13 +8,23 @@ $brand-600: #312e81;
 $brand-700: #2e276f;
 $brand-800: #25205c;
 $brand-900: #1e1a4d;
+$neutral-100: #f8fafc;
+$neutral-200: #f1f5f9;
+$neutral-300: #e2e8f0;
+$neutral-400: #cbd5e1;
+$neutral-500: #94a3b8;
+$neutral-600: #64748b;
+$neutral-700: #475569;
+$neutral-800: #334155;
+$neutral-900: #1e293b;
 $secondary: #618aad;
 $success: #198754;
 $danger: #dc3545;
 $warning: #ffc107;
 $info: #0dcaf0;
-$white: #261276;
+$white: #ffffff;
 $black: #000000;
+$primary: $brand-500;
 
 $colors: (
   primary: $primary,
@@ -29,6 +39,15 @@ $colors: (
   brand-700: $brand-700,
   brand-800: $brand-800,
   brand-900: $brand-900,
+  neutral-100: $neutral-100,
+neutral-200: $neutral-200,
+neutral-300: $neutral-300,
+neutral-400: $neutral-400,
+neutral-500: $neutral-500,
+neutral-600: $neutral-600,
+neutral-700: $neutral-700,
+neutral-800: $neutral-800,
+neutral-900: $neutral-900,
 
   success: $success,
   danger: $danger,
