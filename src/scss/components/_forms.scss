@@ -1,0 +1,73 @@
+@use "../variables" as variables;
+@use "sass:map";
+
+$space-1: map.get(variables.$spacings, 1);
+$space-2: map.get(variables.$spacings, 2);
+$space-3: map.get(variables.$spacings, 3);
+$space-4: map.get(variables.$spacings, 4);
+$space-5: map.get(variables.$spacings, 5);
+
+.form {
+  max-width: 32rem;
+  padding: $space-4;
+  border: variables.$border-width-thin variables.$border-style-solid variables.$neutral-300;
+  border-radius: variables.$radius-lg;
+  background: variables.$white;
+  box-shadow: 0 $space-2 $space-5 variables.$neutral-300;
+}
+
+.form-title {
+  margin: 0 0 $space-2;
+  color: variables.$brand-600;
+  font-size: variables.$font-size-xl;
+  font-weight: variables.$font-weight-bold;
+}
+
+.form-description {
+  margin: 0 0 $space-3;
+  color: variables.$neutral-600;
+  line-height: variables.$line-height-normal;
+}
+
+.form-group {
+  margin-bottom: $space-3;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: $space-1;
+  color: variables.$neutral-800;
+  font-weight: variables.$font-weight-semibold;
+}
+
+.form-input,
+.form-textarea,
+.form-select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: $space-2;
+  border: variables.$border-width-thin variables.$border-style-solid variables.$neutral-400;
+  border-radius: variables.$radius-md;
+  background: variables.$white;
+  color: variables.$neutral-900;
+  font: inherit;
+}
+
+.form-textarea {
+  min-height: $space-5 * 3;
+  resize: vertical;
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+  border-color: variables.$brand-500;
+  outline: variables.$border-width-medium variables.$border-style-solid variables.$brand-100;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: $space-2;
+  margin-top: $space-3;
+}
