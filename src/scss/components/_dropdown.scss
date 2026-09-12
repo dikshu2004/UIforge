@@ -1,0 +1,107 @@
+@use "../variables" as variables;
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  &::after {
+    content: "";
+    display: inline-block;
+    width: 0;
+    height: 0;
+    vertical-align: middle;
+    border-top: 0.35em solid currentColor;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0;
+    border-left: 0.3em solid transparent;
+    transition: transform 160ms ease;
+  }
+}
+
+.dropdown.is-open .dropdown-toggle::after {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  min-width: 12rem;
+  margin-top: 0.35rem;
+  padding: 0.5rem 0;
+  background-color: variables.$neutral-100;
+  border: variables.$border-width-thin variables.$border-style-solid variables.$neutral-300;
+  border-radius: variables.$radius-md;
+  box-shadow: 0 0.5rem 1.25rem rgba(15, 23, 42, 0.12);
+  list-style: none;
+
+  &.is-open {
+    display: block;
+    animation: dropdownFadeIn 160ms ease;
+  }
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdown-header {
+  display: block;
+  padding: 0.35rem 1rem;
+  font-size: variables.$font-size-sm;
+  font-weight: variables.$font-weight-bold;
+  color: variables.$neutral-500;
+  text-transform: uppercase;
+  letter-spacing: variables.$letter-spacing-wide;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  color: variables.$neutral-800;
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: variables.$font-size-base;
+  font-weight: variables.$font-weight-regular;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 140ms ease, color 140ms ease;
+
+  &:hover,
+  &:focus-visible {
+    background-color: variables.$brand-100;
+    color: variables.$brand-600;
+    outline: none;
+  }
+
+  &.is-active {
+    background-color: variables.$brand-500;
+    color: variables.$white;
+  }
+}
+
+.dropdown-divider {
+  height: 0;
+  margin: 0.5rem 0;
+  overflow: hidden;
+  border-top: variables.$border-width-thin variables.$border-style-solid variables.$neutral-300;
+}

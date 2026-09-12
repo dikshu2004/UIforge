@@ -1,0 +1,66 @@
+@use "../variables" as variables;
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pagination-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.5rem;
+  height: 2.5rem;
+  padding: 0 0.75rem;
+  background-color: variables.$neutral-100;
+  border: variables.$border-width-thin variables.$border-style-solid variables.$neutral-300;
+  border-radius: variables.$radius-md;
+  color: variables.$neutral-700;
+  font-family: inherit;
+  font-size: variables.$font-size-base;
+  font-weight: variables.$font-weight-medium;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 160ms ease;
+
+  &:hover:not(:disabled):not(.is-disabled) {
+    background-color: variables.$brand-100;
+    border-color: variables.$brand-300;
+    color: variables.$brand-600;
+  }
+
+  &.is-active {
+    background-color: variables.$brand-500;
+    border-color: variables.$brand-500;
+    color: variables.$white;
+    font-weight: variables.$font-weight-bold;
+  }
+
+  &:disabled,
+  &.is-disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    background-color: variables.$neutral-200;
+    border-color: variables.$neutral-300;
+  }
+
+  &:focus-visible {
+    outline: 2px solid variables.$brand-400;
+    outline-offset: 2px;
+  }
+}
+
+.pagination-ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.5rem;
+  height: 2.5rem;
+  color: variables.$neutral-500;
+  font-size: variables.$font-size-base;
+  user-select: none;
+}
