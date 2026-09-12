@@ -1,13 +1,15 @@
 
+// Brand colors 
 $brand-100: #eef2ff;
 $brand-200: #e0e7ff;
 $brand-300: #c7d2fe;
 $brand-400: #818cf8;
-$brand-500: #3730a3;
+$brand-500: #3730a3; 
 $brand-600: #312e81;
 $brand-700: #2e276f;
 $brand-800: #25205c;
 $brand-900: #1e1a4d;
+// Neutral colors are used for background ,border
 $neutral-100: #f8fafc;
 $neutral-200: #f1f5f9;
 $neutral-300: #e2e8f0;
@@ -17,6 +19,7 @@ $neutral-600: #64748b;
 $neutral-700: #475569;
 $neutral-800: #334155;
 $neutral-900: #1e293b;
+// Semantic colors communicate meaning, such as success, errors, warnings, and information.
 $secondary: #618aad;
 $success: #198754;
 $danger: #dc3545;
@@ -24,8 +27,11 @@ $warning: #ffc107;
 $info: #0dcaf0;
 $white: #ffffff;
 $black: #000000;
+// Primary reuses the main brand shade so components share one default action color.
 $primary: $brand-500;
 
+// This map collects every color so utilities can generate classes such as
+// .text-primary, .bg-neutral-100, and .border-danger.
 $colors: (
   primary: $primary,
   secondary: $secondary,
@@ -57,6 +63,8 @@ neutral-900: $neutral-900,
   "black": $black
 );
 
+// Spacing values are stored in one map so utilities can reuse the same scale.
+
 $spacings: (
   1: 0.25rem,
   2: 0.5rem,
@@ -64,7 +72,9 @@ $spacings: (
   4: 1.5rem,
   5: 2rem
 );
+
 $font-family-base: Arial, sans-serif;
+// These values are shared by the body styles and the generated text utilities.
 $font-size-sm: 0.875rem;
 $font-size-base: 1rem;
 $font-size-lg: 1.125rem;
@@ -76,6 +86,7 @@ $font-weight-medium: 500;
 $font-weight-semibold: 600;
 $font-weight-bold: 700;
 
+// The map gives each font weight a readable name for utilities such as .fw-bold.
 $font-weights: (
   regular: $font-weight-regular,
   medium: $font-weight-medium,
@@ -87,6 +98,7 @@ $line-height-tight: 1.25;
 $line-height-normal: 1.5;
 $line-height-relaxed: 1.75;
 
+// Named line heights make it easy to create classes such as .lh-relaxed.
 $line-heights: (
   tight: $line-height-tight,
   normal: $line-height-normal,
@@ -96,11 +108,13 @@ $letter-spacing-tight: -0.025em;
 $letter-spacing-normal: 0;
 $letter-spacing-wide: 0.025em;
 
+// Named letter spacing values are used by classes such as .ls-wide.
 $letter-spacings: (
   tight: $letter-spacing-tight,
   normal: $letter-spacing-normal,
   wide: $letter-spacing-wide
 );
+// The font-size map is looped over to create .text-sm, .text-base, and similar classes.
 $font-sizes: (
   sm: $font-size-sm,
   base: $font-size-base,
@@ -108,3 +122,18 @@ $font-sizes: (
   xl: $font-size-xl,
   2xl: $font-size-2xl
 );
+// reusable radius tokens and some semantic token which is components specific;
+$radius-sm: 0.25rem;
+$radius-md: 0.5rem;
+$radius-lg: 0.75rem;
+$radius-full: 999px;
+$radius-button: 0.35rem 0.9rem 0.35rem 0.9rem;
+$radius-badge: 0.3rem 0.8rem 0.3rem 0.8rem;
+//border width tokens
+$border-width-thin: 1px;
+$border-width-medium: 2px;
+$border-width-thick: 3px;
+//border styling tokens
+$border-style-solid: solid;
+$border-style-dashed: dashed;
+$border-style-dotted: dotted;

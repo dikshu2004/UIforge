@@ -9,9 +9,11 @@
   gap: 0.75rem;
   margin: map.get(variables.$spacings, 4);
   padding: 1rem 1.25rem 1rem 1rem;
-  border: 1px solid #fed7aa;
+  
+  border:variables.$border-width-thin variables.$border-style-solid;
+  border-color: #fed7aa;
   border-left: 0.4rem solid #f59e0b;
-  border-radius: 0.35rem 0.9rem 0.35rem 0.9rem;
+  border-radius: variables.$radius-button;
   background: #fff7ed;
   color: #7c2d12;
   font-size: variables.$font-size-base;

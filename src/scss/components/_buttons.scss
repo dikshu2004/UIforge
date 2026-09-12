@@ -13,8 +13,9 @@
   line-height: variables.$line-height-tight;
   letter-spacing: variables.$letter-spacing-normal;
 
-  border: 1px solid transparent;
-  border-radius: 0.35rem 0.9rem 0.35rem 0.9rem;
+  border:variables.$border-width-thin variables.$border-style-solid transparent;
+  border-radius: variables.$radius-button;
+  
   cursor: pointer;
 
   box-shadow: 0 0.25rem 0 rgba(15, 23, 42, 0.2);

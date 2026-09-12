@@ -1,5 +1,7 @@
 @use "variables";
 
+// This mixin loops through the spacing map and creates one class for each value.
+// For example, spacing(margin, m) creates .m-1, .m-2, and the other margin classes.
 @mixin spacing($property, $prefix) {
   @each $key, $value in variables.$spacings {
     .#{$prefix}-#{$key} {
@@ -8,6 +10,7 @@
   }
 }
 
+// These commands generate margin and padding utility classes from the same scale.
 @include spacing(margin, m);
 @include spacing(padding, p);
 
@@ -18,6 +21,7 @@ $axes: (
   py: (padding-top, padding-bottom)
 );
 
+// Each loop creates axis utilities such as .mx-1 for left and right margins.
 @each $prefix, $properties in $axes {
   @each $key, $value in variables.$spacings {
     .#{$prefix}-#{$key} {
@@ -39,6 +43,7 @@ $directions: (
   pe: padding-right
 );
 
+// Each loop creates one-sided utilities such as .mt-1 and .pe-2.
 @each $prefix, $property in $directions {
   @each $key, $value in variables.$spacings {
     .#{$prefix}-#{$key} {
@@ -53,6 +58,7 @@ $justify-values: (start: flex-start, center: center, end: flex-end, between: spa
 $align-values: (start: flex-start, center: center, end: flex-end);
 $wrap-values: (nowrap: nowrap, wrap: wrap);
 
+// Each loop turns a map entry into a class, for example .d-flex { display: flex; }.
 @each $name, $value in $display-values {
   .d-#{$name} { display: $value; }
 }
@@ -87,27 +93,38 @@ $wrap-values: (nowrap: nowrap, wrap: wrap);
   .flex-grow-#{$key} { flex-grow: $value; }
 }
 
+// Color entries create matching text, background, and border classes.
 @each $key, $value in variables.$colors {
   .text-#{$key} { color: $value; }
   .bg-#{$key} { background-color: $value; }
   .border-#{$key} { border-color: $value; }
 }
+// Font maps are looped over so one rule pattern creates all text-size classes.
 @each $key, $value in variables.$font-sizes {
   .text-#{$key} {
     font-size: $value;
   }
 }
+
+// Applies the shared font family when an element needs the base typography explicitly.
+.font-base {
+  font-family: variables.$font-family-base;
+}
+
+// Creates classes such as .fw-regular and .fw-bold from the font weight map.
 @each $key, $value in variables.$font-weights {
   .fw-#{$key} {
     font-weight: $value;
   }
 }
 
+// Creates classes such as .lh-tight and .lh-relaxed from the line-height map.
 @each $key, $value in variables.$line-heights {
   .lh-#{$key} {
     line-height: $value;
   }
 }
+// Creates classes such as .ls-normal and .ls-wide from the letter-spacing map.
 @each $key, $value in variables.$letter-spacings {
   .ls-#{$key} {
     letter-spacing: $value;

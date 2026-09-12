@@ -9,8 +9,9 @@
   gap: 1rem;
 
   background: variables.$neutral-100;
-  border: 2px solid variables.$neutral-300;
-  border-radius: 0.75rem;
+  border: variables.$border-width-thin variables.$border-style-dotted;
+  border-color:  variables.$neutral-300;
+  border-radius: variables.$radius-lg;
   box-shadow: 0 0.5rem 1.5rem rgba(15, 23, 42, 0.08);
 }
 
