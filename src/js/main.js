@@ -1,5 +1,5 @@
 import "../scss/main.scss";
-
+//data
 const navLinks = [
   { text: "Home", link: "#" },
   { text: "Components", link: "#" },
@@ -76,6 +76,7 @@ const avatarVariants = [
   ["W", "white"],
   ["B", "black"],
 ];
+//RENDER FUNCTION
 
 function renderButton(label, variant = "primary") {
   return `<button class="btn btn-${variant}">${label}</button>`;
@@ -95,7 +96,7 @@ function renderAvatar(label, variant = "") {
   const className = variant ? `avatar avatar-${variant}` : "avatar";
   return `<span class="${className}">${label}</span>`;
 }
-
+// rendertab generates tab button and tab panels 
 function renderTabs(tabs, activeId) {
   const initialActive = activeId || (tabs.length > 0 ? tabs[0].id : "");
 
