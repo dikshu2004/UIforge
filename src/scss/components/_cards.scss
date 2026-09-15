@@ -1,66 +1,111 @@
+
+@use "sass:map";
+
 @use "../variables" as variables;
 
 .card {
+
   display: block;
+
   max-width: 24rem;
-  margin: 1.5rem;
+
+  margin: map.get(variables.$spacings, 4);
+
   overflow: hidden;
+
   border: variables.$border-width-thick variables.$border-style-solid variables.$neutral-300;
+
   border-radius: variables.$radius-lg;
+
   background: variables.$neutral-100;
+
 }
 
 .card-body {
-  padding: 1.5rem;
+
+  padding: map.get(variables.$spacings, 4);
+
 }
 
 .card-tag {
+
   display: inline-block;
+
   margin-bottom: 1rem;
+
   padding: 0.35rem 0.65rem;
+
   border-radius: 0.4rem;
+
   background: variables.$brand-100;
+
   color: variables.$brand-600;
 
   font-size: variables.$font-size-sm;
+
   font-weight: variables.$font-weight-bold;
+
   line-height: variables.$line-height-tight;
+
   letter-spacing: variables.$letter-spacing-wide;
+
 }
 
 .card h3 {
+
   margin: 0 0 0.75rem;
 
   font-size: variables.$font-size-xl;
+
   font-weight: variables.$font-weight-bold;
+
   line-height: variables.$line-height-tight;
+
   letter-spacing: variables.$letter-spacing-tight;
 
   color: variables.$brand-500;
+
 }
 
 .card p {
+
   margin: 0;
+
   color: variables.$neutral-600;
 
   font-size: variables.$font-size-base;
+
   line-height: variables.$line-height-relaxed;
+
   letter-spacing: variables.$letter-spacing-normal;
+
 }
 
 .card-footer {
+
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
-  margin-top: 1.5rem;
-  padding-top: 1rem;
-  border-top: 2px solid variables.$neutral-300;
+
+  margin-top: map.get(variables.$spacings, 4);
+
+  padding-top: map.get(variables.$spacings, 3);
+
+  border-top: variables.$border-width-medium variables.$border-style-solid variables.$neutral-300;
+
 }
 
 .card-meta {
+
   color: variables.$neutral-500;
 
   font-size: variables.$font-size-sm;
+
   line-height: variables.$line-height-tight;
+
   letter-spacing: variables.$letter-spacing-normal;
+
 }
+
