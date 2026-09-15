@@ -201,3 +201,23 @@ $transition-easing-base: ease;
 $focus-width: 2px;
 $focus-color: $brand-400;
 $focus-offset: 2px;
+
+$breakpoints: (
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+// ============================================================
+// Container Max Widths
+// Used to control content width at larger screen sizes.
+// ============================================================
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px
+);

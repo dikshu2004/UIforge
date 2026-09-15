@@ -1,25 +1,65 @@
 @use "sass:math";
+@use "sass:map";
+
+@use "variables";
 
 .container {
+
   width: 100%;
+
   margin: 0 auto;
+
   padding: 0 15px;
+
   box-sizing: border-box;
+
 }
 
 .row {
+
   display: flex;
+
   flex-wrap: wrap;
+
   margin: 0 -15px;
+
 }
 
 [class^="col-"] {
+
   padding: 0 15px;
+
   box-sizing: border-box;
+
 }
 
 @for $column from 1 through 12 {
+
   .col-#{$column} {
+
     width: math.percentage(math.div($column, 12));
+
   }
+
 }
+
+// Generate responsive column classes from the breakpoint map.
+
+@each $breakpoint, $min-width in variables.$breakpoints {
+
+  @media (min-width: $min-width) {
+
+    @for $column from 1 through 12 {
+
+      .col-#{$breakpoint}-#{$column} {
+
+        width: math.percentage(math.div($column, 12));
+
+      }
+
+    }
+
+  }
+
+}
+
