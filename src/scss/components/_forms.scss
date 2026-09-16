@@ -62,7 +62,13 @@ $space-5: map.get(variables.$spacings, 5);
 .form-textarea:focus,
 .form-select:focus {
   border-color: variables.$brand-500;
-  outline: variables.$border-width-medium variables.$border-style-solid variables.$brand-100;
+}
+
+.form-input:focus-visible,
+.form-textarea:focus-visible,
+.form-select:focus-visible {
+  outline: variables.$focus-width solid variables.$focus-color;
+  outline-offset: variables.$focus-offset;
 }
 
 .form-actions {

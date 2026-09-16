@@ -57,11 +57,8 @@
 }
 
 .btn:focus-visible {
-
-  outline: 3px solid #fbbf24;
-
-  outline-offset: 3px;
-
+  outline: variables.$focus-width solid variables.$focus-color;
+  outline-offset: variables.$focus-offset;
 }
 
 .btn-primary {
