@@ -1,4 +1,5 @@
 @use "variables";
+@use "base";
 @use "grid";
 @use "utilities";
 @use "components/buttons";
@@ -11,4 +12,3 @@
 @use "components/tabs";
 @use "components/dropdown";
 @use "components/pagination";
-@use "/src/scss/base";

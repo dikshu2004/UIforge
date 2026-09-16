@@ -1,122 +1,72 @@
-
 @use "../variables" as variables;
 
 .pagination {
-
   display: flex;
-
   align-items: center;
-
   gap: 0.35rem;
-
   list-style: none;
-
   padding: 0;
-
   margin: 0;
-
 }
 
 .pagination-btn {
-
   display: inline-flex;
-
   align-items: center;
-
   justify-content: center;
-
   min-width: 2.5rem;
-
   height: 2.5rem;
-
   padding: 0 0.75rem;
-
-  background-color: variables.$neutral-100;
-
-  border: variables.$border-width-thin variables.$border-style-solid variables.$neutral-300;
-
+  background-color: var(--uf-surface, #{variables.$neutral-100});
+  border: variables.$border-width-thin variables.$border-style-solid var(--uf-border, #{variables.$neutral-300});
   border-radius: variables.$radius-md;
-
-  color: variables.$neutral-700;
-
+  color: var(--uf-text, #{variables.$neutral-700});
   font-family: inherit;
-
   font-size: variables.$font-size-base;
-
   font-weight: variables.$font-weight-medium;
-
   cursor: pointer;
-
   text-decoration: none;
-
   transition:
     background-color variables.$transition-duration-base variables.$transition-easing-base,
     border-color variables.$transition-duration-base variables.$transition-easing-base,
     color variables.$transition-duration-base variables.$transition-easing-base;
 
   &:hover:not(:disabled):not(.is-disabled) {
-
-    background-color: variables.$brand-100;
-
-    border-color: variables.$brand-300;
-
-    color: variables.$brand-600;
-
+    background-color: var(--uf-primary-light, #{variables.$brand-100});
+    border-color: var(--uf-primary, #{variables.$brand-300});
+    color: var(--uf-primary, #{variables.$brand-600});
   }
 
   &.is-active {
-
-    background-color: variables.$brand-500;
-
-    border-color: variables.$brand-500;
-
+    background-color: var(--uf-primary, #{variables.$brand-500});
+    border-color: var(--uf-primary, #{variables.$brand-500});
     color: variables.$white;
-
     font-weight: variables.$font-weight-bold;
-
   }
 
   &:disabled,
-
   &.is-disabled {
-
-    opacity: 0.45;
-
+    opacity: 0.4;
     cursor: not-allowed;
-
-    background-color: variables.$neutral-200;
-
-    border-color: variables.$neutral-300;
-
+    background-color: var(--uf-surface-subtle, #{variables.$neutral-200});
+    border-color: var(--uf-border, #{variables.$neutral-300});
+    color: var(--uf-text-muted, #{variables.$neutral-500});
   }
 
   &:focus-visible {
-
-    outline: variables.$focus-width solid variables.$focus-color;
-
+    outline: variables.$focus-width solid var(--uf-primary, #{variables.$focus-color});
     outline-offset: variables.$focus-offset;
-
   }
-
 }
 
 .pagination-ellipsis {
-
   display: inline-flex;
-
   align-items: center;
-
   justify-content: center;
-
   min-width: 2.5rem;
-
   height: 2.5rem;
-
-  color: variables.$neutral-500;
-
+  color: var(--uf-text-muted, #{variables.$neutral-500});
   font-size: variables.$font-size-base;
-
   user-select: none;
-
 }
+
 

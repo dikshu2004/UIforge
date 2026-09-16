@@ -4,15 +4,29 @@
 @use "variables";
 
 .container {
-
   width: 100%;
-
-  margin: 0 auto;
-
-  padding: 0 15px;
-
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
   box-sizing: border-box;
+}
 
+@each $bp, $max-width in variables.$container-max-widths {
+  @media (min-width: map.get(variables.$breakpoints, $bp)) {
+    .container {
+      max-width: $max-width;
+    }
+  }
+}
+
+.container-fluid {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+  box-sizing: border-box;
 }
 
 .row {

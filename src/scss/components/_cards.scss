@@ -1,111 +1,72 @@
-
 @use "sass:map";
-
 @use "../variables" as variables;
 
 .card {
-
   display: block;
-
   max-width: 24rem;
-
-  margin: map.get(variables.$spacings, 4);
-
   overflow: hidden;
-
-  border: variables.$border-width-thick variables.$border-style-solid variables.$neutral-300;
-
+  border: variables.$border-width-thin variables.$border-style-solid var(--uf-border, #{variables.$neutral-300});
   border-radius: variables.$radius-lg;
+  background: var(--uf-surface, #{variables.$neutral-100});
+  color: var(--uf-text, #{variables.$neutral-900});
+  box-shadow: var(--uf-shadow, 0 0.25rem 0.75rem rgba(15, 23, 42, 0.08));
+  transition: transform variables.$transition-duration-base variables.$transition-easing-base,
+              box-shadow variables.$transition-duration-base variables.$transition-easing-base,
+              background-color variables.$transition-duration-base variables.$transition-easing-base,
+              border-color variables.$transition-duration-base variables.$transition-easing-base;
 
-  background: variables.$neutral-100;
-
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--uf-shadow-lg, 0 0.5rem 1.25rem rgba(15, 23, 42, 0.12));
+  }
 }
 
 .card-body {
-
   padding: map.get(variables.$spacings, 4);
-
 }
 
 .card-tag {
-
   display: inline-block;
-
-  margin-bottom: 1rem;
-
-  padding: 0.35rem 0.65rem;
-
-  border-radius: 0.4rem;
-
-  background: variables.$brand-100;
-
-  color: variables.$brand-600;
-
+  margin-bottom: 0.75rem;
+  padding: 0.3rem 0.65rem;
+  border-radius: variables.$radius-sm;
+  background: var(--uf-primary-light, #{variables.$brand-100});
+  color: var(--uf-primary, #{variables.$brand-600});
   font-size: variables.$font-size-sm;
-
   font-weight: variables.$font-weight-bold;
-
   line-height: variables.$line-height-tight;
-
   letter-spacing: variables.$letter-spacing-wide;
-
 }
 
 .card h3 {
-
   margin: 0 0 0.75rem;
-
   font-size: variables.$font-size-xl;
-
   font-weight: variables.$font-weight-bold;
-
   line-height: variables.$line-height-tight;
-
   letter-spacing: variables.$letter-spacing-tight;
-
-  color: variables.$brand-500;
-
+  color: var(--uf-text, #{variables.$brand-500});
 }
 
 .card p {
-
   margin: 0;
-
-  color: variables.$neutral-600;
-
+  color: var(--uf-text-muted, #{variables.$neutral-600});
   font-size: variables.$font-size-base;
-
   line-height: variables.$line-height-relaxed;
-
   letter-spacing: variables.$letter-spacing-normal;
-
 }
 
 .card-footer {
-
   display: flex;
-
   align-items: center;
-
   justify-content: space-between;
-
   margin-top: map.get(variables.$spacings, 4);
-
   padding-top: map.get(variables.$spacings, 3);
-
-  border-top: variables.$border-width-medium variables.$border-style-solid variables.$neutral-300;
-
+  border-top: variables.$border-width-thin variables.$border-style-solid var(--uf-border, #{variables.$neutral-300});
 }
 
 .card-meta {
-
-  color: variables.$neutral-500;
-
+  color: var(--uf-text-muted, #{variables.$neutral-500});
   font-size: variables.$font-size-sm;
-
   line-height: variables.$line-height-tight;
-
   letter-spacing: variables.$letter-spacing-normal;
-
 }
-

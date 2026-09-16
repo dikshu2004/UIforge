@@ -1,117 +1,73 @@
-
 @use "sass:map";
-
 @use "../variables" as variables;
 
 .dropdown {
-
   position: relative;
-
   display: inline-block;
-
 }
 
 .dropdown-toggle {
-
   display: inline-flex;
-
   align-items: center;
-
   gap: 0.5rem;
-
 }
 
 .dropdown-toggle::after {
-
   content: "";
-
   width: 0;
-
   height: 0;
-
   border-top: 0.35rem solid currentColor;
-
   border-right: 0.3rem solid transparent;
-
   border-left: 0.3rem solid transparent;
-
 }
 
 .dropdown-menu {
-
   position: absolute;
-
   top: 100%;
-
   left: 0;
-
   display: none;
-
-  min-width: 12rem;
-
+  min-width: 13rem;
   margin-top: 0.35rem;
-
   padding: map.get(variables.$spacings, 2) 0;
-
-  z-index: 10;
-
-  background: variables.$white;
-
-  border: variables.$border-width-thin variables.$border-style-solid variables.$neutral-300;
-
+  z-index: 50;
+  background: var(--uf-surface-elevated, #{variables.$white});
+  border: variables.$border-width-thin variables.$border-style-solid var(--uf-border, #{variables.$neutral-300});
   border-radius: variables.$radius-md;
-
-  box-shadow: 0 0.5rem 1rem rgba(15, 23, 42, 0.12);
-
+  box-shadow: var(--uf-shadow-lg, 0 0.5rem 1rem rgba(15, 23, 42, 0.12));
   list-style: none;
-
 }
 
 .dropdown.is-open .dropdown-menu {
-
   display: block;
-
 }
 
 .dropdown-item {
-
   display: block;
-
   padding: 0.6rem map.get(variables.$spacings, 3);
-
-  color: variables.$neutral-800;
-
+  color: var(--uf-text, #{variables.$neutral-800});
   text-decoration: none;
+  font-size: variables.$font-size-base;
+  transition: background-color 0.15s ease, color 0.15s ease;
 
-}
-
-.dropdown-item:hover,
-
-.dropdown-item:focus {
-
-  color: variables.$brand-600;
-
-  background: variables.$brand-100;
-
+  &:hover,
+  &:focus {
+    color: var(--uf-primary, #{variables.$brand-600});
+    background: var(--uf-primary-light, #{variables.$brand-100});
+    outline: none;
+  }
 }
 
 .dropdown-header {
-
   padding: 0.4rem 1rem;
-
-  color: variables.$neutral-500;
-
+  color: var(--uf-text-muted, #{variables.$neutral-500});
   font-size: variables.$font-size-sm;
-
   font-weight: variables.$font-weight-bold;
-
+  text-transform: uppercase;
+  letter-spacing: variables.$letter-spacing-wide;
 }
 
 .dropdown-divider {
-
   margin: map.get(variables.$spacings, 2) 0;
-
-  border-top: variables.$border-width-thin variables.$border-style-solid variables.$neutral-300;
-
+  border: none;
+  border-top: variables.$border-width-thin variables.$border-style-solid var(--uf-border, #{variables.$neutral-300});
 }
-

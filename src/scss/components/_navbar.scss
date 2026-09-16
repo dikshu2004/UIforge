@@ -1,90 +1,60 @@
-
 @use "sass:map";
-
 @use "../variables" as variables;
 
 .navbar {
-
   display: flex;
-
   align-items: center;
-
   justify-content: space-between;
-
-  padding: 0.75rem map.get(variables.$spacings, 4);
-
+  padding: 0.85rem map.get(variables.$spacings, 4);
   gap: map.get(variables.$spacings, 3);
-
-  background: variables.$neutral-100;
-
-  border: variables.$border-width-thin variables.$border-style-dotted;
-
-  border-color: variables.$neutral-300;
-
+  background: var(--uf-surface, #{variables.$neutral-100});
+  border: variables.$border-width-thin variables.$border-style-solid var(--uf-border, #{variables.$neutral-300});
   border-radius: variables.$radius-lg;
-
-  box-shadow: 0 0.5rem 1.5rem rgba(15, 23, 42, 0.08);
-
+  box-shadow: var(--uf-shadow, 0 0.5rem 1.5rem rgba(15, 23, 42, 0.08));
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
-.navbar h2 {
-
+.navbar h2,
+.navbar-brand {
   margin: 0;
-
-  color: variables.$brand-500;
-
+  color: var(--uf-primary, #{variables.$brand-500});
   font-size: variables.$font-size-xl;
-
   font-weight: variables.$font-weight-bold;
-
   line-height: variables.$line-height-tight;
-
   letter-spacing: variables.$letter-spacing-tight;
-
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .nav-link {
-
   display: flex;
-
-  gap: 0.25rem;
-
+  align-items: center;
+  gap: 0.35rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-link a {
-
-  padding: map.get(variables.$spacings, 2) 0.75rem;
-
-  color: variables.$neutral-700;
-
+  padding: map.get(variables.$spacings, 2) 0.85rem;
+  color: var(--uf-text-muted, #{variables.$neutral-700});
   text-decoration: none;
-
   font-size: variables.$font-size-base;
-
   font-weight: variables.$font-weight-medium;
-
   line-height: variables.$line-height-normal;
-
   letter-spacing: variables.$letter-spacing-normal;
-
   border-radius: variables.$radius-md;
-
   transition:
     color variables.$transition-duration-base variables.$transition-easing-base,
     background-color variables.$transition-duration-base variables.$transition-easing-base,
     transform variables.$transition-duration-base variables.$transition-easing-base;
 
+  &:hover,
+  &:focus-visible {
+    color: var(--uf-primary, #{variables.$brand-500});
+    background-color: var(--uf-primary-light, #{variables.$brand-200});
+    transform: translateY(-1px);
+  }
 }
-
-.nav-link a:hover,
-
-.nav-link a:focus-visible {
-
-  color: variables.$brand-500;
-
-  background-color: variables.$brand-200;
-
-  transform: translateY(-1px);
-
-}
-

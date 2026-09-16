@@ -10,33 +10,37 @@ $space-5: map.get(variables.$spacings, 5);
 .form {
   max-width: 32rem;
   padding: $space-4;
-  border: variables.$border-width-thin variables.$border-style-solid variables.$neutral-300;
+  border: variables.$border-width-thin variables.$border-style-solid var(--uf-border, #{variables.$neutral-300});
   border-radius: variables.$radius-lg;
-  background: variables.$white;
-  box-shadow: 0 $space-2 $space-5 variables.$neutral-300;
+  background: var(--uf-surface, #{variables.$white});
+  color: var(--uf-text, #{variables.$neutral-900});
+  box-shadow: var(--uf-shadow, 0 $space-2 $space-5 variables.$neutral-300);
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .form-title {
   margin: 0 0 $space-2;
-  color: variables.$brand-600;
+  color: var(--uf-primary, #{variables.$brand-600});
   font-size: variables.$font-size-xl;
   font-weight: variables.$font-weight-bold;
 }
 
 .form-description {
   margin: 0 0 $space-3;
-  color: variables.$neutral-600;
+  color: var(--uf-text-muted, #{variables.$neutral-600});
   line-height: variables.$line-height-normal;
 }
 
 .form-group {
   margin-bottom: $space-3;
+  position: relative;
 }
 
 .form-label {
   display: block;
   margin-bottom: $space-1;
-  color: variables.$neutral-800;
+  color: var(--uf-text, #{variables.$neutral-800});
+  font-size: variables.$font-size-base;
   font-weight: variables.$font-weight-semibold;
 }
 
@@ -45,35 +49,235 @@ $space-5: map.get(variables.$spacings, 5);
 .form-select {
   width: 100%;
   box-sizing: border-box;
-  padding: $space-2;
-  border: variables.$border-width-thin variables.$border-style-solid variables.$neutral-400;
+  padding: 0.65rem 0.85rem;
+  border: variables.$border-width-thin variables.$border-style-solid var(--uf-border, #{variables.$neutral-400});
   border-radius: variables.$radius-md;
-  background: variables.$white;
-  color: variables.$neutral-900;
-  font: inherit;
+  background-color: var(--uf-surface, #{variables.$white});
+  color: var(--uf-text, #{variables.$neutral-900});
+  font-family: inherit;
+  font-size: variables.$font-size-base;
+  line-height: variables.$line-height-normal;
+  transition:
+    border-color variables.$transition-duration-base variables.$transition-easing-base,
+    box-shadow variables.$transition-duration-base variables.$transition-easing-base,
+    background-color variables.$transition-duration-base variables.$transition-easing-base;
+
+  &::placeholder {
+    color: var(--uf-text-muted, #{variables.$neutral-500});
+    opacity: 0.7;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: var(--uf-border-strong, #{variables.$neutral-500});
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--uf-primary, #{variables.$brand-500});
+    box-shadow: 0 0 0 3px var(--uf-focus-ring, #{rgba(99, 102, 241, 0.3)});
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-color: var(--uf-surface-subtle, #{variables.$neutral-200});
+  }
 }
 
 .form-textarea {
-  min-height: $space-5 * 3;
+  min-height: 6rem;
   resize: vertical;
 }
 
-.form-input:focus,
-.form-textarea:focus,
-.form-select:focus {
-  border-color: variables.$brand-500;
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%2364748b' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 16px 12px;
+  padding-right: 2.25rem;
+  cursor: pointer;
 }
 
-.form-input:focus-visible,
-.form-textarea:focus-visible,
-.form-select:focus-visible {
-  outline: variables.$focus-width solid variables.$focus-color;
-  outline-offset: variables.$focus-offset;
+// Custom Checkbox & Radio Controls
+// ============================================================
+
+.form-check {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: $space-2;
+  min-height: 1.5rem;
+  user-select: none;
+  cursor: pointer;
+}
+
+.form-check-input {
+  appearance: none;
+  width: 1.2rem;
+  height: 1.2rem;
+  margin: 0;
+  border: variables.$border-width-thin variables.$border-style-solid var(--uf-border-strong, #{variables.$neutral-400});
+  border-radius: variables.$radius-sm;
+  background-color: var(--uf-surface, #{variables.$white});
+  vertical-align: middle;
+  cursor: pointer;
+  display: grid;
+  place-content: center;
+  transition: all variables.$transition-duration-base variables.$transition-easing-base;
+
+  &[type="radio"] {
+    border-radius: 50%;
+  }
+
+  &::before {
+    content: "";
+    width: 0.65rem;
+    height: 0.65rem;
+    transform: scale(0);
+    transition: transform 120ms ease-in-out;
+    background-color: variables.$white;
+    box-shadow: inset 1em 1em var(--uf-surface, #{variables.$white});
+  }
+
+  &[type="checkbox"]::before {
+    clip-path: polygon(14% 44%, 0 60%, 40% 100%, 100% 18%, 80% 0%, 35% 65%);
+  }
+
+  &[type="radio"]::before {
+    border-radius: 50%;
+  }
+
+  &:checked {
+    background-color: var(--uf-primary, #{variables.$brand-500});
+    border-color: var(--uf-primary, #{variables.$brand-500});
+
+    &::before {
+      transform: scale(1);
+    }
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--uf-focus-ring, #{rgba(99, 102, 241, 0.4)});
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.form-check-label {
+  color: var(--uf-text, #{variables.$neutral-800});
+  font-size: variables.$font-size-base;
+  cursor: pointer;
+}
+
+// Switch Toggle
+// ============================================================
+
+.form-switch {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  user-select: none;
+  margin-bottom: $space-2;
+
+  .form-switch-input {
+    appearance: none;
+    position: relative;
+    width: 2.75rem;
+    height: 1.5rem;
+    background-color: var(--uf-surface-subtle, #{variables.$neutral-300});
+    border: 1px solid var(--uf-border, #{variables.$neutral-400});
+    border-radius: variables.$radius-full;
+    cursor: pointer;
+    margin: 0;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 1.15rem;
+      height: 1.15rem;
+      background-color: variables.$white;
+      border-radius: 50%;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s ease;
+    }
+
+    &:checked {
+      background-color: var(--uf-primary, #{variables.$brand-500});
+      border-color: var(--uf-primary, #{variables.$brand-500});
+
+      &::after {
+        transform: translateX(1.25rem);
+      }
+    }
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px var(--uf-focus-ring, #{rgba(99, 102, 241, 0.4)});
+    }
+  }
+}
+
+// Validation States
+// ============================================================
+
+.form-input.is-valid,
+.form-textarea.is-valid,
+.form-select.is-valid {
+  border-color: var(--uf-success, #{variables.$success}) !important;
+  padding-right: 2.25rem;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23198754' d='M2.3 6.73.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem 1rem;
+
+  &:focus {
+    box-shadow: 0 0 0 3px rgba(25, 135, 84, 0.25) !important;
+  }
+}
+
+.form-input.is-invalid,
+.form-textarea.is-invalid,
+.form-select.is-invalid {
+  border-color: var(--uf-danger, #{variables.$danger}) !important;
+  padding-right: 2.25rem;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6v2.4m0 1.6v.4'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1.1rem 1.1rem;
+
+  &:focus {
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.25) !important;
+  }
+}
+
+.valid-feedback {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: variables.$font-size-sm;
+  color: var(--uf-success, #{variables.$success});
+  font-weight: variables.$font-weight-medium;
+}
+
+.invalid-feedback {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: variables.$font-size-sm;
+  color: var(--uf-danger, #{variables.$danger});
+  font-weight: variables.$font-weight-medium;
 }
 
 .form-actions {
   display: flex;
   justify-content: flex-end;
   gap: $space-2;
-  margin-top: $space-3;
+  margin-top: $space-4;
 }

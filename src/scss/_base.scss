@@ -1,9 +1,64 @@
 @use "variables";
 
+:root {
+  --uf-bg: #f8fafc;
+  --uf-surface: #ffffff;
+  --uf-surface-subtle: #f1f5f9;
+  --uf-surface-elevated: #ffffff;
+  --uf-text: #0f172a;
+  --uf-text-muted: #64748b;
+  --uf-border: #e2e8f0;
+  --uf-border-strong: #cbd5e1;
+  --uf-primary: #{variables.$brand-500};
+  --uf-primary-light: #{variables.$brand-100};
+  --uf-primary-hover: #{variables.$brand-600};
+  --uf-secondary: #{variables.$secondary};
+  --uf-success: #{variables.$success};
+  --uf-danger: #{variables.$danger};
+  --uf-warning: #{variables.$warning};
+  --uf-info: #{variables.$info};
+  --uf-focus-ring: rgba(99, 102, 241, 0.4);
+  --uf-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --uf-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --uf-shadow-lg: 0 10px 20px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="dark"] {
+  --uf-bg: #090d16;
+  --uf-surface: #111827;
+  --uf-surface-subtle: #1e293b;
+  --uf-surface-elevated: #1a2234;
+  --uf-text: #f8fafc;
+  --uf-text-muted: #94a3b8;
+  --uf-border: #2e384d;
+  --uf-border-strong: #475569;
+  --uf-primary: #818cf8;
+  --uf-primary-light: rgba(99, 102, 241, 0.2);
+  --uf-primary-hover: #6366f1;
+  --uf-secondary: #7ba3c7;
+  --uf-success: #22c55e;
+  --uf-danger: #ef4444;
+  --uf-warning: #f59e0b;
+  --uf-info: #06b6d4;
+  --uf-focus-ring: rgba(129, 140, 248, 0.45);
+  --uf-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.6);
+  --uf-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -2px rgba(0, 0, 0, 0.4);
+  --uf-shadow-lg: 0 10px 25px -3px rgba(0, 0, 0, 0.7), 0 4px 6px -4px rgba(0, 0, 0, 0.5);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 body {
+  margin: 0;
   font-family: variables.$font-family-base;
   font-size: variables.$font-size-base;
   font-weight: variables.$font-weight-regular;
-line-height: variables.$line-height-normal;
-letter-spacing: variables.$letter-spacing-normal;
+  line-height: variables.$line-height-normal;
+  letter-spacing: variables.$letter-spacing-normal;
+  background-color: var(--uf-bg);
+  color: var(--uf-text);
+  transition: background-color 0.25s ease, color 0.25s ease;
+  -webkit-font-smoothing: antialiased;
 }

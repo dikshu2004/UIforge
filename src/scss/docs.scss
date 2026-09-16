@@ -1,0 +1,64 @@
+@use "./variables" as *;
+.docs-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 1rem 2rem;
+
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.docs-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.docs-tagline {
+  margin: 0;
+}
+
+.docs-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  min-height: calc(100vh - 70px);
+}
+
+.docs-sidebar {
+  padding: 2rem 1.5rem;
+
+  border-right: 1px solid #e2e8f0;
+}
+
+.docs-sidebar h2 {
+  margin-top: 0;
+  font-size: 1rem;
+}
+
+.docs-sidebar ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.docs-sidebar li {
+  margin-bottom: 0.5rem;
+}
+
+.docs-sidebar a {
+  text-decoration: none;
+}
+
+.docs-content {
+  max-width: 900px;
+  padding: 3rem;
+}
+
+.docs-content section {
+  margin-bottom: 4rem;
+}
+
+.docs-content h1 {
+  margin-top: 0;
+}
