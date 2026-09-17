@@ -61,4 +61,17 @@
 
 .docs-content h1 {
   margin-top: 0;
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  letter-spacing: $letter-spacing-tight;
+}
+.docs-content h2 {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-tight;
+}
+.docs-content p {
+  font-size: $font-size-base;
+  line-height: $line-height-relaxed;
 }
