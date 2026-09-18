@@ -75,9 +75,9 @@
         <div class="docs-nav-group">
           <div class="docs-nav-title">Overview</div>
           <ul class="docs-nav-list">
+            <li class="docs-nav-item"><a href="#overview" class="docs-nav-link">Overview</a></li>
             <li class="docs-nav-item"><a href="#introduction" class="docs-nav-link">Introduction</a></li>
             <li class="docs-nav-item"><a href="#getting-started" class="docs-nav-link">Getting Started</a></li>
-            <li class="docs-nav-item"><a href="#architecture" class="docs-nav-link">Project Architecture</a></li>
           </ul>
         </div>
 
@@ -121,6 +121,65 @@
 
     <!-- Main Content -->
     <main class="docs-content">
+
+      <!-- ============================================================ -->
+      <!-- Overview                                                     -->
+      <!-- ============================================================ -->
+      <section id="overview" class="docs-section">
+        <div class="docs-section-header">
+          <h1 class="docs-title">UIForge</h1>
+          <p class="docs-lead">A simple, reusable UI component library for the web.</p>
+        </div>
+
+        <div style="display:grid; grid-template-columns: minmax(0, 1.2fr) minmax(240px, 0.8fr); gap: 1.5rem; align-items: center; padding: 1.5rem; border: 1px solid var(--uf-border); border-radius: 1rem; background: rgba(255,255,255,0.3); box-shadow: var(--uf-shadow-sm);">
+          <div>
+            <p class="docs-paragraph" style="margin-bottom: 1rem;">
+              UIForge is a lightweight, developer-friendly UI library built with semantic HTML, clean Vanilla JavaScript, Sass-powered styling, and Vite for a fast local workflow.
+            </p>
+
+            <div style="display:flex; flex-wrap:wrap; gap: 0.5rem; margin: 1rem 0 1.25rem;">
+              <span style="display:inline-flex; align-items:center; padding:0.35rem 0.7rem; border-radius:999px; background: var(--uf-primary-light); color: var(--uf-primary); font-size:0.78rem; font-weight:600; border:1px solid rgba(55,48,163,0.15);">HTML</span>
+              <span style="display:inline-flex; align-items:center; padding:0.35rem 0.7rem; border-radius:999px; background: var(--uf-primary-light); color: var(--uf-primary); font-size:0.78rem; font-weight:600; border:1px solid rgba(55,48,163,0.15);">Vanilla JavaScript</span>
+              <span style="display:inline-flex; align-items:center; padding:0.35rem 0.7rem; border-radius:999px; background: var(--uf-primary-light); color: var(--uf-primary); font-size:0.78rem; font-weight:600; border:1px solid rgba(55,48,163,0.15);">SCSS/Sass</span>
+              <span style="display:inline-flex; align-items:center; padding:0.35rem 0.7rem; border-radius:999px; background: var(--uf-primary-light); color: var(--uf-primary); font-size:0.78rem; font-weight:600; border:1px solid rgba(55,48,163,0.15);">Vite</span>
+            </div>
+
+            <div style="display:flex; flex-wrap:wrap; gap:0.75rem; margin-top:1rem;">
+              <a href="#introduction" style="display:inline-flex; align-items:center; justify-content:center; padding:0.7rem 1.1rem; border-radius:0.6rem; background:linear-gradient(135deg, var(--uf-primary), var(--uf-primary-dark)); color:#fff; text-decoration:none; font-weight:600; box-shadow:0 8px 18px rgba(55,48,163,0.18);">Documentation</a>
+              <a href="https://github.com/your-username/uiforge" target="_blank" rel="noreferrer" style="display:inline-flex; align-items:center; justify-content:center; padding:0.7rem 1.1rem; border-radius:0.6rem; background: var(--uf-surface-subtle); color: var(--uf-text); border:1px solid var(--uf-border); text-decoration:none; font-weight:600;">GitHub</a>
+            </div>
+          </div>
+
+          <div style="padding: 1rem; border: 1px solid var(--uf-border); border-radius: 0.9rem; background: var(--uf-surface);">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+              <span style="font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color: var(--uf-text-muted); font-weight:700;">Preview</span>
+              <span style="display:inline-block; width:0.55rem; height:0.55rem; border-radius:50%; background:var(--uf-primary);"></span>
+            </div>
+
+            <div style="display:grid; gap:0.75rem;">
+              <div style="display:flex; gap:0.5rem; align-items:center;">
+                <span style="display:inline-block; width:2.25rem; height:2.25rem; border-radius:0.6rem; background:linear-gradient(135deg, #e0e7ff, #c7d2fe);"></span>
+                <div style="flex:1; height:0.8rem; border-radius:999px; background: linear-gradient(90deg, rgba(55,48,163,0.13), rgba(55,48,163,0.04));"></div>
+              </div>
+
+              <div style="display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:0.5rem;">
+                <div style="height:3.2rem; border-radius:0.7rem; background: rgba(55,48,163,0.08); border:1px solid rgba(55,48,163,0.12);"></div>
+                <div style="height:3.2rem; border-radius:0.7rem; background: rgba(55,48,163,0.08); border:1px solid rgba(55,48,163,0.12);"></div>
+                <div style="height:3.2rem; border-radius:0.7rem; background: rgba(55,48,163,0.08); border:1px solid rgba(55,48,163,0.12);"></div>
+              </div>
+
+              <div style="display:flex; gap:0.5rem;">
+                <button type="button" style="flex:1; padding:0.65rem 0.75rem; border:none; border-radius:0.55rem; background: var(--uf-primary); color:#fff; font-weight:600;">Primary</button>
+                <button type="button" style="flex:1; padding:0.65rem 0.75rem; border:1px solid var(--uf-border); border-radius:0.55rem; background:transparent; color:var(--uf-text); font-weight:600;">Ghost</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 1.5rem; text-align:center; font-size: 1rem; color: var(--uf-text-muted); font-weight: 500;">
+          Designed & built by Diksha
+        </div>
+      </section>
 
       <!-- ============================================================ -->
       <!-- 1. Introduction                                              -->
@@ -222,50 +281,6 @@
 
 &lt;!-- Alert example --&gt;
 &lt;div class="alert alert-success"&gt;Action completed successfully!&lt;/div&gt;</code></pre>
-        </div>
-      </section>
-
-      <!-- ============================================================ -->
-      <!-- Architecture                                                 -->
-      <!-- ============================================================ -->
-      <section id="architecture" class="docs-section">
-        <div class="docs-section-header">
-          <h2 class="docs-section-title">Project Architecture</h2>
-          <p class="docs-lead">Overview of the project file structure and SCSS organization.</p>
-        </div>
-
-        <div class="docs-standalone-code">
-          <div class="docs-code-header">
-            <span class="docs-code-lang">Text</span>
-            <button type="button" class="docs-copy-btn">Copy</button>
-          </div>
-          <pre><code>UIForge/
-├── index.html               # Main interactive showcase entry point
-├── docs.html                # Comprehensive documentation page
-├── package.json             # Scripts & devDependencies (Vite, Sass)
-├── vite.config.js           # Vite configuration
-└── src/
-    ├── js/
-    │   ├── main.js          # Interactive component renderers & event handlers
-    │   └── docs.js          # Documentation interactions (Copy, Scrollspy, Theme)
-    └── scss/
-        ├── _variables.scss  # Single source of truth: all design tokens & maps
-        ├── _base.scss       # CSS custom properties (--uf-*), reset & theme vars
-        ├── _grid.scss       # 12-column responsive flexbox grid system
-        ├── _utilities.scss  # Generated atomic utility classes (spacing, flex, color)
-        ├── main.scss        # Main library SCSS entry point
-        ├── docs.scss        # Documentation layout & preview styling
-        └── components/      # Modular component stylesheets
-            ├── _buttons.scss
-            ├── _cards.scss
-            ├── _alert.scss
-            ├── _badge.scss
-            ├── _avatar.scss
-            ├── _navbar.scss
-            ├── _forms.scss
-            ├── _dropdown.scss
-            ├── _pagination.scss
-            └── _tabs.scss</code></pre>
         </div>
       </section>
 
@@ -1329,9 +1344,6 @@
       <footer class="docs-footer">
         <div>
           <strong>UIForge</strong> &bull; Simple underneath, polished on the surface.
-        </div>
-        <div>
-          <a href="index.html">Back to Component Showcase &rarr;</a>
         </div>
       </footer>
 
