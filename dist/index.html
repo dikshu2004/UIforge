@@ -3,11 +3,1341 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UIForge - Component Showcase</title>
-  <script type="module" crossorigin src="/assets/index-DzK5ylRg.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-BWwfEJrv.css">
+  <title>UIForge Documentation - Simple Underneath, Polished on the Surface</title>
+  <meta name="description" content="Official documentation for UIForge: a modern, lightweight, reusable UI component library built with HTML, Vanilla JavaScript, SCSS, and Vite.">
+  <script type="module" crossorigin src="/assets/index-4gYbRqhx.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-BRdkICEi.css">
 </head>
 <body>
-  <div id="root"></div>
+
+  <!-- ============================================================ -->
+  <!-- Top Navigation Header                                        -->
+  <!-- ============================================================ -->
+  <header class="docs-header">
+    <div class="docs-header-left">
+      <button class="docs-mobile-toggle" id="docs-mobile-toggle" aria-label="Toggle navigation menu" type="button">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      <a href="index.html" class="docs-logo-group">
+        <div class="docs-logo-icon">UF</div>
+        <span class="docs-logo-text">UIForge</span>
+      </a>
+    </div>
+
+    <div class="docs-header-actions">
+      <a href="index.html" class="docs-header-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="7" height="7"></rect>
+          <rect x="14" y="3" width="7" height="7"></rect>
+          <rect x="14" y="14" width="7" height="7"></rect>
+          <rect x="3" y="14" width="7" height="7"></rect>
+        </svg>
+        <span>Showcase</span>
+      </a>
+
+      <button type="button" class="docs-theme-toggle" id="docs-theme-toggle" aria-label="Toggle light and dark mode">
+        <svg id="theme-icon-dark" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+        <svg id="theme-icon-light" style="display:none;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============================================================ -->
+  <!-- Main Documentation Layout                                    -->
+  <!-- ============================================================ -->
+  <div class="docs-layout">
+    <div class="docs-sidebar-backdrop" id="docs-sidebar-backdrop"></div>
+
+    <!-- Sidebar Navigation -->
+    <aside class="docs-sidebar" id="docs-sidebar">
+      <div class="docs-search-box">
+        <input type="text" id="docs-nav-filter" placeholder="Filter documentation..." aria-label="Filter documentation navigation">
+      </div>
+
+      <nav aria-label="Documentation Sidebar">
+        <div class="docs-nav-group">
+          <div class="docs-nav-title">Overview</div>
+          <ul class="docs-nav-list">
+            <li class="docs-nav-item"><a href="#introduction" class="docs-nav-link">Introduction</a></li>
+            <li class="docs-nav-item"><a href="#getting-started" class="docs-nav-link">Getting Started</a></li>
+            <li class="docs-nav-item"><a href="#architecture" class="docs-nav-link">Project Architecture</a></li>
+          </ul>
+        </div>
+
+        <div class="docs-nav-group">
+          <div class="docs-nav-title">Design Tokens</div>
+          <ul class="docs-nav-list">
+            <li class="docs-nav-item"><a href="#tokens-colors" class="docs-nav-link">Colors</a></li>
+            <li class="docs-nav-item"><a href="#tokens-typography" class="docs-nav-link">Typography</a></li>
+            <li class="docs-nav-item"><a href="#tokens-spacing" class="docs-nav-link">Spacing</a></li>
+            <li class="docs-nav-item"><a href="#tokens-radius" class="docs-nav-link">Radius</a></li>
+            <li class="docs-nav-item"><a href="#tokens-borders" class="docs-nav-link">Borders & Motion</a></li>
+            <li class="docs-nav-item"><a href="#tokens-breakpoints" class="docs-nav-link">Breakpoints</a></li>
+          </ul>
+        </div>
+
+        <div class="docs-nav-group">
+          <div class="docs-nav-title">Components</div>
+          <ul class="docs-nav-list">
+            <li class="docs-nav-item"><a href="#component-buttons" class="docs-nav-link">Buttons</a></li>
+            <li class="docs-nav-item"><a href="#component-cards" class="docs-nav-link">Cards</a></li>
+            <li class="docs-nav-item"><a href="#component-alerts" class="docs-nav-link">Alerts</a></li>
+            <li class="docs-nav-item"><a href="#component-badges" class="docs-nav-link">Badges</a></li>
+            <li class="docs-nav-item"><a href="#component-avatar" class="docs-nav-link">Avatar</a></li>
+            <li class="docs-nav-item"><a href="#component-navbar" class="docs-nav-link">Navbar</a></li>
+            <li class="docs-nav-item"><a href="#component-forms" class="docs-nav-link">Forms & Validation</a></li>
+            <li class="docs-nav-item"><a href="#component-dropdown" class="docs-nav-link">Dropdowns</a></li>
+            <li class="docs-nav-item"><a href="#component-pagination" class="docs-nav-link">Pagination</a></li>
+            <li class="docs-nav-item"><a href="#component-tabs" class="docs-nav-link">Tabs</a></li>
+          </ul>
+        </div>
+
+        <div class="docs-nav-group">
+          <div class="docs-nav-title">Layout & Utilities</div>
+          <ul class="docs-nav-list">
+            <li class="docs-nav-item"><a href="#layout-grid" class="docs-nav-link">Grid System</a></li>
+            <li class="docs-nav-item"><a href="#utilities" class="docs-nav-link">Utilities</a></li>
+          </ul>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="docs-content">
+
+      <!-- ============================================================ -->
+      <!-- 1. Introduction                                              -->
+      <!-- ============================================================ -->
+      <section id="introduction" class="docs-section">
+        <div class="docs-section-header">
+          <h1 class="docs-title">UIForge Documentation</h1>
+          <p class="docs-lead">
+            A reusable, lightweight UI component library and design system built with HTML, Vanilla JavaScript, SCSS, and Vite.
+          </p>
+        </div>
+
+        <p class="docs-paragraph">
+          <strong>UIForge</strong> is crafted around one core principle: <em>"Simple underneath, polished on the surface."</em> It is designed to demonstrate how modern UI libraries function from the ground up without relying on heavy frameworks, bloated dependencies, or complex abstractions.
+        </p>
+
+        <div class="docs-callout docs-callout-info">
+          <h5>Core Philosophy</h5>
+          <p>
+            No React, no JSX, no Tailwind, and zero runtime dependencies. Every component is defined using clean semantic HTML5, structured SCSS with centralized Sass maps/tokens, and accessible Vanilla JavaScript ES modules.
+          </p>
+        </div>
+
+        <h3 class="docs-subheading">Key Features</h3>
+        <ul class="docs-paragraph">
+          <li><strong>Tokenized SCSS System:</strong> Centralized design tokens for colors, typography, spacing, border radii, borders, transitions, and breakpoints.</li>
+          <li><strong>Zero Framework Overhead:</strong> Fast load times and tiny bundle footprint using native web standards.</li>
+          <li><strong>Accessible (WAI-ARIA):</strong> Built-in keyboard navigation, ARIA roles, states, and visible focus rings.</li>
+          <li><strong>Light & Dark Theming:</strong> Integrated CSS custom properties (<code>--uf-*</code>) for effortless instant theme switching.</li>
+          <li><strong>Responsive 12-Column Grid:</strong> Flexbox-based container and responsive column grid system.</li>
+          <li><strong>Atomic Utility Classes:</strong> Comprehensive utility helpers for margins, paddings, flex layouts, typography, and colors.</li>
+        </ul>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- 2. Getting Started                                           -->
+      <!-- ============================================================ -->
+      <section id="getting-started" class="docs-section">
+        <div class="docs-section-header">
+          <h2 class="docs-section-title">Getting Started</h2>
+          <p class="docs-lead">Learn how to run UIForge locally and use its components in your projects.</p>
+        </div>
+
+        <h3 class="docs-subheading">1. Project Setup</h3>
+        <p class="docs-paragraph">
+          Clone or open the repository, then install the project dependencies via npm:
+        </p>
+
+        <div class="docs-standalone-code">
+          <div class="docs-code-header">
+            <span class="docs-code-lang">Bash</span>
+            <button type="button" class="docs-copy-btn">Copy</button>
+          </div>
+          <pre><code>npm install</code></pre>
+        </div>
+
+        <h3 class="docs-subheading">2. Available npm Scripts</h3>
+        <p class="docs-paragraph">
+          The following npm scripts are defined in <code>package.json</code>:
+        </p>
+
+        <div class="docs-table-wrapper">
+          <table class="docs-table">
+            <thead>
+              <tr>
+                <th>Command</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>npm run dev</code></td>
+                <td>Starts the Vite local development server with Hot Module Replacement (HMR).</td>
+              </tr>
+              <tr>
+                <td><code>npm run build</code></td>
+                <td>Compiles SCSS and bundles JavaScript for production into the <code>dist/</code> directory.</td>
+              </tr>
+              <tr>
+                <td><code>npm run preview</code></td>
+                <td>Locally previews the production build created in <code>dist/</code>.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="docs-subheading">3. Basic Usage</h3>
+        <p class="docs-paragraph">
+          To use UIForge components, link the compiled stylesheet (or import <code>src/scss/main.scss</code> in your bundler) and use the semantic component classes:
+        </p>
+
+        <div class="docs-standalone-code">
+          <div class="docs-code-header">
+            <span class="docs-code-lang">HTML</span>
+            <button type="button" class="docs-copy-btn">Copy</button>
+          </div>
+          <pre><code>&lt;!-- Button example --&gt;
+&lt;button type="button" class="btn btn-primary"&gt;Get Started&lt;/button&gt;
+
+&lt;!-- Alert example --&gt;
+&lt;div class="alert alert-success"&gt;Action completed successfully!&lt;/div&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- Architecture                                                 -->
+      <!-- ============================================================ -->
+      <section id="architecture" class="docs-section">
+        <div class="docs-section-header">
+          <h2 class="docs-section-title">Project Architecture</h2>
+          <p class="docs-lead">Overview of the project file structure and SCSS organization.</p>
+        </div>
+
+        <div class="docs-standalone-code">
+          <div class="docs-code-header">
+            <span class="docs-code-lang">Text</span>
+            <button type="button" class="docs-copy-btn">Copy</button>
+          </div>
+          <pre><code>UIForge/
+├── index.html               # Main interactive showcase entry point
+├── docs.html                # Comprehensive documentation page
+├── package.json             # Scripts & devDependencies (Vite, Sass)
+├── vite.config.js           # Vite configuration
+└── src/
+    ├── js/
+    │   ├── main.js          # Interactive component renderers & event handlers
+    │   └── docs.js          # Documentation interactions (Copy, Scrollspy, Theme)
+    └── scss/
+        ├── _variables.scss  # Single source of truth: all design tokens & maps
+        ├── _base.scss       # CSS custom properties (--uf-*), reset & theme vars
+        ├── _grid.scss       # 12-column responsive flexbox grid system
+        ├── _utilities.scss  # Generated atomic utility classes (spacing, flex, color)
+        ├── main.scss        # Main library SCSS entry point
+        ├── docs.scss        # Documentation layout & preview styling
+        └── components/      # Modular component stylesheets
+            ├── _buttons.scss
+            ├── _cards.scss
+            ├── _alert.scss
+            ├── _badge.scss
+            ├── _avatar.scss
+            ├── _navbar.scss
+            ├── _forms.scss
+            ├── _dropdown.scss
+            ├── _pagination.scss
+            └── _tabs.scss</code></pre>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- 3. Design Tokens: Colors                                     -->
+      <!-- ============================================================ -->
+      <section id="tokens-colors" class="docs-section">
+        <div class="docs-section-header">
+          <h2 class="docs-section-title">Design Tokens: Colors</h2>
+          <p class="docs-lead">
+            Centralized color palette defined in <code>_variables.scss</code>. Includes brand shades, neutral scales, semantic feedback colors, and CSS custom properties.
+          </p>
+        </div>
+
+        <h3 class="docs-subheading">Brand Palette</h3>
+        <div class="docs-token-grid">
+          <div class="docs-token-card">
+            <div class="docs-token-swatch" style="background-color: #eef2ff; color: #3730a3;"></div>
+            <div class="docs-token-info">
+              <div class="token-name">$brand-100</div>
+              <div class="token-value">#eef2ff</div>
+            </div>
+          </div>
+          <div class="docs-token-card">
+            <div class="docs-token-swatch" style="background-color: #e0e7ff; color: #3730a3;"></div>
+            <div class="docs-token-info">
+              <div class="token-name">$brand-200</div>
+              <div class="token-value">#e0e7ff</div>
+            </div>
+          </div>
+          <div class="docs-token-card">
+            <div class="docs-token-swatch" style="background-color: #c7d2fe; color: #1e1a4d;"></div>
+            <div class="docs-token-info">
+              <div class="token-name">$brand-300</div>
+              <div class="token-value">#c7d2fe</div>
+            </div>
+          </div>
+          <div class="docs-token-card">
+            <div class="docs-token-swatch" style="background-color: #818cf8; color: #ffffff;"></div>
+            <div class="docs-token-info">
+              <div class="token-name">$brand-400</div>
+              <div class="token-value">#818cf8</div>
+            </div>
+          </div>
+          <div class="docs-token-card">
+            <div class="docs-token-swatch" style="background-color: #3730a3; color: #ffffff;"></div>
+            <div class="docs-token-info">
+              <div class="token-name">$brand-500 (Primary)</div>
+              <div class="token-value">#3730a3</div>
+            </div>
+          </div>
+          <div class="docs-token-card">
+            <div class="docs-token-swatch" style="background-color: #312e81; color: #ffffff;"></div>
+            <div class="docs-token-info">
+              <div class="token-name">$brand-600</div>
+              <div class="token-value">#312e81</div>
+            </div>
+          </div>
+          <div class="docs-token-card">
+            <div class="docs-token-swatch" style="background-color: #2e276f; color: #ffffff;"></div>
+            <div class="docs-token-info">
+              <div class="token-name">$brand-700</div>
+              <div class="token-value">#2e276f</div>
+            </div>
+          </div>
+          <div class="docs-token-card">
+            <div class="docs-token-swatch" style="background-color: #25205c; color: #ffffff;"></div>
+            <div class="docs-token-info">
+              <div class="token-name">$brand-800</div>
+              <div class="token-value">#25205c</div>
+            </div>
+          </div>
+          <div class="docs-token-card">
+            <div class="docs-token-swatch" style="background-color: #1e1a4d; color: #ffffff;"></div>
+            <div class="docs-token-info">
+              <div class="token-name">$brand-900</div>
+              <div class="token-value">#1e1a4d</div>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="docs-subheading">Semantic & Neutral Colors</h3>
+        <div class="docs-token-grid">
+          <div class="docs-token-card">
+            <div class="docs-token-swatch" style="background-color: #3730a3;"></div>
+            <div class="docs-token-info">
+              <div class="token-name">$primary</div>
+              <div class="token-value">$brand-500 (#3730a3)</div>
+            </div>
+          </div>
+          <div class="docs-token-card">
+            <div class="docs-token-swatch" style="background-color: #618aad;"></div>
+            <div class="docs-token-info">
+              <div class="token-name">$secondary</div>
+              <div class="token-value">#618aad</div>
+            </div>
+          </div>
+          <div class="docs-token-card">
+            <div class="docs-token-swatch" style="background-color: #198754;"></div>
+            <div class="docs-token-info">
+              <div class="token-name">$success</div>
+              <div class="token-value">#198754</div>
+            </div>
+          </div>
+          <div class="docs-token-card">
+            <div class="docs-token-swatch" style="background-color: #dc3545;"></div>
+            <div class="docs-token-info">
+              <div class="token-name">$danger</div>
+              <div class="token-value">#dc3545</div>
+            </div>
+          </div>
+          <div class="docs-token-card">
+            <div class="docs-token-swatch" style="background-color: #ffc107;"></div>
+            <div class="docs-token-info">
+              <div class="token-name">$warning</div>
+              <div class="token-value">#ffc107</div>
+            </div>
+          </div>
+          <div class="docs-token-card">
+            <div class="docs-token-swatch" style="background-color: #0dcaf0;"></div>
+            <div class="docs-token-info">
+              <div class="token-name">$info</div>
+              <div class="token-value">#0dcaf0</div>
+            </div>
+          </div>
+          <div class="docs-token-card">
+            <div class="docs-token-swatch" style="background-color: #f8fafc; border: 1px solid #e2e8f0;"></div>
+            <div class="docs-token-info">
+              <div class="token-name">$neutral-100</div>
+              <div class="token-value">#f8fafc</div>
+            </div>
+          </div>
+          <div class="docs-token-card">
+            <div class="docs-token-swatch" style="background-color: #1e293b;"></div>
+            <div class="docs-token-info">
+              <div class="token-name">$neutral-900</div>
+              <div class="token-value">#1e293b</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- 3. Design Tokens: Typography                                 -->
+      <!-- ============================================================ -->
+      <section id="tokens-typography" class="docs-section">
+        <div class="docs-section-header">
+          <h2 class="docs-section-title">Design Tokens: Typography</h2>
+          <p class="docs-lead">
+            Typography tokens for font family, scale, weights, line heights, and letter spacings.
+          </p>
+        </div>
+
+        <p class="docs-paragraph">
+          <strong>Base Font Family:</strong> <code>$font-family-base: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;</code>
+        </p>
+
+        <h3 class="docs-subheading">Font Sizes (<code>$font-sizes</code>)</h3>
+        <div class="docs-table-wrapper">
+          <table class="docs-table">
+            <thead>
+              <tr>
+                <th>Token</th>
+                <th>Value</th>
+                <th>Utility Class</th>
+                <th>Sample</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>$font-size-sm</code></td>
+                <td>0.875rem (14px)</td>
+                <td><code>.text-sm</code></td>
+                <td><span style="font-size: 0.875rem;">Small readable copy</span></td>
+              </tr>
+              <tr>
+                <td><code>$font-size-base</code></td>
+                <td>1rem (16px)</td>
+                <td><code>.text-base</code></td>
+                <td><span style="font-size: 1rem;">Standard body paragraph</span></td>
+              </tr>
+              <tr>
+                <td><code>$font-size-lg</code></td>
+                <td>1.125rem (18px)</td>
+                <td><code>.text-lg</code></td>
+                <td><span style="font-size: 1.125rem;">Subheadings and lead text</span></td>
+              </tr>
+              <tr>
+                <td><code>$font-size-xl</code></td>
+                <td>1.5rem (24px)</td>
+                <td><code>.text-xl</code></td>
+                <td><span style="font-size: 1.5rem; font-weight: 600;">Section headings</span></td>
+              </tr>
+              <tr>
+                <td><code>$font-size-2xl</code></td>
+                <td>2rem (32px)</td>
+                <td><code>.text-2xl</code></td>
+                <td><span style="font-size: 2rem; font-weight: 700;">Page Titles (H1)</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="docs-subheading">Font Weights (<code>$font-weights</code>)</h3>
+        <div class="docs-table-wrapper">
+          <table class="docs-table">
+            <thead>
+              <tr>
+                <th>Token</th>
+                <th>Value</th>
+                <th>Utility Class</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><code>$font-weight-regular</code></td><td>400</td><td><code>.fw-regular</code></td></tr>
+              <tr><td><code>$font-weight-medium</code></td><td>500</td><td><code>.fw-medium</code></td></tr>
+              <tr><td><code>$font-weight-semibold</code></td><td>600</td><td><code>.fw-semibold</code></td></tr>
+              <tr><td><code>$font-weight-bold</code></td><td>700</td><td><code>.fw-bold</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="docs-subheading">Line Heights & Letter Spacings</h3>
+        <div class="docs-table-wrapper">
+          <table class="docs-table">
+            <thead>
+              <tr>
+                <th>Category</th>
+                <th>Tokens</th>
+                <th>Values</th>
+                <th>Utility Classes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Line Heights</td>
+                <td><code>$line-height-tight</code>, <code>$line-height-normal</code>, <code>$line-height-relaxed</code></td>
+                <td>1.25, 1.5, 1.75</td>
+                <td><code>.lh-tight</code>, <code>.lh-normal</code>, <code>.lh-relaxed</code></td>
+              </tr>
+              <tr>
+                <td>Letter Spacings</td>
+                <td><code>$letter-spacing-tight</code>, <code>$letter-spacing-normal</code>, <code>$letter-spacing-wide</code></td>
+                <td>-0.025em, 0, 0.025em</td>
+                <td><code>.ls-tight</code>, <code>.ls-normal</code>, <code>.ls-wide</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- 3. Design Tokens: Spacing                                    -->
+      <!-- ============================================================ -->
+      <section id="tokens-spacing" class="docs-section">
+        <div class="docs-section-header">
+          <h2 class="docs-section-title">Design Tokens: Spacing Scale</h2>
+          <p class="docs-lead">
+            The spacing system uses the Sass map <code>$spacings</code>. Access values in SCSS with <code>map.get($spacings, key)</code>.
+          </p>
+        </div>
+
+        <div class="docs-spacing-table">
+          <div class="docs-spacing-row">
+            <span class="spacing-label">1</span>
+            <span class="spacing-value">0.25rem (4px)</span>
+            <div class="spacing-bar-container"><div class="spacing-bar" style="width: 0.25rem;"></div></div>
+          </div>
+          <div class="docs-spacing-row">
+            <span class="spacing-label">2</span>
+            <span class="spacing-value">0.5rem (8px)</span>
+            <div class="spacing-bar-container"><div class="spacing-bar" style="width: 0.5rem;"></div></div>
+          </div>
+          <div class="docs-spacing-row">
+            <span class="spacing-label">3</span>
+            <span class="spacing-value">1.0rem (16px)</span>
+            <div class="spacing-bar-container"><div class="spacing-bar" style="width: 1.0rem;"></div></div>
+          </div>
+          <div class="docs-spacing-row">
+            <span class="spacing-label">4</span>
+            <span class="spacing-value">1.5rem (24px)</span>
+            <div class="spacing-bar-container"><div class="spacing-bar" style="width: 1.5rem;"></div></div>
+          </div>
+          <div class="docs-spacing-row">
+            <span class="spacing-label">5</span>
+            <span class="spacing-value">2.0rem (32px)</span>
+            <div class="spacing-bar-container"><div class="spacing-bar" style="width: 2.0rem;"></div></div>
+          </div>
+        </div>
+
+        <div class="docs-callout docs-callout-warning">
+          <h5>Map Syntax Rule</h5>
+          <p>
+            Do not write <code>$spacing-1</code> or <code>$spacing-2</code>. In SCSS, always use:
+            <code>map.get(variables.$spacings, 2)</code> or <code>map-get($spacings, 2)</code>.
+          </p>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- 3. Design Tokens: Radius                                     -->
+      <!-- ============================================================ -->
+      <section id="tokens-radius" class="docs-section">
+        <div class="docs-section-header">
+          <h2 class="docs-section-title">Design Tokens: Radius</h2>
+          <p class="docs-lead">Generic border radii and component-specific organic radii.</p>
+        </div>
+
+        <div class="docs-table-wrapper">
+          <table class="docs-table">
+            <thead>
+              <tr>
+                <th>Token</th>
+                <th>Value</th>
+                <th>Purpose</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><code>$radius-sm</code></td><td>0.25rem (4px)</td><td>Small elements, tags, input checkboxes</td></tr>
+              <tr><td><code>$radius-md</code></td><td>0.5rem (8px)</td><td>Dropdown menus, inputs, pagination buttons</td></tr>
+              <tr><td><code>$radius-lg</code></td><td>0.75rem (12px)</td><td>Cards, forms, navbar, tab containers</td></tr>
+              <tr><td><code>$radius-full</code></td><td>999px</td><td>Circular avatars, pills, switch toggles</td></tr>
+              <tr><td><code>$radius-button</code></td><td>0.35rem 0.9rem 0.35rem 0.9rem</td><td>Distinctive asymmetric UIForge button corners</td></tr>
+              <tr><td><code>$radius-badge</code></td><td>0.3rem 0.8rem 0.3rem 0.8rem</td><td>Distinctive asymmetric UIForge badge corners</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- 3. Design Tokens: Borders & Motion                           -->
+      <!-- ============================================================ -->
+      <section id="tokens-borders" class="docs-section">
+        <div class="docs-section-header">
+          <h2 class="docs-section-title">Design Tokens: Borders, Motion & Focus</h2>
+          <p class="docs-lead">Border specifications, interaction timing, and accessible focus rings.</p>
+        </div>
+
+        <div class="docs-table-wrapper">
+          <table class="docs-table">
+            <thead>
+              <tr>
+                <th>Category</th>
+                <th>Tokens</th>
+                <th>Values</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Border Widths</td>
+                <td><code>$border-width-thin</code>, <code>$border-width-medium</code>, <code>$border-width-thick</code></td>
+                <td>1px, 2px, 3px</td>
+                <td>Standardized line weights for borders and dividers</td>
+              </tr>
+              <tr>
+                <td>Border Styles</td>
+                <td><code>$border-style-solid</code>, <code>$border-style-dashed</code>, <code>$border-style-dotted</code></td>
+                <td>solid, dashed, dotted</td>
+                <td>Standard border line styles</td>
+              </tr>
+              <tr>
+                <td>Motion / Transition</td>
+                <td><code>$transition-duration-base</code>, <code>$transition-easing-base</code></td>
+                <td>160ms, ease</td>
+                <td>Micro-interaction timing for hover and press states</td>
+              </tr>
+              <tr>
+                <td>Focus Indicator</td>
+                <td><code>$focus-width</code>, <code>$focus-color</code>, <code>$focus-offset</code></td>
+                <td>2px, $brand-400 (#818cf8), 2px</td>
+                <td>High-contrast accessible focus ring for keyboard navigation</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- 3. Design Tokens: Breakpoints                                -->
+      <!-- ============================================================ -->
+      <section id="tokens-breakpoints" class="docs-section">
+        <div class="docs-section-header">
+          <h2 class="docs-section-title">Design Tokens: Breakpoints</h2>
+          <p class="docs-lead">Responsive media query breakpoints and container max widths.</p>
+        </div>
+
+        <div class="docs-table-wrapper">
+          <table class="docs-table">
+            <thead>
+              <tr>
+                <th>Breakpoint</th>
+                <th>Min-Width (<code>$breakpoints</code>)</th>
+                <th>Container Max-Width (<code>$container-max-widths</code>)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><code>sm</code></td><td>576px</td><td>540px</td></tr>
+              <tr><td><code>md</code></td><td>768px</td><td>720px</td></tr>
+              <tr><td><code>lg</code></td><td>992px</td><td>960px</td></tr>
+              <tr><td><code>xl</code></td><td>1200px</td><td>1140px</td></tr>
+              <tr><td><code>xxl</code></td><td>1400px</td><td>1320px</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- 4. Components: Buttons                                       -->
+      <!-- ============================================================ -->
+      <section id="component-buttons" class="docs-section">
+        <div class="docs-section-header">
+          <h2 class="docs-section-title">Buttons</h2>
+          <p class="docs-lead">Interactive button controls with distinctive asymmetric corners, 3D bottom shadow, and smooth hover elevation.</p>
+        </div>
+
+        <div class="docs-component-card">
+          <div class="docs-component-header">
+            <h4>Button Variants</h4>
+            <p>Combine base class <code>.btn</code> with a contextual variant class.</p>
+          </div>
+          <div class="docs-preview">
+            <button type="button" class="btn btn-primary">Primary</button>
+            <button type="button" class="btn btn-secondary">Secondary</button>
+            <button type="button" class="btn btn-success">Success</button>
+            <button type="button" class="btn btn-danger">Danger</button>
+            <button type="button" class="btn btn-warning">Warning</button>
+            <button type="button" class="btn btn-info">Info</button>
+            <button type="button" class="btn btn-black">Black</button>
+            <button type="button" class="btn btn-white">White</button>
+          </div>
+          <div class="docs-code-container">
+            <div class="docs-code-header">
+              <span class="docs-code-lang">HTML</span>
+              <button type="button" class="docs-copy-btn">Copy</button>
+            </div>
+            <pre><code>&lt;button type="button" class="btn btn-primary"&gt;Primary&lt;/button&gt;
+&lt;button type="button" class="btn btn-secondary"&gt;Secondary&lt;/button&gt;
+&lt;button type="button" class="btn btn-success"&gt;Success&lt;/button&gt;
+&lt;button type="button" class="btn btn-danger"&gt;Danger&lt;/button&gt;
+&lt;button type="button" class="btn btn-warning"&gt;Warning&lt;/button&gt;
+&lt;button type="button" class="btn btn-info"&gt;Info&lt;/button&gt;
+&lt;button type="button" class="btn btn-black"&gt;Black&lt;/button&gt;
+&lt;button type="button" class="btn btn-white"&gt;White&lt;/button&gt;</code></pre>
+          </div>
+        </div>
+
+        <div class="docs-table-wrapper">
+          <table class="docs-table">
+            <thead>
+              <tr><th>Class</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>.btn</code></td><td>Base button class setting font, padding, asymmetric radius, shadow, and transition.</td></tr>
+              <tr><td><code>.btn-primary</code></td><td>Primary action color using <code>$brand-500</code>.</td></tr>
+              <tr><td><code>.btn-secondary</code></td><td>Secondary muted action color using <code>$secondary</code>.</td></tr>
+              <tr><td><code>.btn-success</code>, <code>.btn-danger</code></td><td>Semantic confirmation and destructive action styles.</td></tr>
+              <tr><td><code>.btn-warning</code>, <code>.btn-info</code></td><td>Caution and informative action styles.</td></tr>
+              <tr><td><code>.btn-black</code>, <code>.btn-white</code></td><td>High-contrast monochrome button variants.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- 4. Components: Cards                                         -->
+      <!-- ============================================================ -->
+      <section id="component-cards" class="docs-section">
+        <div class="docs-section-header">
+          <h2 class="docs-section-title">Cards</h2>
+          <p class="docs-lead">Structured content containers with tag labels, body copy, and interactive footers.</p>
+        </div>
+
+        <div class="docs-component-card">
+          <div class="docs-component-header">
+            <h4>Standard Card</h4>
+            <p>Includes tag badge, title, body copy, and footer with meta data and actions.</p>
+          </div>
+          <div class="docs-preview">
+            <div class="card">
+              <div class="card-body">
+                <span class="card-tag">FEATURED</span>
+                <h3>Design Systems</h3>
+                <p>Learn how to architect clean design tokens and reusable component libraries with UIForge.</p>
+                <div class="card-footer">
+                  <span class="card-meta">5 min read</span>
+                  <button type="button" class="btn btn-primary">Read More</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="docs-code-container">
+            <div class="docs-code-header">
+              <span class="docs-code-lang">HTML</span>
+              <button type="button" class="docs-copy-btn">Copy</button>
+            </div>
+            <pre><code>&lt;div class="card"&gt;
+  &lt;div class="card-body"&gt;
+    &lt;span class="card-tag"&gt;FEATURED&lt;/span&gt;
+    &lt;h3&gt;Design Systems&lt;/h3&gt;
+    &lt;p&gt;Learn how to architect clean design tokens and reusable component libraries with UIForge.&lt;/p&gt;
+    &lt;div class="card-footer"&gt;
+      &lt;span class="card-meta"&gt;5 min read&lt;/span&gt;
+      &lt;button type="button" class="btn btn-primary"&gt;Read More&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- 4. Components: Alerts                                        -->
+      <!-- ============================================================ -->
+      <section id="component-alerts" class="docs-section">
+        <div class="docs-section-header">
+          <h2 class="docs-section-title">Alerts</h2>
+          <p class="docs-lead">Contextual feedback messages featuring custom left accent borders and status indicators.</p>
+        </div>
+
+        <div class="docs-component-card">
+          <div class="docs-component-header">
+            <h4>Alert Variants</h4>
+            <p>Use <code>.alert</code> with semantic modifiers.</p>
+          </div>
+          <div class="docs-preview docs-preview-vertical">
+            <div class="alert alert-primary">Your profile was updated successfully!</div>
+            <div class="alert alert-success">Data sync completed with all endpoints.</div>
+            <div class="alert alert-danger">Unable to reach authentication server. Please retry.</div>
+            <div class="alert alert-warning">Warning: This action cannot be undone.</div>
+            <div class="alert alert-info">A new minor version update is available.</div>
+          </div>
+          <div class="docs-code-container">
+            <div class="docs-code-header">
+              <span class="docs-code-lang">HTML</span>
+              <button type="button" class="docs-copy-btn">Copy</button>
+            </div>
+            <pre><code>&lt;div class="alert alert-primary"&gt;Your profile was updated successfully!&lt;/div&gt;
+&lt;div class="alert alert-success"&gt;Data sync completed with all endpoints.&lt;/div&gt;
+&lt;div class="alert alert-danger"&gt;Unable to reach authentication server. Please retry.&lt;/div&gt;
+&lt;div class="alert alert-warning"&gt;Warning: This action cannot be undone.&lt;/div&gt;
+&lt;div class="alert alert-info"&gt;A new minor version update is available.&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- 4. Components: Badges                                        -->
+      <!-- ============================================================ -->
+      <section id="component-badges" class="docs-section">
+        <div class="docs-section-header">
+          <h2 class="docs-section-title">Badges</h2>
+          <p class="docs-lead">Compact indicator chips with uppercase typography and organic asymmetric radius.</p>
+        </div>
+
+        <div class="docs-component-card">
+          <div class="docs-component-header">
+            <h4>Badge Variants</h4>
+            <p>Available in all theme and semantic colors.</p>
+          </div>
+          <div class="docs-preview">
+            <span class="badge badge-primary">Primary</span>
+            <span class="badge badge-secondary">Secondary</span>
+            <span class="badge badge-success">Success</span>
+            <span class="badge badge-danger">Danger</span>
+            <span class="badge badge-warning">Warning</span>
+            <span class="badge badge-info">Info</span>
+            <span class="badge badge-black">Black</span>
+            <span class="badge badge-white">White</span>
+          </div>
+          <div class="docs-code-container">
+            <div class="docs-code-header">
+              <span class="docs-code-lang">HTML</span>
+              <button type="button" class="docs-copy-btn">Copy</button>
+            </div>
+            <pre><code>&lt;span class="badge badge-primary"&gt;Primary&lt;/span&gt;
+&lt;span class="badge badge-secondary"&gt;Secondary&lt;/span&gt;
+&lt;span class="badge badge-success"&gt;Success&lt;/span&gt;
+&lt;span class="badge badge-danger"&gt;Danger&lt;/span&gt;
+&lt;span class="badge badge-warning"&gt;Warning&lt;/span&gt;
+&lt;span class="badge badge-info"&gt;Info&lt;/span&gt;
+&lt;span class="badge badge-black"&gt;Black&lt;/span&gt;
+&lt;span class="badge badge-white"&gt;White&lt;/span&gt;</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- 4. Components: Avatar                                        -->
+      <!-- ============================================================ -->
+      <section id="component-avatar" class="docs-section">
+        <div class="docs-section-header">
+          <h2 class="docs-section-title">Avatar</h2>
+          <p class="docs-lead">User representations supporting text initials, image fills, multiple sizes, and shapes.</p>
+        </div>
+
+        <div class="docs-component-card">
+          <div class="docs-component-header">
+            <h4>Sizes & Shapes</h4>
+            <p>Sizes: <code>.avatar-sm</code>, default (2.5rem), <code>.avatar-lg</code>. Shapes: default (circular), <code>.avatar-rounded</code>, <code>.avatar-square</code>.</p>
+          </div>
+          <div class="docs-preview">
+            <span class="avatar avatar-sm avatar-primary">SM</span>
+            <span class="avatar avatar-primary">MD</span>
+            <span class="avatar avatar-lg avatar-primary">LG</span>
+            <span class="avatar avatar-rounded avatar-success">RD</span>
+            <span class="avatar avatar-square avatar-danger">SQ</span>
+            <span class="avatar avatar-warning">WA</span>
+            <span class="avatar avatar-info">IN</span>
+          </div>
+          <div class="docs-code-container">
+            <div class="docs-code-header">
+              <span class="docs-code-lang">HTML</span>
+              <button type="button" class="docs-copy-btn">Copy</button>
+            </div>
+            <pre><code>&lt;!-- Sizes --&gt;
+&lt;span class="avatar avatar-sm avatar-primary"&gt;SM&lt;/span&gt;
+&lt;span class="avatar avatar-primary"&gt;MD&lt;/span&gt;
+&lt;span class="avatar avatar-lg avatar-primary"&gt;LG&lt;/span&gt;
+
+&lt;!-- Shapes --&gt;
+&lt;span class="avatar avatar-rounded avatar-success"&gt;RD&lt;/span&gt;
+&lt;span class="avatar avatar-square avatar-danger"&gt;SQ&lt;/span&gt;</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- 4. Components: Navbar                                        -->
+      <!-- ============================================================ -->
+      <section id="component-navbar" class="docs-section">
+        <div class="docs-section-header">
+          <h2 class="docs-section-title">Navbar</h2>
+          <p class="docs-lead">Navigation bar header container with brand branding and link list.</p>
+        </div>
+
+        <div class="docs-component-card">
+          <div class="docs-component-header">
+            <h4>Navbar Component</h4>
+            <p>Responsive navbar with brand link and navigation list.</p>
+          </div>
+          <div class="docs-preview" style="padding: 1.5rem;">
+            <nav class="navbar" style="width: 100%;">
+              <a href="#" class="navbar-brand">
+                <strong>UIForge</strong>
+              </a>
+              <ul class="nav-link">
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#components">Components</a></li>
+                <li><a href="#docs">Docs</a></li>
+              </ul>
+            </nav>
+          </div>
+          <div class="docs-code-container">
+            <div class="docs-code-header">
+              <span class="docs-code-lang">HTML</span>
+              <button type="button" class="docs-copy-btn">Copy</button>
+            </div>
+            <pre><code>&lt;nav class="navbar"&gt;
+  &lt;a href="#" class="navbar-brand"&gt;
+    &lt;strong&gt;UIForge&lt;/strong&gt;
+  &lt;/a&gt;
+  &lt;ul class="nav-link"&gt;
+    &lt;li&gt;&lt;a href="#overview"&gt;Overview&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#components"&gt;Components&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#docs"&gt;Docs&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- 4. Components: Forms & Validation                            -->
+      <!-- ============================================================ -->
+      <section id="component-forms" class="docs-section">
+        <div class="docs-section-header">
+          <h2 class="docs-section-title">Forms & Validation</h2>
+          <p class="docs-lead">Form controls, labels, text inputs, textareas, selects, custom checkboxes, radio controls, switches, and validation states.</p>
+        </div>
+
+        <div class="docs-component-card">
+          <div class="docs-component-header">
+            <h4>Form Controls & Validation States</h4>
+            <p>Includes valid and invalid states with contextual feedback messages.</p>
+          </div>
+          <div class="docs-preview">
+            <form class="form" style="width: 100%; max-width: 32rem;" onsubmit="event.preventDefault()">
+              <h3 class="form-title">Account Registration</h3>
+              <p class="form-description">Enter your credentials to get started.</p>
+
+              <div class="form-group">
+                <label class="form-label" for="doc-form-name">Full Name</label>
+                <input class="form-input" id="doc-form-name" type="text" placeholder="John Doe">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="doc-form-email">Email (Valid)</label>
+                <input class="form-input is-valid" id="doc-form-email" type="email" value="alex@example.com">
+                <div class="valid-feedback">Email format is valid and verified.</div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="doc-form-user">Username (Invalid)</label>
+                <input class="form-input is-invalid" id="doc-form-user" type="text" value="invalid user name!">
+                <div class="invalid-feedback">Username cannot contain spaces or symbols.</div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="doc-form-plan">Subscription Plan</label>
+                <select class="form-select" id="doc-form-plan">
+                  <option value="starter">Starter Plan (Free)</option>
+                  <option value="pro">Pro Developer ($19/mo)</option>
+                  <option value="team">Team Edition ($49/mo)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-check">
+                  <input class="form-check-input" type="checkbox" checked>
+                  <span class="form-check-label">I agree to the Terms of Service</span>
+                </label>
+              </div>
+
+              <div class="form-group">
+                <label class="form-switch">
+                  <input class="form-switch-input" type="checkbox" checked>
+                  <span class="form-check-label">Enable email notifications</span>
+                </label>
+              </div>
+
+              <div class="form-actions">
+                <button type="reset" class="btn btn-secondary">Reset</button>
+                <button type="submit" class="btn btn-primary">Submit Form</button>
+              </div>
+            </form>
+          </div>
+          <div class="docs-code-container">
+            <div class="docs-code-header">
+              <span class="docs-code-lang">HTML</span>
+              <button type="button" class="docs-copy-btn">Copy</button>
+            </div>
+            <pre><code>&lt;form class="form"&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label class="form-label" for="email"&gt;Email&lt;/label&gt;
+    &lt;input class="form-input is-valid" id="email" type="email" value="alex@example.com"&gt;
+    &lt;div class="valid-feedback"&gt;Email format is valid.&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="form-group"&gt;
+    &lt;label class="form-check"&gt;
+      &lt;input class="form-check-input" type="checkbox" checked&gt;
+      &lt;span class="form-check-label"&gt;Remember me&lt;/span&gt;
+    &lt;/label&gt;
+  &lt;/div&gt;
+
+  &lt;div class="form-group"&gt;
+    &lt;label class="form-switch"&gt;
+      &lt;input class="form-switch-input" type="checkbox" checked&gt;
+      &lt;span class="form-check-label"&gt;Enable notifications&lt;/span&gt;
+    &lt;/label&gt;
+  &lt;/div&gt;
+
+  &lt;div class="form-actions"&gt;
+    &lt;button type="submit" class="btn btn-primary"&gt;Submit&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- 4. Components: Dropdowns                                     -->
+      <!-- ============================================================ -->
+      <section id="component-dropdown" class="docs-section">
+        <div class="docs-section-header">
+          <h2 class="docs-section-title">Dropdowns</h2>
+          <p class="docs-lead">Contextual popup menus with headers, dividers, menu items, and accessible keyboard navigation.</p>
+        </div>
+
+        <div class="docs-component-card">
+          <div class="docs-component-header">
+            <h4>Dropdown Menu</h4>
+            <p>Click the toggle button to open the menu. Press <kbd>Esc</kbd> or click outside to close.</p>
+          </div>
+          <div class="docs-preview" style="min-height: 180px; align-items: flex-start;">
+            <div class="dropdown" id="doc-demo-dropdown">
+              <button class="btn btn-primary dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="doc-demo-menu">
+                Options Menu
+              </button>
+              <ul id="doc-demo-menu" class="dropdown-menu" role="menu">
+                <li class="dropdown-header">Project Actions</li>
+                <li><a class="dropdown-item" href="#action1" role="menuitem">Edit Component</a></li>
+                <li><a class="dropdown-item" href="#action2" role="menuitem">Duplicate</a></li>
+                <li><a class="dropdown-item" href="#action3" role="menuitem">Share Preview</a></li>
+                <li class="dropdown-divider"></li>
+                <li class="dropdown-header">Danger Zone</li>
+                <li><a class="dropdown-item" href="#action4" role="menuitem">Archive Component</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="docs-code-container">
+            <div class="docs-code-header">
+              <span class="docs-code-lang">HTML</span>
+              <button type="button" class="docs-copy-btn">Copy</button>
+            </div>
+            <pre><code>&lt;div class="dropdown"&gt;
+  &lt;button class="btn btn-primary dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false"&gt;
+    Options Menu
+  &lt;/button&gt;
+  &lt;ul class="dropdown-menu" role="menu"&gt;
+    &lt;li class="dropdown-header"&gt;Project Actions&lt;/li&gt;
+    &lt;li&gt;&lt;a class="dropdown-item" href="#" role="menuitem"&gt;Edit Component&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a class="dropdown-item" href="#" role="menuitem"&gt;Duplicate&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="dropdown-divider"&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a class="dropdown-item" href="#" role="menuitem"&gt;Archive&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- 4. Components: Pagination                                    -->
+      <!-- ============================================================ -->
+      <section id="component-pagination" class="docs-section">
+        <div class="docs-section-header">
+          <h2 class="docs-section-title">Pagination</h2>
+          <p class="docs-lead">Accessible page switching controls with active page indicators and disabled navigation limits.</p>
+        </div>
+
+        <div class="docs-component-card">
+          <div class="docs-component-header">
+            <h4>Pagination Navigation</h4>
+            <p>Click page numbers or Prev/Next buttons to test page state transitions.</p>
+          </div>
+          <div class="docs-preview">
+            <nav class="pagination-nav" aria-label="Documentation Pagination Demo">
+              <ul class="pagination" data-total-pages="5">
+                <li>
+                  <button type="button" class="pagination-btn pagination-prev is-disabled" disabled aria-label="Previous page">&laquo; Prev</button>
+                </li>
+                <li><button type="button" class="pagination-btn is-active" data-page="1" aria-current="page">1</button></li>
+                <li><button type="button" class="pagination-btn" data-page="2">2</button></li>
+                <li><button type="button" class="pagination-btn" data-page="3">3</button></li>
+                <li><button type="button" class="pagination-btn" data-page="4">4</button></li>
+                <li><button type="button" class="pagination-btn" data-page="5">5</button></li>
+                <li>
+                  <button type="button" class="pagination-btn pagination-next" aria-label="Next page">Next &raquo;</button>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <div class="docs-code-container">
+            <div class="docs-code-header">
+              <span class="docs-code-lang">HTML</span>
+              <button type="button" class="docs-copy-btn">Copy</button>
+            </div>
+            <pre><code>&lt;nav class="pagination-nav" aria-label="Pagination"&gt;
+  &lt;ul class="pagination" data-total-pages="5"&gt;
+    &lt;li&gt;&lt;button type="button" class="pagination-btn pagination-prev" disabled&gt;&amp;laquo; Prev&lt;/button&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;button type="button" class="pagination-btn is-active" data-page="1" aria-current="page"&gt;1&lt;/button&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;button type="button" class="pagination-btn" data-page="2"&gt;2&lt;/button&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;button type="button" class="pagination-btn" data-page="3"&gt;3&lt;/button&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;button type="button" class="pagination-btn pagination-next"&gt;Next &amp;raquo;&lt;/button&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- 4. Components: Tabs                                          -->
+      <!-- ============================================================ -->
+      <section id="component-tabs" class="docs-section">
+        <div class="docs-section-header">
+          <h2 class="docs-section-title">Tabs</h2>
+          <p class="docs-lead">Tabbed panel navigation with WAI-ARIA tablist semantics and keyboard arrow key switching.</p>
+        </div>
+
+        <div class="docs-component-card">
+          <div class="docs-component-header">
+            <h4>Tabbed Interface</h4>
+            <p>Switch panels by clicking or using left/right keyboard arrows when focused.</p>
+          </div>
+          <div class="docs-preview docs-preview-vertical">
+            <div class="tabs" role="region" aria-label="Sample documentation tabs">
+              <div class="tabs-nav" role="tablist">
+                <button type="button" id="doc-tab-html-btn" class="tab-btn is-active" role="tab" aria-selected="true" aria-controls="doc-tab-html" tabindex="0" data-tab-target="#doc-tab-html">
+                  HTML5
+                </button>
+                <button type="button" id="doc-tab-scss-btn" class="tab-btn" role="tab" aria-selected="false" aria-controls="doc-tab-scss" tabindex="-1" data-tab-target="#doc-tab-scss">
+                  SCSS Tokens
+                </button>
+                <button type="button" id="doc-tab-js-btn" class="tab-btn" role="tab" aria-selected="false" aria-controls="doc-tab-js" tabindex="-1" data-tab-target="#doc-tab-js">
+                  JavaScript
+                </button>
+              </div>
+              <div class="tabs-content">
+                <div id="doc-tab-html" class="tab-panel is-active" role="tabpanel" aria-labelledby="doc-tab-html-btn" aria-hidden="false">
+                  <p><strong>Semantic HTML5</strong> provides the structural backbone with standard accessible WAI-ARIA roles.</p>
+                </div>
+                <div id="doc-tab-scss" class="tab-panel" role="tabpanel" aria-labelledby="doc-tab-scss-btn" aria-hidden="true">
+                  <p><strong>SCSS Tokens</strong> define a centralized map of colors, typography, spacing scales, and transitions.</p>
+                </div>
+                <div id="doc-tab-js" class="tab-panel" role="tabpanel" aria-labelledby="doc-tab-js-btn" aria-hidden="true">
+                  <p><strong>Vanilla JavaScript</strong> enables lightweight, accessible DOM manipulation with zero external runtime dependencies.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="docs-code-container">
+            <div class="docs-code-header">
+              <span class="docs-code-lang">HTML</span>
+              <button type="button" class="docs-copy-btn">Copy</button>
+            </div>
+            <pre><code>&lt;div class="tabs" role="region" aria-label="Component preview tabs"&gt;
+  &lt;div class="tabs-nav" role="tablist"&gt;
+    &lt;button type="button" class="tab-btn is-active" role="tab" aria-selected="true" aria-controls="panel-1" data-tab-target="#panel-1"&gt;HTML&lt;/button&gt;
+    &lt;button type="button" class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-2" data-tab-target="#panel-2"&gt;SCSS&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="tabs-content"&gt;
+    &lt;div id="panel-1" class="tab-panel is-active" role="tabpanel"&gt;HTML Content&lt;/div&gt;
+    &lt;div id="panel-2" class="tab-panel" role="tabpanel" aria-hidden="true"&gt;SCSS Content&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- Layout: Grid System                                          -->
+      <!-- ============================================================ -->
+      <section id="layout-grid" class="docs-section">
+        <div class="docs-section-header">
+          <h2 class="docs-section-title">Grid System</h2>
+          <p class="docs-lead">12-column responsive flexbox layout system with breakpoint-specific column span classes.</p>
+        </div>
+
+        <div class="docs-component-card">
+          <div class="docs-component-header">
+            <h4>12-Column Responsive Layout</h4>
+            <p>Columns automatically stack on mobile screens and divide equally at medium/large screen sizes.</p>
+          </div>
+          <div class="docs-preview docs-preview-vertical">
+            <div class="container-fluid" style="padding: 0;">
+              <div class="row">
+                <div class="col-12 col-md-4" style="margin-bottom: 0.75rem;">
+                  <div style="background-color: var(--uf-surface-subtle); padding: 1rem; border-radius: 0.5rem; text-align: center; border: 1px solid var(--uf-border); font-weight: 600;">col-12 col-md-4</div>
+                </div>
+                <div class="col-12 col-md-4" style="margin-bottom: 0.75rem;">
+                  <div style="background-color: var(--uf-surface-subtle); padding: 1rem; border-radius: 0.5rem; text-align: center; border: 1px solid var(--uf-border); font-weight: 600;">col-12 col-md-4</div>
+                </div>
+                <div class="col-12 col-md-4" style="margin-bottom: 0.75rem;">
+                  <div style="background-color: var(--uf-surface-subtle); padding: 1rem; border-radius: 0.5rem; text-align: center; border: 1px solid var(--uf-border); font-weight: 600;">col-12 col-md-4</div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 col-md-6" style="margin-bottom: 0.75rem;">
+                  <div style="background-color: var(--uf-surface-subtle); padding: 1rem; border-radius: 0.5rem; text-align: center; border: 1px solid var(--uf-border); font-weight: 600;">col-12 col-md-6</div>
+                </div>
+                <div class="col-12 col-md-6" style="margin-bottom: 0.75rem;">
+                  <div style="background-color: var(--uf-surface-subtle); padding: 1rem; border-radius: 0.5rem; text-align: center; border: 1px solid var(--uf-border); font-weight: 600;">col-12 col-md-6</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="docs-code-container">
+            <div class="docs-code-header">
+              <span class="docs-code-lang">HTML</span>
+              <button type="button" class="docs-copy-btn">Copy</button>
+            </div>
+            <pre><code>&lt;div class="container"&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col-12 col-md-4"&gt;Column 1&lt;/div&gt;
+    &lt;div class="col-12 col-md-4"&gt;Column 2&lt;/div&gt;
+    &lt;div class="col-12 col-md-4"&gt;Column 3&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- Utilities Reference                                          -->
+      <!-- ============================================================ -->
+      <section id="utilities" class="docs-section">
+        <div class="docs-section-header">
+          <h2 class="docs-section-title">Utilities</h2>
+          <p class="docs-lead">Atomic utility classes generated dynamically from the design token scales.</p>
+        </div>
+
+        <div class="docs-table-wrapper">
+          <table class="docs-table">
+            <thead>
+              <tr>
+                <th>Category</th>
+                <th>Classes</th>
+                <th>Example Usage</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Spacing</strong></td>
+                <td>
+                  <code>.m-{1-5}</code>, <code>.p-{1-5}</code>, <code>.mx-{1-5}</code>, <code>.my-{1-5}</code><br>
+                  <code>.mt-{1-5}</code>, <code>.mb-{1-5}</code>, <code>.ms-{1-5}</code>, <code>.me-{1-5}</code><br>
+                  <code>.pt-{1-5}</code>, <code>.pb-{1-5}</code>, <code>.ps-{1-5}</code>, <code>.pe-{1-5}</code>
+                </td>
+                <td><code>&lt;div class="p-3 mb-4"&gt;...&lt;/div&gt;</code></td>
+              </tr>
+              <tr>
+                <td><strong>Display</strong></td>
+                <td>
+                  <code>.d-none</code>, <code>.d-block</code>, <code>.d-inline</code>, <code>.d-inline-block</code>, <code>.d-flex</code>, <code>.d-grid</code>
+                </td>
+                <td><code>&lt;div class="d-flex align-center"&gt;...&lt;/div&gt;</code></td>
+              </tr>
+              <tr>
+                <td><strong>Flexbox</strong></td>
+                <td>
+                  <code>.flex-row</code>, <code>.flex-column</code>, <code>.flex-wrap</code>, <code>.flex-nowrap</code><br>
+                  <code>.justify-start</code>, <code>.justify-center</code>, <code>.justify-end</code>, <code>.justify-between</code><br>
+                  <code>.align-start</code>, <code>.align-center</code>, <code>.align-end</code><br>
+                  <code>.gap-{1-5}</code>, <code>.row-gap-{1-5}</code>, <code>.column-gap-{1-5}</code>
+                </td>
+                <td><code>&lt;div class="d-flex justify-between gap-3"&gt;...&lt;/div&gt;</code></td>
+              </tr>
+              <tr>
+                <td><strong>Colors</strong></td>
+                <td>
+                  <code>.text-primary</code>, <code>.text-secondary</code>, <code>.text-success</code>, <code>.text-danger</code><br>
+                  <code>.bg-primary</code>, <code>.bg-neutral-100</code>, <code>.bg-neutral-900</code><br>
+                  <code>.border-primary</code>, <code>.border-danger</code>
+                </td>
+                <td><code>&lt;p class="text-primary bg-neutral-100"&gt;...&lt;/p&gt;</code></td>
+              </tr>
+              <tr>
+                <td><strong>Typography</strong></td>
+                <td>
+                  <code>.text-sm</code>, <code>.text-base</code>, <code>.text-lg</code>, <code>.text-xl</code>, <code>.text-2xl</code><br>
+                  <code>.fw-regular</code>, <code>.fw-medium</code>, <code>.fw-semibold</code>, <code>.fw-bold</code><br>
+                  <code>.lh-tight</code>, <code>.lh-normal</code>, <code>.lh-relaxed</code><br>
+                  <code>.ls-tight</code>, <code>.ls-normal</code>, <code>.ls-wide</code>, <code>.font-base</code>
+                </td>
+                <td><code>&lt;h2 class="text-xl fw-bold ls-tight"&gt;...&lt;/h2&gt;</code></td>
+              </tr>
+              <tr>
+                <td><strong>Borders</strong></td>
+                <td><code>.border</code></td>
+                <td><code>&lt;div class="border"&gt;...&lt;/div&gt;</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- Footer                                                       -->
+      <!-- ============================================================ -->
+      <footer class="docs-footer">
+        <div>
+          <strong>UIForge</strong> &bull; Simple underneath, polished on the surface.
+        </div>
+        <div>
+          <a href="index.html">Back to Component Showcase &rarr;</a>
+        </div>
+      </footer>
+
+    </main>
+  </div>
+
+  <!-- JavaScript Module -->
 </body>
 </html>
