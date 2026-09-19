@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UIForge Documentation - Simple Underneath, Polished on the Surface</title>
+  <title>UIForge - Reusable UI Components for the Web</title>
   <meta name="description" content="Official documentation for UIForge: a modern, lightweight, reusable UI component library built with HTML, Vanilla JavaScript, SCSS, and Vite.">
-  <script type="module" crossorigin src="/assets/index-4gYbRqhx.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-BRdkICEi.css">
+  <script type="module" crossorigin src="/assets/index-DUbe-oD5.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-GV-wtQiN.css">
 </head>
 <body>
 
@@ -30,16 +30,8 @@
     </div>
 
     <div class="docs-header-actions">
-      <a href="index.html" class="docs-header-link">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="3" y="3" width="7" height="7"></rect>
-          <rect x="14" y="3" width="7" height="7"></rect>
-          <rect x="14" y="14" width="7" height="7"></rect>
-          <rect x="3" y="14" width="7" height="7"></rect>
-        </svg>
-        <span>Showcase</span>
-      </a>
-
+      <a href="#overview" class="docs-header-link">Docs</a>
+      <a href="https://github.com/dikshu2004" target="_blank" rel="noreferrer" class="docs-header-link">GitHub</a>
       <button type="button" class="docs-theme-toggle" id="docs-theme-toggle" aria-label="Toggle light and dark mode">
         <svg id="theme-icon-dark" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
@@ -58,6 +50,46 @@
       </button>
     </div>
   </header>
+
+  <!-- ============================================================ -->
+  <!-- Landing Hero                                                  -->
+  <!-- ============================================================ -->
+  <section class="landing-hero" aria-labelledby="landing-title">
+    <div class="landing-hero-glow" aria-hidden="true"></div>
+    <div class="landing-hero-grid" aria-hidden="true"></div>
+
+    <div class="landing-hero-content">
+      <div class="landing-brand" aria-label="UIForge by Diksha">
+        <svg class="landing-logo" width="64" height="64" viewBox="0 0 64 64" role="img" aria-labelledby="landing-logo-title">
+          <title id="landing-logo-title">UIForge logo</title>
+          <path d="M10 16h18v18H10z" fill="currentColor"></path>
+          <path d="M36 16h18v18H36z" fill="currentColor" opacity="0.72"></path>
+          <path d="M10 40h18v10H10z" fill="currentColor" opacity="0.72"></path>
+          <path d="M36 40h18v10H36z" fill="currentColor"></path>
+        </svg>
+        <span class="landing-brand-name">UIForge</span>
+        <span class="landing-brand-author">by Diksha</span>
+      </div>
+
+      <h1 id="landing-title" class="landing-title">Build better interfaces,<br>one component at a time.</h1>
+      <p class="landing-description">UIForge is a lightweight, reusable UI component library built with Vanilla JavaScript and SCSS.</p>
+
+      <div class="landing-actions">
+        <a href="#overview" class="btn btn-primary">Get Started ✨</a>
+        <a href="https://github.com/dikshu2004" target="_blank" rel="noreferrer" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 8px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+          View on GitHub
+        </a>
+      </div>
+
+      <div class="landing-stack" aria-label="Built with HTML, SCSS, Vanilla JavaScript, and Vite">
+        <span>HTML</span>
+        <span>SCSS</span>
+        <span>VANILLA JS</span>
+        <span>VITE</span>
+      </div>
+    </div>
+  </section>
 
   <!-- ============================================================ -->
   <!-- Main Documentation Layout                                    -->
@@ -127,58 +159,222 @@
       <!-- ============================================================ -->
       <section id="overview" class="docs-section">
         <div class="docs-section-header">
-          <h1 class="docs-title">UIForge</h1>
-          <p class="docs-lead">A simple, reusable UI component library for the web.</p>
+          <h1 class="docs-title">Build with UIForge</h1>
+          <p class="docs-lead">
+            UIForge is a reusable UI component library built from scratch using HTML, Vanilla JavaScript, and SCSS/Sass. It provides reusable UI components, responsive layouts, CSS utilities, consistent styling, and reusable component classes.
+          </p>
         </div>
 
-        <div style="display:grid; grid-template-columns: minmax(0, 1.2fr) minmax(240px, 0.8fr); gap: 1.5rem; align-items: center; padding: 1.5rem; border: 1px solid var(--uf-border); border-radius: 1rem; background: rgba(255,255,255,0.3); box-shadow: var(--uf-shadow-sm);">
-          <div>
-            <p class="docs-paragraph" style="margin-bottom: 1rem;">
-              UIForge is a lightweight, developer-friendly UI library built with semantic HTML, clean Vanilla JavaScript, Sass-powered styling, and Vite for a fast local workflow.
-            </p>
+        <p class="docs-paragraph">
+          UIForge was built to understand how UI libraries work internally while creating a reusable library that can be used across web projects.
+        </p>
 
-            <div style="display:flex; flex-wrap:wrap; gap: 0.5rem; margin: 1rem 0 1.25rem;">
-              <span style="display:inline-flex; align-items:center; padding:0.35rem 0.7rem; border-radius:999px; background: var(--uf-primary-light); color: var(--uf-primary); font-size:0.78rem; font-weight:600; border:1px solid rgba(55,48,163,0.15);">HTML</span>
-              <span style="display:inline-flex; align-items:center; padding:0.35rem 0.7rem; border-radius:999px; background: var(--uf-primary-light); color: var(--uf-primary); font-size:0.78rem; font-weight:600; border:1px solid rgba(55,48,163,0.15);">Vanilla JavaScript</span>
-              <span style="display:inline-flex; align-items:center; padding:0.35rem 0.7rem; border-radius:999px; background: var(--uf-primary-light); color: var(--uf-primary); font-size:0.78rem; font-weight:600; border:1px solid rgba(55,48,163,0.15);">SCSS/Sass</span>
-              <span style="display:inline-flex; align-items:center; padding:0.35rem 0.7rem; border-radius:999px; background: var(--uf-primary-light); color: var(--uf-primary); font-size:0.78rem; font-weight:600; border:1px solid rgba(55,48,163,0.15);">Vite</span>
-            </div>
+        <div class="docs-preview">
+          <a href="#component-buttons" class="btn btn-primary">View Components</a>
+          <a href="https://github.com/dikshu2004" target="_blank" rel="noreferrer" class="btn btn-secondary">GitHub</a>
+        </div>
 
-            <div style="display:flex; flex-wrap:wrap; gap:0.75rem; margin-top:1rem;">
-              <a href="#introduction" style="display:inline-flex; align-items:center; justify-content:center; padding:0.7rem 1.1rem; border-radius:0.6rem; background:linear-gradient(135deg, var(--uf-primary), var(--uf-primary-dark)); color:#fff; text-decoration:none; font-weight:600; box-shadow:0 8px 18px rgba(55,48,163,0.18);">Documentation</a>
-              <a href="https://github.com/your-username/uiforge" target="_blank" rel="noreferrer" style="display:inline-flex; align-items:center; justify-content:center; padding:0.7rem 1.1rem; border-radius:0.6rem; background: var(--uf-surface-subtle); color: var(--uf-text); border:1px solid var(--uf-border); text-decoration:none; font-weight:600;">GitHub</a>
+        <h2 class="docs-section-title">Quick Start</h2>
+        <h3 class="docs-subheading">Step 1 — Include UIForge</h3>
+        <p class="docs-paragraph">
+          Use UIForge directly through the public CDN without copying the source files into your project. Add the UIForge stylesheet inside the <code>&lt;head&gt;</code> of your HTML file.
+        </p>
+
+        <div class="docs-standalone-code">
+          <div class="docs-code-header">
+            <span class="docs-code-lang">HTML</span>
+            <button type="button" class="docs-copy-btn">Copy</button>
+          </div>
+          <pre><code>&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@diksha2004/uiforge@1.0.0/dist/uiforge.css"&gt;</code></pre>
+        </div>
+
+        <div class="docs-standalone-code">
+          <div class="docs-code-header">
+            <span class="docs-code-lang">HTML</span>
+            <button type="button" class="docs-copy-btn">Copy</button>
+          </div>
+          <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;UIForge Example&lt;/title&gt;
+
+  &lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@diksha2004/uiforge@1.0.0/dist/uiforge.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+
+        <h3 class="docs-subheading">Step 2 — Use UIForge Classes</h3>
+        <p class="docs-paragraph">
+          After including the stylesheet, use UIForge classes directly in your HTML. UIForge components are used by adding their predefined classes to HTML elements.
+        </p>
+
+        <div class="docs-standalone-code">
+          <div class="docs-code-header">
+            <span class="docs-code-lang">HTML</span>
+            <button type="button" class="docs-copy-btn">Copy</button>
+          </div>
+          <pre><code>&lt;button class="btn btn-primary"&gt;
+  Primary Button
+&lt;/button&gt;</code></pre>
+        </div>
+
+        <div class="docs-preview">
+          <button class="btn btn-primary">Primary Button</button>
+        </div>
+
+        <p class="docs-paragraph">
+          Cards use the real component structure provided by UIForge: the card stylesheet styles nested headings and paragraphs directly.
+        </p>
+
+        <div class="docs-standalone-code">
+          <div class="docs-code-header">
+            <span class="docs-code-lang">HTML</span>
+            <button type="button" class="docs-copy-btn">Copy</button>
+          </div>
+          <pre><code>&lt;div class="card"&gt;
+  &lt;h3&gt;Hello UIForge&lt;/h3&gt;
+  &lt;p&gt;
+    Build interfaces using reusable UIForge classes.
+  &lt;/p&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+
+        <div class="docs-preview">
+          <div class="card">
+            <h3>Hello UIForge</h3>
+            <p>Build interfaces using reusable UIForge classes.</p>
+          </div>
+        </div>
+
+        <h3 class="docs-subheading">Step 3 — Responsive Layout</h3>
+        <p class="docs-paragraph">
+          UIForge provides responsive layout classes so you can create flexible layouts without writing the basic responsive CSS yourself.
+        </p>
+
+        <div class="docs-standalone-code">
+          <div class="docs-code-header">
+            <span class="docs-code-lang">HTML</span>
+            <button type="button" class="docs-copy-btn">Copy</button>
+          </div>
+          <pre><code>&lt;div class="container"&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col-12 col-md-6"&gt;
+      Content
+    &lt;/div&gt;
+
+    &lt;div class="col-12 col-md-6"&gt;
+      Content
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+
+        <div class="docs-preview">
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-6">Content</div>
+              <div class="col-12 col-md-6">Content</div>
             </div>
           </div>
+        </div>
 
-          <div style="padding: 1rem; border: 1px solid var(--uf-border); border-radius: 0.9rem; background: var(--uf-surface);">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
-              <span style="font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color: var(--uf-text-muted); font-weight:700;">Preview</span>
-              <span style="display:inline-block; width:0.55rem; height:0.55rem; border-radius:50%; background:var(--uf-primary);"></span>
-            </div>
+        <h3 class="docs-subheading">Step 4 — Components</h3>
+        <p class="docs-paragraph">
+          UIForge includes reusable buttons, cards, alerts, badges, navbars, avatars, forms, dropdowns, pagination, and tabs. Explore the existing component documentation to see each component in detail.
+        </p>
 
-            <div style="display:grid; gap:0.75rem;">
-              <div style="display:flex; gap:0.5rem; align-items:center;">
-                <span style="display:inline-block; width:2.25rem; height:2.25rem; border-radius:0.6rem; background:linear-gradient(135deg, #e0e7ff, #c7d2fe);"></span>
-                <div style="flex:1; height:0.8rem; border-radius:999px; background: linear-gradient(90deg, rgba(55,48,163,0.13), rgba(55,48,163,0.04));"></div>
-              </div>
+        <div class="docs-preview">
+          <a href="#component-buttons" class="btn btn-primary">Explore Components</a>
+        </div>
 
-              <div style="display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:0.5rem;">
-                <div style="height:3.2rem; border-radius:0.7rem; background: rgba(55,48,163,0.08); border:1px solid rgba(55,48,163,0.12);"></div>
-                <div style="height:3.2rem; border-radius:0.7rem; background: rgba(55,48,163,0.08); border:1px solid rgba(55,48,163,0.12);"></div>
-                <div style="height:3.2rem; border-radius:0.7rem; background: rgba(55,48,163,0.08); border:1px solid rgba(55,48,163,0.12);"></div>
-              </div>
+        <h3 class="docs-subheading">Step 5 — Utilities</h3>
+        <p class="docs-paragraph">
+          UIForge also provides utility classes for common spacing, display, flexbox, sizing, color, typography, and border needs. For example, combine <code>d-flex</code>, <code>gap-2</code>, and <code>p-2</code> to arrange and space content.
+        </p>
 
-              <div style="display:flex; gap:0.5rem;">
-                <button type="button" style="flex:1; padding:0.65rem 0.75rem; border:none; border-radius:0.55rem; background: var(--uf-primary); color:#fff; font-weight:600;">Primary</button>
-                <button type="button" style="flex:1; padding:0.65rem 0.75rem; border:1px solid var(--uf-border); border-radius:0.55rem; background:transparent; color:var(--uf-text); font-weight:600;">Ghost</button>
-              </div>
-            </div>
+        <div class="docs-standalone-code">
+          <div class="docs-code-header">
+            <span class="docs-code-lang">HTML</span>
+            <button type="button" class="docs-copy-btn">Copy</button>
           </div>
+          <pre><code>&lt;div class="d-flex gap-2 p-2"&gt;
+  &lt;span&gt;Spaced content&lt;/span&gt;
+  &lt;span class="fw-bold"&gt;Emphasized content&lt;/span&gt;
+&lt;/div&gt;</code></pre>
         </div>
 
-        <div style="margin-top: 1.5rem; text-align:center; font-size: 1rem; color: var(--uf-text-muted); font-weight: 500;">
-          Designed & built by Diksha
+        <h2 class="docs-section-title">Installation</h2>
+        <h3 class="docs-subheading">CDN</h3>
+        <p class="docs-paragraph">
+          No npm installation is required for a simple HTML project. The stylesheet is loaded from jsDelivr, and the version is pinned explicitly to <code>@diksha2004/uiforge@1.0.0</code> for predictable usage.
+        </p>
+
+        <div class="docs-standalone-code">
+          <div class="docs-code-header">
+            <span class="docs-code-lang">HTML</span>
+            <button type="button" class="docs-copy-btn">Copy</button>
+          </div>
+          <pre><code>&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@diksha2004/uiforge@1.0.0/dist/uiforge.css"&gt;</code></pre>
         </div>
+
+        <h3 class="docs-subheading">npm</h3>
+        <p class="docs-paragraph">
+          Install the package with npm when you want the distributed stylesheet available in your project. For plain HTML, the CDN method above is the recommended documented quick-start method.
+        </p>
+
+        <div class="docs-standalone-code">
+          <div class="docs-code-header">
+            <span class="docs-code-lang">Bash</span>
+            <button type="button" class="docs-copy-btn">Copy</button>
+          </div>
+          <pre><code>npm install @diksha2004/uiforge</code></pre>
+        </div>
+
+        <h2 class="docs-section-title">Complete Example</h2>
+        <p class="docs-paragraph">
+          This example uses the published stylesheet and verified UIForge classes from start to finish.
+        </p>
+
+        <div class="docs-standalone-code">
+          <div class="docs-code-header">
+            <span class="docs-code-lang">HTML</span>
+            <button type="button" class="docs-copy-btn">Copy</button>
+          </div>
+          <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+
+  &lt;title&gt;UIForge Example&lt;/title&gt;
+
+  &lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@diksha2004/uiforge@1.0.0/dist/uiforge.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+  &lt;div class="container"&gt;
+    &lt;h1&gt;My UIForge Page&lt;/h1&gt;
+
+    &lt;button class="btn btn-primary"&gt;
+      Get Started
+    &lt;/button&gt;
+  &lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+
+        <p class="docs-paragraph">
+          Documentation version: <code>@diksha2004/uiforge@1.0.0</code>
+        </p>
+
+        <p class="docs-paragraph">Designed &amp; built by Diksha</p>
       </section>
 
       <!-- ============================================================ -->
@@ -188,30 +384,22 @@
         <div class="docs-section-header">
           <h1 class="docs-title">UIForge Documentation</h1>
           <p class="docs-lead">
-            A reusable, lightweight UI component library and design system built with HTML, Vanilla JavaScript, SCSS, and Vite.
+            A reusable CSS library for building clean, modern interfaces.
           </p>
         </div>
 
         <p class="docs-paragraph">
-          <strong>UIForge</strong> is crafted around one core principle: <em>"Simple underneath, polished on the surface."</em> It is designed to demonstrate how modern UI libraries function from the ground up without relying on heavy frameworks, bloated dependencies, or complex abstractions.
+          <strong>UIForge</strong> is a lightweight CSS component library built with semantic HTML, structured SCSS, and simple Vanilla JavaScript patterns for fast, consistent UI development.
         </p>
 
         <div class="docs-callout docs-callout-info">
-          <h5>Core Philosophy</h5>
+          <h5>Built with</h5>
           <p>
-            No React, no JSX, no Tailwind, and zero runtime dependencies. Every component is defined using clean semantic HTML5, structured SCSS with centralized Sass maps/tokens, and accessible Vanilla JavaScript ES modules.
+            HTML, Vanilla JavaScript, SCSS/Sass, and Vite — designed to stay lightweight and easy to use.
           </p>
         </div>
 
-        <h3 class="docs-subheading">Key Features</h3>
-        <ul class="docs-paragraph">
-          <li><strong>Tokenized SCSS System:</strong> Centralized design tokens for colors, typography, spacing, border radii, borders, transitions, and breakpoints.</li>
-          <li><strong>Zero Framework Overhead:</strong> Fast load times and tiny bundle footprint using native web standards.</li>
-          <li><strong>Accessible (WAI-ARIA):</strong> Built-in keyboard navigation, ARIA roles, states, and visible focus rings.</li>
-          <li><strong>Light & Dark Theming:</strong> Integrated CSS custom properties (<code>--uf-*</code>) for effortless instant theme switching.</li>
-          <li><strong>Responsive 12-Column Grid:</strong> Flexbox-based container and responsive column grid system.</li>
-          <li><strong>Atomic Utility Classes:</strong> Comprehensive utility helpers for margins, paddings, flex layouts, typography, and colors.</li>
-        </ul>
+
       </section>
 
       <!-- ============================================================ -->
@@ -956,103 +1144,310 @@
       <!-- ============================================================ -->
       <!-- 4. Components: Forms & Validation                            -->
       <!-- ============================================================ -->
+    
+
+  
+
       <section id="component-forms" class="docs-section">
-        <div class="docs-section-header">
-          <h2 class="docs-section-title">Forms & Validation</h2>
-          <p class="docs-lead">Form controls, labels, text inputs, textareas, selects, custom checkboxes, radio controls, switches, and validation states.</p>
+  <div class="docs-section-header">
+    <h2 class="docs-section-title">Forms & Validation</h2>
+    <p class="docs-lead">
+      Form controls, labels, text inputs, textareas, selects, custom
+      checkboxes, radio controls, switches, and validation states.
+    </p>
+  </div>
+
+  <div class="docs-component-card">
+    <div class="docs-component-header">
+      <h4>Form Controls & Validation States</h4>
+      <p>
+        A complete form example showing common controls and validation
+        states.
+      </p>
+    </div>
+
+    <div class="docs-preview">
+      <form
+        class="form"
+        style="width: 100%; max-width: 32rem;"
+        onsubmit="event.preventDefault()"
+      >
+        <h3 class="form-title">Account Registration</h3>
+
+        <p class="form-description">
+          Enter your details to create your account.
+        </p>
+
+        <div class="form-group">
+          <label class="form-label" for="doc-form-name">
+            Full Name
+          </label>
+          <input
+            class="form-input"
+            id="doc-form-name"
+            type="text"
+            placeholder="John Doe"
+          >
         </div>
 
-        <div class="docs-component-card">
-          <div class="docs-component-header">
-            <h4>Form Controls & Validation States</h4>
-            <p>Includes valid and invalid states with contextual feedback messages.</p>
+        <div class="form-group">
+          <label class="form-label" for="doc-form-email">
+            Email (Valid)
+          </label>
+          <input
+            class="form-input is-valid"
+            id="doc-form-email"
+            type="email"
+            value="alex@example.com"
+          >
+          <div class="valid-feedback">
+            Email format is valid and verified.
           </div>
-          <div class="docs-preview">
-            <form class="form" style="width: 100%; max-width: 32rem;" onsubmit="event.preventDefault()">
-              <h3 class="form-title">Account Registration</h3>
-              <p class="form-description">Enter your credentials to get started.</p>
+        </div>
 
-              <div class="form-group">
-                <label class="form-label" for="doc-form-name">Full Name</label>
-                <input class="form-input" id="doc-form-name" type="text" placeholder="John Doe">
-              </div>
-
-              <div class="form-group">
-                <label class="form-label" for="doc-form-email">Email (Valid)</label>
-                <input class="form-input is-valid" id="doc-form-email" type="email" value="alex@example.com">
-                <div class="valid-feedback">Email format is valid and verified.</div>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label" for="doc-form-user">Username (Invalid)</label>
-                <input class="form-input is-invalid" id="doc-form-user" type="text" value="invalid user name!">
-                <div class="invalid-feedback">Username cannot contain spaces or symbols.</div>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label" for="doc-form-plan">Subscription Plan</label>
-                <select class="form-select" id="doc-form-plan">
-                  <option value="starter">Starter Plan (Free)</option>
-                  <option value="pro">Pro Developer ($19/mo)</option>
-                  <option value="team">Team Edition ($49/mo)</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label class="form-check">
-                  <input class="form-check-input" type="checkbox" checked>
-                  <span class="form-check-label">I agree to the Terms of Service</span>
-                </label>
-              </div>
-
-              <div class="form-group">
-                <label class="form-switch">
-                  <input class="form-switch-input" type="checkbox" checked>
-                  <span class="form-check-label">Enable email notifications</span>
-                </label>
-              </div>
-
-              <div class="form-actions">
-                <button type="reset" class="btn btn-secondary">Reset</button>
-                <button type="submit" class="btn btn-primary">Submit Form</button>
-              </div>
-            </form>
+        <div class="form-group">
+          <label class="form-label" for="doc-form-user">
+            Username (Invalid)
+          </label>
+          <input
+            class="form-input is-invalid"
+            id="doc-form-user"
+            type="text"
+            value="invalid user name!"
+          >
+          <div class="invalid-feedback">
+            Username cannot contain spaces or symbols.
           </div>
-          <div class="docs-code-container">
-            <div class="docs-code-header">
-              <span class="docs-code-lang">HTML</span>
-              <button type="button" class="docs-copy-btn">Copy</button>
-            </div>
-            <pre><code>&lt;form class="form"&gt;
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="doc-form-message">
+            Message
+          </label>
+          <textarea
+            class="form-textarea"
+            id="doc-form-message"
+            placeholder="Write your message..."
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="doc-form-plan">
+            Subscription Plan
+          </label>
+          <select class="form-select" id="doc-form-plan">
+            <option value="">Select a plan</option>
+            <option value="starter">Starter Plan</option>
+            <option value="pro">Pro Developer</option>
+            <option value="team">Team Edition</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              checked
+            >
+            <span class="form-check-label">
+              I agree to the Terms of Service
+            </span>
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="account-type"
+              checked
+            >
+            <span class="form-check-label">
+              Personal account
+            </span>
+          </label>
+
+          <label class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="account-type"
+            >
+            <span class="form-check-label">
+              Business account
+            </span>
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label class="form-switch">
+            <input
+              class="form-switch-input"
+              type="checkbox"
+              checked
+            >
+            <span class="form-check-label">
+              Enable email notifications
+            </span>
+          </label>
+        </div>
+
+        <div class="form-actions">
+          <button type="reset" class="btn btn-secondary">
+            Reset
+          </button>
+
+          <button type="submit" class="btn btn-primary">
+            Submit Form
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div class="docs-code-container">
+      <div class="docs-code-header">
+        <span class="docs-code-lang">HTML</span>
+        <button type="button" class="docs-copy-btn">Copy</button>
+      </div>
+
+      <pre><code>&lt;form class="form"&gt;
+  &lt;h3 class="form-title"&gt;Account Registration&lt;/h3&gt;
+
+  &lt;p class="form-description"&gt;
+    Enter your details to create your account.
+  &lt;/p&gt;
+
   &lt;div class="form-group"&gt;
-    &lt;label class="form-label" for="email"&gt;Email&lt;/label&gt;
-    &lt;input class="form-input is-valid" id="email" type="email" value="alex@example.com"&gt;
-    &lt;div class="valid-feedback"&gt;Email format is valid.&lt;/div&gt;
+    &lt;label class="form-label" for="doc-form-name"&gt;
+      Full Name
+    &lt;/label&gt;
+    &lt;input
+      class="form-input"
+      id="doc-form-name"
+      type="text"
+      placeholder="John Doe"
+    &gt;
+  &lt;/div&gt;
+
+  &lt;div class="form-group"&gt;
+    &lt;label class="form-label" for="doc-form-email"&gt;
+      Email (Valid)
+    &lt;/label&gt;
+    &lt;input
+      class="form-input is-valid"
+      id="doc-form-email"
+      type="email"
+      value="alex@example.com"
+    &gt;
+    &lt;div class="valid-feedback"&gt;
+      Email format is valid and verified.
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="form-group"&gt;
+    &lt;label class="form-label" for="doc-form-user"&gt;
+      Username (Invalid)
+    &lt;/label&gt;
+    &lt;input
+      class="form-input is-invalid"
+      id="doc-form-user"
+      type="text"
+      value="invalid user name!"
+    &gt;
+    &lt;div class="invalid-feedback"&gt;
+      Username cannot contain spaces or symbols.
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="form-group"&gt;
+    &lt;label class="form-label" for="doc-form-message"&gt;
+      Message
+    &lt;/label&gt;
+    &lt;textarea
+      class="form-textarea"
+      id="doc-form-message"
+      placeholder="Write your message..."
+    &gt;&lt;/textarea&gt;
+  &lt;/div&gt;
+
+  &lt;div class="form-group"&gt;
+    &lt;label class="form-label" for="doc-form-plan"&gt;
+      Subscription Plan
+    &lt;/label&gt;
+    &lt;select class="form-select" id="doc-form-plan"&gt;
+      &lt;option value=""&gt;Select a plan&lt;/option&gt;
+      &lt;option value="starter"&gt;Starter Plan&lt;/option&gt;
+      &lt;option value="pro"&gt;Pro Developer&lt;/option&gt;
+      &lt;option value="team"&gt;Team Edition&lt;/option&gt;
+    &lt;/select&gt;
   &lt;/div&gt;
 
   &lt;div class="form-group"&gt;
     &lt;label class="form-check"&gt;
-      &lt;input class="form-check-input" type="checkbox" checked&gt;
-      &lt;span class="form-check-label"&gt;Remember me&lt;/span&gt;
+      &lt;input
+        class="form-check-input"
+        type="checkbox"
+        checked
+      &gt;
+      &lt;span class="form-check-label"&gt;
+        I agree to the Terms of Service
+      &lt;/span&gt;
+    &lt;/label&gt;
+  &lt;/div&gt;
+
+  &lt;div class="form-group"&gt;
+    &lt;label class="form-check"&gt;
+      &lt;input
+        class="form-check-input"
+        type="radio"
+        name="account-type"
+        checked
+      &gt;
+      &lt;span class="form-check-label"&gt;
+        Personal account
+      &lt;/span&gt;
+    &lt;/label&gt;
+
+    &lt;label class="form-check"&gt;
+      &lt;input
+        class="form-check-input"
+        type="radio"
+        name="account-type"
+      &gt;
+      &lt;span class="form-check-label"&gt;
+        Business account
+      &lt;/span&gt;
     &lt;/label&gt;
   &lt;/div&gt;
 
   &lt;div class="form-group"&gt;
     &lt;label class="form-switch"&gt;
-      &lt;input class="form-switch-input" type="checkbox" checked&gt;
-      &lt;span class="form-check-label"&gt;Enable notifications&lt;/span&gt;
+      &lt;input
+        class="form-switch-input"
+        type="checkbox"
+        checked
+      &gt;
+      &lt;span class="form-check-label"&gt;
+        Enable email notifications
+      &lt;/span&gt;
     &lt;/label&gt;
   &lt;/div&gt;
 
   &lt;div class="form-actions"&gt;
-    &lt;button type="submit" class="btn btn-primary"&gt;Submit&lt;/button&gt;
+    &lt;button type="reset" class="btn btn-secondary"&gt;
+      Reset
+    &lt;/button&gt;
+
+    &lt;button type="submit" class="btn btn-primary"&gt;
+      Submit Form
+    &lt;/button&gt;
   &lt;/div&gt;
 &lt;/form&gt;</code></pre>
-          </div>
-        </div>
-      </section>
-
-      <!-- ============================================================ -->
+    </div>
+  </div>
+</section>
       <!-- 4. Components: Dropdowns                                     -->
       <!-- ============================================================ -->
       <section id="component-dropdown" class="docs-section">
@@ -1343,7 +1738,7 @@
       <!-- ============================================================ -->
       <footer class="docs-footer">
         <div>
-          <strong>UIForge</strong> &bull; Simple underneath, polished on the surface.
+          <strong>UIForge</strong> &bull; Reusable UI primitives for the web.
         </div>
       </footer>
 

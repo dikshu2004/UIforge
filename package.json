@@ -1,15 +1,25 @@
 {
-  "name": "uiforge",
-  "description": "",
+ "name": "@diksha2004/uiforge",
+  "version": "1.0.0",
+  "description": "A simple, reusable UI component library for the web.",
+  "files": [
+    "dist/uiforge.css"
+  ],
   "main": "index.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:library": "sass src/scss/main.scss dist/uiforge.css --style=compressed",
     "preview": "vite preview"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "ui",
+    "component-library",
+    "css",
+    "scss"
+  ],
+  "author": "Diksha",
+  "license": "MIT",
   "type": "module",
   "devDependencies": {
     "sass": "^1.104.0",

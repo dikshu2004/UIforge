@@ -152,14 +152,162 @@
 }
 
 // ============================================================
+// Landing Hero
+// ============================================================
+
+.landing-hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - var(--docs-header-height));
+  height: calc(100dvh - var(--docs-header-height));
+  max-height: calc(100vh - var(--docs-header-height));
+  box-sizing: border-box;
+  padding: 1rem 1.5rem;
+  overflow: hidden;
+  isolation: isolate;
+  background-color: var(--uf-bg);
+  border-bottom: $border-width-thin $border-style-solid var(--uf-border);
+}
+
+.landing-hero-grid,
+.landing-hero-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.landing-hero-grid {
+  z-index: -2;
+  opacity: 0.42;
+  background-image: linear-gradient(rgba(55, 48, 163, 0.07) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(55, 48, 163, 0.07) 1px, transparent 1px);
+  background-size: 3.5rem 3.5rem;
+  mask-image: linear-gradient(to bottom, black, transparent 82%);
+}
+
+.landing-hero-glow {
+  z-index: -1;
+  background: radial-gradient(circle at center, rgba(99, 102, 241, 0.12), transparent 34rem);
+}
+
+.landing-hero-content {
+  width: min(100% - 2rem, 46rem);
+  padding: 0;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.landing-brand {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--uf-primary);
+}
+
+.landing-logo {
+  display: block;
+  width: clamp(32px, 5vh, 44px);
+  height: clamp(32px, 5vh, 44px);
+  margin-bottom: 0.35rem;
+  color: var(--uf-primary);
+  filter: drop-shadow(0 0.5rem 1rem rgba(55, 48, 163, 0.18));
+}
+
+.landing-brand-name {
+  font-size: clamp(1.4rem, 3.2vw, 2.1rem);
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  letter-spacing: $letter-spacing-tight;
+  color: var(--uf-text);
+}
+
+.landing-brand-author {
+  margin-top: 0.15rem;
+  color: var(--uf-text-muted);
+  font-size: 0.8rem;
+  letter-spacing: $letter-spacing-wide;
+}
+
+.landing-title {
+  margin: clamp(0.75rem, 2vh, 1.5rem) 0 clamp(0.4rem, 1.2vh, 0.75rem);
+  color: var(--uf-text);
+  font-size: clamp(1.75rem, 3.8vw, 2.75rem);
+  font-weight: $font-weight-bold;
+  line-height: 1.15;
+  letter-spacing: $letter-spacing-tight;
+}
+
+.landing-description {
+  max-width: 32rem;
+  margin: 0 auto;
+  color: var(--uf-text-muted);
+  font-size: clamp(0.875rem, 1.4vw, 1.05rem);
+  line-height: 1.5;
+}
+
+.landing-actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: clamp(0.85rem, 2vh, 1.35rem);
+
+  .btn {
+    min-width: 7rem;
+    text-decoration: none;
+    padding: 0.55rem 1.15rem;
+  }
+}
+
+.landing-stack {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.85rem;
+  margin-top: clamp(1rem, 2.5vh, 1.75rem);
+  color: var(--uf-text-muted);
+  font-size: 0.7rem;
+  font-weight: $font-weight-semibold;
+  letter-spacing: $letter-spacing-wide;
+
+  span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.85rem;
+
+    &:not(:last-child)::after {
+      width: 3px;
+      height: 3px;
+      border-radius: $radius-full;
+      background-color: var(--uf-border-strong);
+      content: "";
+    }
+  }
+}
+
+// ============================================================
 // Layout & Sidebar
 // ============================================================
 
+body:not(.has-docs-open):not(:has(.docs-layout.is-visible)) {
+  overflow: hidden;
+  height: 100vh;
+}
+
 .docs-layout {
-  display: grid;
+  display: none;
   grid-template-columns: var(--docs-sidebar-width) minmax(0, 1fr);
   min-height: calc(100vh - var(--docs-header-height));
   background-color: var(--uf-bg);
+}
+
+.docs-layout.is-visible {
+  display: grid;
 }
 
 .docs-sidebar-backdrop {
@@ -457,7 +605,8 @@
   }
 }
 
-.docs-code-container pre {
+.docs-code-container pre,
+.docs-standalone-code pre {
   margin: 0;
   padding: 1.25rem 1.5rem;
   overflow-x: auto;

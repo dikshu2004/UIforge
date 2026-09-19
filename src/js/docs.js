@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initMobileNav();
   initSidebarFilter();
   initDocsInteractiveDemos();
+  initDocumentationReveal();
 });
 
 // ============================================================
@@ -52,6 +53,34 @@ function initThemeToggle() {
       applyTheme(next);
     });
   }
+}
+
+// ============================================================
+// Documentation Reveal
+// ============================================================
+
+function initDocumentationReveal() {
+  const docsLayout = document.querySelector(".docs-layout");
+  if (!docsLayout) return;
+
+  const revealDocumentation = () => {
+    const target = window.location.hash
+      ? document.querySelector(window.location.hash)
+      : null;
+
+    if (!target || !docsLayout.contains(target)) {
+      docsLayout.classList.remove("is-visible");
+      document.body.classList.remove("has-docs-open");
+      return;
+    }
+
+    docsLayout.classList.add("is-visible");
+    document.body.classList.add("has-docs-open");
+    requestAnimationFrame(() => target.scrollIntoView({ behavior: "smooth" }));
+  };
+
+  window.addEventListener("hashchange", revealDocumentation);
+  revealDocumentation();
 }
 
 // ============================================================
