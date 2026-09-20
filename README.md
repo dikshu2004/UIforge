@@ -91,6 +91,4 @@ import "@diksha2004/uiforge/dist/uiforge.css";
 
 ---
 
-## License
 
-This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
