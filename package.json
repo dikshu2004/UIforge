@@ -5,10 +5,10 @@
   "files": [
     "dist/uiforge.css"
   ],
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && npm run build:library",
     "build:library": "sass src/scss/main.scss dist/uiforge.css --style=compressed",
     "preview": "vite preview"
   },

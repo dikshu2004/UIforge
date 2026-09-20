@@ -1,60 +1,97 @@
 # UIForge
 
-UIForge is a custom JavaScript UI library inspired by Bootstrap.
+A lightweight, modern, reusable UI component library and design system built with SCSS, Vanilla JavaScript, and Vite.
 
-The purpose of UIForge is to understand how modern UI libraries work internally and build a reusable UI library from scratch.
+[![npm version](https://img.shields.io/npm/v/@diksha2004/uiforge.svg)](https://www.npmjs.com/package/@diksha2004/uiforge)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-## About
+---
 
-UIForge provides reusable CSS utilities, responsive layouts, styling utilities, and JavaScript-rendered UI components that can be used to build web interfaces faster.
+## Features
 
-The project focuses on understanding the architecture behind a UI library rather than simply copying an existing framework.
+- **Design Tokens**: Centralized SCSS variables for colors, typography, spacing, border radii, and motion.
+- **10 Core Components**: Buttons, Badges, Cards, Alerts, Avatars, Navbar, Forms & Validation, Dropdowns, Tabs, and Pagination.
+- **12-Column Responsive Grid**: Flexbox-based container, row, and responsive column classes (`col-*`, `col-md-*`, etc.).
+- **CSS Utilities**: Fast layout and spacing helpers for margins, paddings, display, flexbox, alignment, and typography.
+- **Dark Mode Ready**: Built with CSS custom properties (`--uf-*`) supporting smooth light/dark theme switching.
+- **Zero Heavy Frameworks**: Pure HTML, SCSS, and Vanilla JavaScript with no external runtime dependencies.
 
-## Tech Stack
+---
 
-- JavaScript
-- HTML / CSS
-- Vite
-- npm
+## Quick Start
 
-## Getting Started
+### 1. Using via CDN (HTML)
+Add the stylesheet directly inside your `<head>` tag:
 
-Install dependencies:
-
-```bash
-npm install
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@diksha2004/uiforge@1.0.0/dist/uiforge.css">
 ```
 
-Start the development server:
-
+### 2. Install via npm
 ```bash
-npm run dev
+npm install @diksha2004/uiforge
 ```
 
-Create a production build:
-
-```bash
-npm run build
+Import the CSS into your JavaScript/CSS entry file (e.g., Vite, Next.js, or Webpack):
+```javascript
+import "@diksha2004/uiforge/dist/uiforge.css";
 ```
 
-Preview the production build:
+---
 
-```bash
-npm run preview
-```
+## Example Usage
 
-## Structure
+```html
+<!-- Primary Button -->
+<button class="btn btn-primary">Click Me</button>
 
-- `src/js/main.js` renders the UI showcase and component markup.
-- `src/scss/main.scss` assembles the reusable CSS utilities, grid, and component styles.
-- `index.html` provides the Vite entry page and application root element.
-- `dist/` contains generated production output after `npm run build`.
+<!-- Responsive Card -->
+<div class="card">
+  <div class="card-body">
+    <span class="card-tag">NEW</span>
+    <h3>Component Card</h3>
+    <p>Build interfaces faster with UIForge reusable classes.</p>
+  </div>
+</div>
 
-The button, card, alert, badge, utility, and grid content is rendered with browser JavaScript while keeping the original class names and styling.
 
-## Architecture
 
-The showcase uses plain browser JavaScript to render reusable component markup into
-the `#root` element. The stylesheet is plain CSS and keeps the reusable utility,
-grid, and component class names used by the showcase.
-- Sass maps
+## Local Development
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/dikshu2004/UIforge.git
+   cd UIforge
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Start the Vite development server:
+   ```bash
+   npm run dev
+   ```
+
+4. Build both the documentation and the standalone library CSS (`dist/uiforge.css`):
+   ```bash
+   npm run build
+   ```
+
+5. Preview the production build:
+   ```bash
+   npm run preview
+   ```
+
+---
+
+## Author
+
+**Diksha** — [@dikshu2004](https://github.com/dikshu2004)
+
+---
+
+## License
+
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).

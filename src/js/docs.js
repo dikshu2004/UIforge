@@ -64,13 +64,21 @@ function initDocumentationReveal() {
   if (!docsLayout) return;
 
   const revealDocumentation = () => {
-    const target = window.location.hash
-      ? document.querySelector(window.location.hash)
-      : null;
-
-    if (!target || !docsLayout.contains(target)) {
+    const rawHash = window.location.hash;
+    if (!rawHash || rawHash === "#") {
       docsLayout.classList.remove("is-visible");
       document.body.classList.remove("has-docs-open");
+      return;
+    }
+
+    let target = null;
+    try {
+      target = document.querySelector(rawHash);
+    } catch {
+      return;
+    }
+
+    if (!target || !docsLayout.contains(target)) {
       return;
     }
 
@@ -277,6 +285,14 @@ function initDocsInteractiveDemos() {
   });
 
   // Dropdown Demo
+  const closeAllDropdowns = () => {
+    document.querySelectorAll(".dropdown.is-open").forEach((dropdown) => {
+      dropdown.classList.remove("is-open");
+      const toggle = dropdown.querySelector(".dropdown-toggle");
+      if (toggle) toggle.setAttribute("aria-expanded", "false");
+    });
+  };
+
   document.querySelectorAll(".dropdown").forEach((dropdown) => {
     const toggle = dropdown.querySelector(".dropdown-toggle");
     if (!toggle) return;
@@ -284,17 +300,28 @@ function initDocsInteractiveDemos() {
     toggle.addEventListener("click", (e) => {
       e.stopPropagation();
       const isOpen = dropdown.classList.contains("is-open");
-      dropdown.classList.toggle("is-open", !isOpen);
-      toggle.setAttribute("aria-expanded", String(!isOpen));
+      closeAllDropdowns();
+      if (!isOpen) {
+        dropdown.classList.add("is-open");
+        toggle.setAttribute("aria-expanded", "true");
+      }
+    });
+
+    // Close on item click and prevent default navigation on demo items
+    dropdown.querySelectorAll(".dropdown-item").forEach((item) => {
+      item.addEventListener("click", (e) => {
+        e.preventDefault();
+        closeAllDropdowns();
+      });
     });
   });
 
-  document.addEventListener("click", () => {
-    document.querySelectorAll(".dropdown.is-open").forEach((dropdown) => {
-      dropdown.classList.remove("is-open");
-      const toggle = dropdown.querySelector(".dropdown-toggle");
-      if (toggle) toggle.setAttribute("aria-expanded", "false");
-    });
+  document.addEventListener("click", closeAllDropdowns);
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeAllDropdowns();
+    }
   });
 
   // Pagination Demo
