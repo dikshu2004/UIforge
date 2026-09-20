@@ -3,7 +3,6 @@
 A lightweight, modern, reusable UI component library and design system built with SCSS, Vanilla JavaScript, and Vite.
 
 [![npm version](https://img.shields.io/npm/v/@diksha2004/uiforge.svg)](https://www.npmjs.com/package/@diksha2004/uiforge)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 ---
 
