@@ -1,28 +1,28 @@
 {
  "name": "@diksha2004/uiforge",
-  "version": "1.0.0",
-  "description": "A simple, reusable UI component library for the web.",
-  "files": [
-    "dist/uiforge.css"
-  ],
-  "main": "index.html",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build && npm run build:library",
-    "build:library": "sass src/scss/main.scss dist/uiforge.css --style=compressed",
-    "preview": "vite preview"
-  },
-  "keywords": [
-    "ui",
-    "component-library",
-    "css",
-    "scss"
-  ],
-  "author": "Diksha",
-  "license": "MIT",
-  "type": "module",
-  "devDependencies": {
-    "sass": "^1.104.0",
-    "vite": "^8.2.2"
-  }
+ "version": "1.1.0",
+ "description": "A simple, reusable UI component library for the web.",
+ "files": [
+  "dist/uiforge.css"
+ ],
+ "main": "index.html",
+ "scripts": {
+  "dev": "vite",
+  "build": "vite build && npm run build:library",
+  "build:library": "sass src/scss/main.scss dist/uiforge.css --style=compressed",
+  "preview": "vite preview"
+ },
+ "keywords": [
+  "ui",
+  "component-library",
+  "css",
+  "scss"
+ ],
+ "author": "Diksha",
+ "license": "MIT",
+ "type": "module",
+ "devDependencies": {
+  "sass": "^1.104.0",
+  "vite": "^8.2.2"
+ }
 }
