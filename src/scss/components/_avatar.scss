@@ -2,65 +2,73 @@
 @use "../variables" as variables;
 
 .avatar {
+  --uf-avatar-size: 2.5rem;
 
   display: inline-flex;
-
   align-items: center;
-
   justify-content: center;
-
-  width: 2.5rem;
-
-  height: 2.5rem;
-
-  font-size: variables.$font-size-sm;
-
+  width: var(--uf-avatar-size);
+  height: var(--uf-avatar-size);
+  flex: 0 0 var(--uf-avatar-size);
+  flex-shrink: 0;
+  aspect-ratio: 1 / 1;
+  font-size: calc(var(--uf-avatar-size) * 0.38);
   font-weight: variables.$font-weight-semibold;
-
   line-height: 1;
-
   text-transform: uppercase;
-
   color: variables.$white;
-
   background-color: variables.$primary;
-
   border: variables.$border-width-thin variables.$border-style-solid variables.$primary;
-
   border-radius: variables.$radius-full;
-
   box-shadow: 0 0.2rem 0 rgba(15, 23, 42, 0.18);
-
   overflow: hidden;
-
   transition:
     transform variables.$transition-duration-base variables.$transition-easing-base,
     box-shadow variables.$transition-duration-base variables.$transition-easing-base;
 
   img {
-
     width: 100%;
-
     height: 100%;
-
     object-fit: cover;
-
+    display: block;
   }
 
+  @include variables.hover {
+    box-shadow: 0 0.35rem 0 rgba(15, 23, 42, 0.18);
+    transform: translateY(-2px);
+  }
 }
 
 .avatar + .avatar {
-
   margin-left: 0.4rem;
-
 }
 
-.avatar:hover {
+// Overlapping Avatar Stack with Overflow Protection
+.avatar-group {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
 
-  box-shadow: 0 0.35rem 0 rgba(15, 23, 42, 0.18);
+  .avatar {
+    border: 2px solid var(--uf-surface, #{variables.$white});
+    box-shadow: none;
 
-  transform: translateY(-2px);
+    &:not(:first-child) {
+      margin-inline-start: -0.75rem;
+    }
 
+    @include variables.hover {
+      z-index: 2;
+      transform: translateY(-2px);
+    }
+  }
+
+  .avatar-more {
+    background-color: var(--uf-surface-subtle, #{variables.$neutral-300});
+    color: var(--uf-text, #{variables.$neutral-800});
+    border-color: var(--uf-surface, #{variables.$white});
+    font-weight: variables.$font-weight-bold;
+  }
 }
 
 // Sizes

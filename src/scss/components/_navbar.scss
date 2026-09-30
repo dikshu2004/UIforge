@@ -2,16 +2,26 @@
 @use "../variables" as variables;
 
 .navbar {
+  position: relative;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  padding: 0.85rem map.get(variables.$spacings, 4);
-  gap: map.get(variables.$spacings, 3);
+  padding: 0.75rem max(1rem, var(--uf-safe-right, 0px)) 0.75rem max(1rem, var(--uf-safe-left, 0px));
+  gap: 0.75rem;
   background: var(--uf-surface, #{variables.$neutral-100});
   border: variables.$border-width-thin variables.$border-style-solid var(--uf-border, #{variables.$neutral-300});
   border-radius: variables.$radius-lg;
   box-shadow: var(--uf-shadow, 0 0.5rem 1.5rem rgba(15, 23, 42, 0.08));
   transition: background-color 0.2s ease, border-color 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
+
+  &.navbar-sticky {
+    position: sticky;
+    top: 0;
+    z-index: 90;
+  }
 }
 
 .navbar h2,
@@ -26,19 +36,95 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+  min-height: 2.75rem;
+}
+
+// Mobile Hamburger Toggle Button (44x44 touch target)
+.navbar-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0.5rem;
+  background-color: var(--uf-surface-subtle, #{variables.$neutral-200});
+  border: variables.$border-width-thin variables.$border-style-solid var(--uf-border, #{variables.$neutral-300});
+  border-radius: variables.$radius-md;
+  color: var(--uf-text, #{variables.$neutral-800});
+  cursor: pointer;
+  transition: background-color variables.$transition-duration-base variables.$transition-easing-base,
+              border-color variables.$transition-duration-base variables.$transition-easing-base;
+
+  @include variables.hover {
+    background-color: var(--uf-primary-light, #{variables.$brand-100});
+    color: var(--uf-primary, #{variables.$brand-600});
+  }
+
+  &:focus-visible {
+    outline: variables.$focus-width solid var(--uf-primary, #{variables.$focus-color});
+    outline-offset: variables.$focus-offset;
+  }
+
+  @include variables.up(md) {
+    display: none;
+  }
+}
+
+// Collapsible Mobile Menu Panel -> Expands on Desktop
+.navbar-collapse {
+  display: none;
+  flex-direction: column;
+  flex: 1 0 100%;
+  width: 100%;
+  gap: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: variables.$border-width-thin variables.$border-style-solid var(--uf-border, #{variables.$neutral-200});
+
+  &.is-open {
+    display: flex;
+  }
+
+  @include variables.up(md) {
+    display: flex !important;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1 1 auto;
+    width: auto;
+    padding-top: 0;
+    border-top: none;
+  }
+}
+
+.navbar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+
+  @include variables.up(md) {
+    flex-direction: row;
+    align-items: center;
+    width: auto;
+    gap: 0.5rem;
+  }
 }
 
 .nav-link {
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.nav-link a {
-  padding: map.get(variables.$spacings, 2) 0.85rem;
+.nav-link a,
+a.nav-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem; // 44px tap target
+  padding: 0.5rem 0.85rem;
   color: var(--uf-text-muted, #{variables.$neutral-700});
   text-decoration: none;
   font-size: variables.$font-size-base;
@@ -51,10 +137,15 @@
     background-color variables.$transition-duration-base variables.$transition-easing-base,
     transform variables.$transition-duration-base variables.$transition-easing-base;
 
-  &:hover,
-  &:focus-visible {
+  @include variables.hover {
     color: var(--uf-primary, #{variables.$brand-500});
     background-color: var(--uf-primary-light, #{variables.$brand-200});
     transform: translateY(-1px);
   }
+
+  &:focus-visible {
+    outline: variables.$focus-width solid var(--uf-primary, #{variables.$focus-color});
+    outline-offset: variables.$focus-offset;
+  }
 }
+

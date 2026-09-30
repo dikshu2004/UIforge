@@ -4,10 +4,13 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
   border: variables.$border-width-thin variables.$border-style-solid var(--uf-border, #{variables.$neutral-300});
   border-radius: variables.$radius-lg;
   background: var(--uf-surface, #{variables.$neutral-100});
   overflow: hidden;
+  box-sizing: border-box;
   transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
@@ -18,13 +21,31 @@
   padding: 0.5rem 0.75rem 0;
   background: var(--uf-surface-subtle, #{variables.$neutral-200});
   border-bottom: variables.$border-width-thin variables.$border-style-solid var(--uf-border, #{variables.$neutral-300});
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  max-width: 100%;
+
+  &::-webkit-scrollbar {
+    height: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--uf-border-strong);
+    border-radius: 999px;
+  }
 }
 
 .tab-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.6rem 1.1rem;
+  flex: 0 0 auto;
+  white-space: nowrap;
+  scroll-snap-align: start;
+  min-height: 2.75rem; // 44px WCAG touch target
+  padding: 0.6rem 1.15rem;
   border: variables.$border-width-thin variables.$border-style-solid transparent;
   border-bottom: none;
   border-top-left-radius: variables.$radius-md;
@@ -42,7 +63,7 @@
     color variables.$transition-duration-base variables.$transition-easing-base,
     background-color variables.$transition-duration-base variables.$transition-easing-base;
 
-  &:hover {
+  @include variables.hover {
     color: var(--uf-primary, #{variables.$brand-500});
     background-color: var(--uf-primary-light, #{variables.$brand-100});
   }

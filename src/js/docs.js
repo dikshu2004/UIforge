@@ -12,6 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
   initSidebarFilter();
   initDocsInteractiveDemos();
   initDocumentationReveal();
+  initNavbarToggle();
+  initViewportSwitcher();
+  initAlertDismiss();
 });
 
 // ============================================================
@@ -60,14 +63,9 @@ function initThemeToggle() {
 // ============================================================
 
 function initDocumentationReveal() {
-  const docsLayout = document.querySelector(".docs-layout");
-  if (!docsLayout) return;
-
   const revealDocumentation = () => {
     const rawHash = window.location.hash;
     if (!rawHash || rawHash === "#") {
-      docsLayout.classList.remove("is-visible");
-      document.body.classList.remove("has-docs-open");
       return;
     }
 
@@ -78,17 +76,17 @@ function initDocumentationReveal() {
       return;
     }
 
-    if (!target || !docsLayout.contains(target)) {
+    if (!target) {
       return;
     }
 
-    docsLayout.classList.add("is-visible");
-    document.body.classList.add("has-docs-open");
     requestAnimationFrame(() => target.scrollIntoView({ behavior: "smooth" }));
   };
 
   window.addEventListener("hashchange", revealDocumentation);
-  revealDocumentation();
+  if (window.location.hash) {
+    revealDocumentation();
+  }
 }
 
 // ============================================================
@@ -266,6 +264,9 @@ function initDocsInteractiveDemos() {
           panel.classList.toggle("is-active", isActive);
           panel.setAttribute("aria-hidden", String(!isActive));
         });
+
+        // Ensure active tab stays visible when scrolled
+        btn.scrollIntoView({ inline: "nearest", block: "nearest", behavior: "smooth" });
       });
 
       btn.addEventListener("keydown", (e) => {
@@ -284,7 +285,7 @@ function initDocsInteractiveDemos() {
     });
   });
 
-  // Dropdown Demo
+  // Dropdown Demo with Viewport Boundary Edge Detection
   const closeAllDropdowns = () => {
     document.querySelectorAll(".dropdown.is-open").forEach((dropdown) => {
       dropdown.classList.remove("is-open");
@@ -295,6 +296,7 @@ function initDocsInteractiveDemos() {
 
   document.querySelectorAll(".dropdown").forEach((dropdown) => {
     const toggle = dropdown.querySelector(".dropdown-toggle");
+    const menu = dropdown.querySelector(".dropdown-menu");
     if (!toggle) return;
 
     toggle.addEventListener("click", (e) => {
@@ -304,6 +306,18 @@ function initDocsInteractiveDemos() {
       if (!isOpen) {
         dropdown.classList.add("is-open");
         toggle.setAttribute("aria-expanded", "true");
+
+        // Edge detection: keep dropdown menu inside viewport bounds
+        if (menu) {
+          menu.classList.remove("is-flipped-x", "is-flipped-y");
+          const rect = menu.getBoundingClientRect();
+          if (rect.right > window.innerWidth - 12) {
+            menu.classList.add("is-flipped-x");
+          }
+          if (rect.bottom > window.innerHeight - 12) {
+            menu.classList.add("is-flipped-y");
+          }
+        }
       }
     });
 
@@ -370,6 +384,100 @@ function initDocsInteractiveDemos() {
       } else if (target.hasAttribute("data-page")) {
         updatePage(parseInt(target.getAttribute("data-page"), 10));
       }
+    });
+  });
+}
+
+// ============================================================
+// 7. Responsive Mobile Navbar Toggle
+// ============================================================
+
+function initNavbarToggle() {
+  document.querySelectorAll(".navbar-toggle").forEach((toggle) => {
+    const nav = toggle.closest(".navbar");
+    if (!nav) return;
+    const collapse = nav.querySelector(".navbar-collapse");
+    if (!collapse) return;
+
+    const toggleMenu = (open) => {
+      const isOpen = open !== undefined ? open : !collapse.classList.contains("is-open");
+      collapse.classList.toggle("is-open", isOpen);
+      toggle.setAttribute("aria-expanded", String(isOpen));
+    };
+
+    toggle.addEventListener("click", (e) => {
+      e.stopPropagation();
+      toggleMenu();
+    });
+
+    collapse.querySelectorAll(".nav-link a, a.nav-link").forEach((link) => {
+      link.addEventListener("click", () => {
+        if (window.innerWidth < 768) {
+          toggleMenu(false);
+        }
+      });
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!nav.contains(e.target)) {
+        toggleMenu(false);
+      }
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && collapse.classList.contains("is-open")) {
+        toggleMenu(false);
+        toggle.focus();
+      }
+    });
+  });
+}
+
+// ============================================================
+// 8. Alert Dismiss Handler
+// ============================================================
+
+function initAlertDismiss() {
+  document.addEventListener("click", (e) => {
+    const closeBtn = e.target.closest(".alert-close");
+    if (!closeBtn) return;
+    const alert = closeBtn.closest(".alert");
+    if (!alert) return;
+
+    alert.style.transition = "opacity 0.2s ease, transform 0.2s ease";
+    alert.style.opacity = "0";
+    alert.style.transform = "translateY(-4px)";
+    setTimeout(() => {
+      alert.remove();
+    }, 200);
+  });
+}
+
+// ============================================================
+// 9. Interactive Viewport Preview Toolbar
+// Allows toggling preview widths between Full, 1024, 768, 375, 320
+// ============================================================
+
+function initViewportSwitcher() {
+  document.querySelectorAll(".docs-viewport-buttons").forEach((group) => {
+    const containerCard = group.closest(".docs-component-card");
+    if (!containerCard) return;
+    const frame = containerCard.querySelector(".docs-preview-frame");
+    if (!frame) return;
+
+    const buttons = group.querySelectorAll(".docs-vp-btn");
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        buttons.forEach((b) => b.classList.remove("is-active"));
+        btn.classList.add("is-active");
+
+        const width = btn.getAttribute("data-viewport");
+        if (width === "full") {
+          frame.style.maxWidth = "100%";
+        } else {
+          frame.style.maxWidth = `${width}px`;
+        }
+      });
     });
   });
 }

@@ -8,7 +8,9 @@ $space-4: map.get(variables.$spacings, 4);
 $space-5: map.get(variables.$spacings, 5);
 
 .form {
-  max-width: 32rem;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   padding: $space-4;
   border: variables.$border-width-thin variables.$border-style-solid var(--uf-border, #{variables.$neutral-300});
   border-radius: variables.$radius-lg;
@@ -16,6 +18,19 @@ $space-5: map.get(variables.$spacings, 5);
   color: var(--uf-text, #{variables.$neutral-900});
   box-shadow: var(--uf-shadow, 0 $space-2 $space-5 variables.$neutral-300);
   transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-contained {
+  max-width: 32rem;
+}
+
+// Multi-column responsive form grid (auto-stacks on mobile with zero media queries)
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: 1rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .form-title {
@@ -34,6 +49,7 @@ $space-5: map.get(variables.$spacings, 5);
 .form-group {
   margin-bottom: $space-3;
   position: relative;
+  min-width: 0;
 }
 
 .form-label {
@@ -49,13 +65,14 @@ $space-5: map.get(variables.$spacings, 5);
 .form-select {
   width: 100%;
   box-sizing: border-box;
+  min-height: 2.75rem; // 44px WCAG touch target
   padding: 0.65rem 0.85rem;
   border: variables.$border-width-thin variables.$border-style-solid var(--uf-border, #{variables.$neutral-400});
   border-radius: variables.$radius-md;
   background-color: var(--uf-surface, #{variables.$white});
   color: var(--uf-text, #{variables.$neutral-900});
   font-family: inherit;
-  font-size: variables.$font-size-base;
+  font-size: 1rem; // strictly 16px+ to prevent iOS Safari auto-zoom on focus
   line-height: variables.$line-height-normal;
   transition:
     border-color variables.$transition-duration-base variables.$transition-easing-base,
@@ -105,17 +122,20 @@ $space-5: map.get(variables.$spacings, 5);
 .form-check {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.75rem;
   margin-bottom: $space-2;
-  min-height: 1.5rem;
+  min-height: 2.75rem; // 44px WCAG touch target including label
   user-select: none;
   cursor: pointer;
 }
 
 .form-check-input {
   appearance: none;
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 1.35rem;
+  height: 1.35rem;
+  min-width: 1.35rem;
+  min-height: 1.35rem;
+  flex-shrink: 0;
   margin: 0;
   border: variables.$border-width-thin variables.$border-style-solid var(--uf-border-strong, #{variables.$neutral-400});
   border-radius: variables.$radius-sm;
@@ -265,6 +285,8 @@ $space-5: map.get(variables.$spacings, 5);
   font-size: variables.$font-size-sm;
   color: var(--uf-success, #{variables.$success});
   font-weight: variables.$font-weight-medium;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .invalid-feedback {
@@ -273,11 +295,41 @@ $space-5: map.get(variables.$spacings, 5);
   font-size: variables.$font-size-sm;
   color: var(--uf-danger, #{variables.$danger});
   font-weight: variables.$font-weight-medium;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+// Responsive Input Group (input + button/addon that wrap cleanly on mobile)
+.input-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  width: 100%;
+  box-sizing: border-box;
+
+  .form-input {
+    flex: 1 1 12rem;
+    min-width: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .btn {
+    flex: 0 0 auto;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
 }
 
 .form-actions {
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   justify-content: flex-end;
   gap: $space-2;
   margin-top: $space-4;
+
+  .btn {
+    flex: 0 0 auto;
+  }
 }

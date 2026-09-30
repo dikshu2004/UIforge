@@ -872,25 +872,75 @@
       <!-- ============================================================ -->
       <section id="tokens-breakpoints" class="docs-section">
         <div class="docs-section-header">
-          <h2 class="docs-section-title">Design Tokens: Breakpoints</h2>
-          <p class="docs-lead">Responsive media query breakpoints and container max widths.</p>
+          <h2 class="docs-section-title">Design Tokens: Breakpoints & Fluid Foundations</h2>
+          <p class="docs-lead">
+            Mobile-first em-based scale respecting user browser font-size settings, fluid <code>clamp()</code> tokens, and container max widths.
+          </p>
         </div>
 
         <div class="docs-table-wrapper">
           <table class="docs-table">
             <thead>
               <tr>
-                <th>Breakpoint</th>
-                <th>Min-Width (<code>$breakpoints</code>)</th>
-                <th>Container Max-Width (<code>$container-max-widths</code>)</th>
+                <th>Breakpoint Token</th>
+                <th>Min-Width (<code>em</code> scale)</th>
+                <th>Container Max-Width</th>
+                <th>Typical Purpose</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td><code>sm</code></td><td>576px</td><td>540px</td></tr>
-              <tr><td><code>md</code></td><td>768px</td><td>720px</td></tr>
-              <tr><td><code>lg</code></td><td>992px</td><td>960px</td></tr>
-              <tr><td><code>xl</code></td><td>1200px</td><td>1140px</td></tr>
-              <tr><td><code>xxl</code></td><td>1400px</td><td>1320px</td></tr>
+              <tr><td><code>sm</code></td><td><code>36em</code> (~576px)</td><td>33.75rem (540px)</td><td>Large phones/landscape, 2-up cards</td></tr>
+              <tr><td><code>md</code></td><td><code>48em</code> (~768px)</td><td>45rem (720px)</td><td>Tablets, navbar expands, forms go multi-col</td></tr>
+              <tr><td><code>lg</code></td><td><code>62em</code> (~992px)</td><td>60rem (960px)</td><td>Laptops, full layout, sidebars</td></tr>
+              <tr><td><code>xl</code></td><td><code>75em</code> (~1200px)</td><td>71.25rem (1140px)</td><td>Wide desktops, container max-width</td></tr>
+              <tr><td><code>xxl</code></td><td><code>87.5em</code> (~1400px)</td><td>82.5rem (1320px)</td><td>Ultra-wide displays</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="docs-subheading">Centralized SCSS Responsive Mixin</h3>
+        <p class="docs-paragraph">
+          Breakpoints are stored in one SCSS map and accessed via the shared <code>up($breakpoint)</code> mixin. Components never use hardcoded numbers.
+        </p>
+
+        <div class="docs-standalone-code">
+          <div class="docs-code-header">
+            <span class="docs-code-lang">SCSS</span>
+            <button type="button" class="docs-copy-btn">Copy</button>
+          </div>
+          <pre><code>@use "variables";
+
+.my-component {
+  // Mobile-first default: single column, stacked
+  display: flex;
+  flex-direction: column;
+
+  // Tablet & above: expand layout
+  @include variables.up(md) {
+    flex-direction: row;
+  }
+}</code></pre>
+        </div>
+
+        <h3 class="docs-subheading">Intrinsic Fluid Tokens</h3>
+        <p class="docs-paragraph">
+          UIForge provides fluid tokens using CSS <code>clamp()</code> so typography and spacing scale smoothly without requiring media queries on every element:
+        </p>
+
+        <div class="docs-table-wrapper">
+          <table class="docs-table">
+            <thead>
+              <tr>
+                <th>CSS Variable</th>
+                <th>Formula</th>
+                <th>Purpose</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><code>--uf-font-size-h1</code></td><td><code>clamp(1.85rem, 1.25rem + 2.5vw, 3rem)</code></td><td>Fluid hero & page title typography</td></tr>
+              <tr><td><code>--uf-space-section</code></td><td><code>clamp(2rem, 5vw, 4.5rem)</code></td><td>Fluid vertical section spacing</td></tr>
+              <tr><td><code>--uf-gutter</code></td><td><code>clamp(1rem, 3vw, 1.5rem)</code></td><td>Fluid container & grid gutters</td></tr>
+              <tr><td><code>--uf-container-max</code></td><td><code>1280px</code></td><td>Default container content cap</td></tr>
             </tbody>
           </table>
         </div>
@@ -936,13 +986,64 @@
           </div>
         </div>
 
+        <div class="docs-component-card">
+          <div class="docs-component-header">
+            <h4>Responsive Buttons & Button Groups</h4>
+            <p>Full-width block buttons, mobile-only block buttons (<code>.btn-block-sm</code>), and wrapping button groups.</p>
+          </div>
+          <div class="docs-preview-toolbar">
+            <span class="docs-preview-toolbar-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              Viewport Test:
+            </span>
+            <div class="docs-viewport-buttons">
+              <button type="button" class="docs-vp-btn is-active" data-viewport="full">Full</button>
+              <button type="button" class="docs-vp-btn" data-viewport="768">768px</button>
+              <button type="button" class="docs-vp-btn" data-viewport="375">375px</button>
+              <button type="button" class="docs-vp-btn" data-viewport="320">320px</button>
+            </div>
+          </div>
+          <div class="docs-preview docs-preview-vertical">
+            <div class="docs-preview-frame">
+              <div class="btn-group" style="width: 100%; margin-bottom: 1rem;">
+                <button type="button" class="btn btn-primary">Save Changes</button>
+                <button type="button" class="btn btn-secondary">Cancel</button>
+                <button type="button" class="btn btn-white">Export Data</button>
+              </div>
+              <button type="button" class="btn btn-primary btn-block-sm" style="margin-bottom: 0.75rem;">Full Width on Mobile (.btn-block-sm)</button>
+              <button type="button" class="btn btn-black btn-block">Full Width Block (.btn-block)</button>
+            </div>
+          </div>
+          <div class="docs-code-container">
+            <div class="docs-code-header">
+              <span class="docs-code-lang">HTML</span>
+              <button type="button" class="docs-copy-btn">Copy</button>
+            </div>
+            <pre><code>&lt;!-- Button group that wraps cleanly on mobile --&gt;
+&lt;div class="btn-group"&gt;
+  &lt;button type="button" class="btn btn-primary"&gt;Save Changes&lt;/button&gt;
+  &lt;button type="button" class="btn btn-secondary"&gt;Cancel&lt;/button&gt;
+  &lt;button type="button" class="btn btn-white"&gt;Export Data&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- Full width on mobile, auto-width above 576px --&gt;
+&lt;button type="button" class="btn btn-primary btn-block-sm"&gt;Mobile Block&lt;/button&gt;
+
+&lt;!-- Always full width --&gt;
+&lt;button type="button" class="btn btn-black btn-block"&gt;Full Width Block&lt;/button&gt;</code></pre>
+          </div>
+        </div>
+
         <div class="docs-table-wrapper">
           <table class="docs-table">
             <thead>
               <tr><th>Class</th><th>Description</th></tr>
             </thead>
             <tbody>
-              <tr><td><code>.btn</code></td><td>Base button class setting font, padding, asymmetric radius, shadow, and transition.</td></tr>
+              <tr><td><code>.btn</code></td><td>Base button with 44px min tap target, padding, asymmetric radius, and hover-gated elevation.</td></tr>
+              <tr><td><code>.btn-block</code></td><td>Full-width button across all viewports (<code>width: 100%</code>).</td></tr>
+              <tr><td><code>.btn-block-sm</code></td><td>Full-width on mobile screens (&lt;576px), auto-width on tablet and desktop.</td></tr>
+              <tr><td><code>.btn-group</code></td><td>Flexbox wrapper with <code>flex-wrap: wrap</code> that prevents horizontal row blowouts.</td></tr>
               <tr><td><code>.btn-primary</code></td><td>Primary action color using <code>$brand-500</code>.</td></tr>
               <tr><td><code>.btn-secondary</code></td><td>Secondary muted action color using <code>$secondary</code>.</td></tr>
               <tr><td><code>.btn-success</code>, <code>.btn-danger</code></td><td>Semantic confirmation and destructive action styles.</td></tr>
@@ -959,23 +1060,39 @@
       <section id="component-cards" class="docs-section">
         <div class="docs-section-header">
           <h2 class="docs-section-title">Cards</h2>
-          <p class="docs-lead">Structured content containers with tag labels, body copy, and interactive footers.</p>
+          <p class="docs-lead">
+            Fluid content containers with tag labels, body copy, footers, and modern <code>@container</code> query horizontal variants.
+          </p>
         </div>
 
         <div class="docs-component-card">
           <div class="docs-component-header">
-            <h4>Standard Card</h4>
-            <p>Includes tag badge, title, body copy, and footer with meta data and actions.</p>
+            <h4>Standard Card in Fluid Grid</h4>
+            <p>Cards adapt directly to their parent container and fill available space without fixed pixel widths.</p>
+          </div>
+          <div class="docs-preview-toolbar">
+            <span class="docs-preview-toolbar-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              Preview Width:
+            </span>
+            <div class="docs-viewport-buttons">
+              <button type="button" class="docs-vp-btn is-active" data-viewport="full">Full</button>
+              <button type="button" class="docs-vp-btn" data-viewport="768">768px</button>
+              <button type="button" class="docs-vp-btn" data-viewport="375">375px</button>
+              <button type="button" class="docs-vp-btn" data-viewport="320">320px</button>
+            </div>
           </div>
           <div class="docs-preview">
-            <div class="card">
-              <div class="card-body">
-                <span class="card-tag">FEATURED</span>
-                <h3>Design Systems</h3>
-                <p>Learn how to architect clean design tokens and reusable component libraries with UIForge.</p>
-                <div class="card-footer">
-                  <span class="card-meta">5 min read</span>
-                  <button type="button" class="btn btn-primary">Read More</button>
+            <div class="docs-preview-frame">
+              <div class="card" style="max-width: 26rem;">
+                <div class="card-body">
+                  <span class="card-tag">FEATURED</span>
+                  <h3>Design Systems</h3>
+                  <p>Learn how to architect clean design tokens and reusable component libraries with UIForge.</p>
+                  <div class="card-footer">
+                    <span class="card-meta">5 min read</span>
+                    <button type="button" class="btn btn-primary">Read More</button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -993,6 +1110,63 @@
     &lt;div class="card-footer"&gt;
       &lt;span class="card-meta"&gt;5 min read&lt;/span&gt;
       &lt;button type="button" class="btn btn-primary"&gt;Read More&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+
+        <div class="docs-component-card">
+          <div class="docs-component-header">
+            <h4>Container Query Horizontal Card (<code>.card-horizontal</code>)</h4>
+            <p>
+              Uses <code>@container card (min-width: 28rem)</code>. On narrow containers (mobile or sidebar) it stacks vertically. When its container has 28rem+ width, it shifts to horizontal layout automatically without viewport media queries!
+            </p>
+          </div>
+          <div class="docs-preview-toolbar">
+            <span class="docs-preview-toolbar-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              Container Width:
+            </span>
+            <div class="docs-viewport-buttons">
+              <button type="button" class="docs-vp-btn is-active" data-viewport="full">Full (Horizontal)</button>
+              <button type="button" class="docs-vp-btn" data-viewport="375">375px (Stacked)</button>
+              <button type="button" class="docs-vp-btn" data-viewport="320">320px (Stacked)</button>
+            </div>
+          </div>
+          <div class="docs-preview">
+            <div class="docs-preview-frame">
+              <div class="card card-horizontal">
+                <div class="card-media" style="background: linear-gradient(135deg, #3730a3, #818cf8); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; min-height: 10rem;">
+                  <span>16:9 Responsive Media</span>
+                </div>
+                <div class="card-body">
+                  <span class="card-tag">CONTAINER QUERY</span>
+                  <h3>Adaptive Card Architecture</h3>
+                  <p>This card responds to its parent's width, not the device viewport. Test toggling between Full and 375px above.</p>
+                  <div class="card-footer">
+                    <span class="card-meta">Zero Viewport Queries</span>
+                    <button type="button" class="btn btn-secondary">Explore</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="docs-code-container">
+            <div class="docs-code-header">
+              <span class="docs-code-lang">HTML</span>
+              <button type="button" class="docs-copy-btn">Copy</button>
+            </div>
+            <pre><code>&lt;!-- Responds to parent container width via @container --&gt;
+&lt;div class="card card-horizontal"&gt;
+  &lt;div class="card-media"&gt;...&lt;/div&gt;
+  &lt;div class="card-body"&gt;
+    &lt;span class="card-tag"&gt;CONTAINER QUERY&lt;/span&gt;
+    &lt;h3&gt;Adaptive Card Architecture&lt;/h3&gt;
+    &lt;p&gt;Automatically stacks when container is narrow.&lt;/p&gt;
+    &lt;div class="card-footer"&gt;
+      &lt;span class="card-meta"&gt;Zero Viewport Queries&lt;/span&gt;
+      &lt;button type="button" class="btn btn-secondary"&gt;Explore&lt;/button&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
@@ -1033,6 +1207,42 @@
 &lt;div class="alert alert-info"&gt;A new minor version update is available.&lt;/div&gt;</code></pre>
           </div>
         </div>
+
+        <div class="docs-component-card">
+          <div class="docs-component-header">
+            <h4>Dismissible Alert with Action Group</h4>
+            <p>Features top-aligned status icon, content wrapper, reachable 44px dismiss button, and wrapping action buttons.</p>
+          </div>
+          <div class="docs-preview docs-preview-vertical">
+            <div class="alert alert-warning" role="alert">
+              <div class="alert-content">
+                <div class="alert-title">Storage Limit Warning</div>
+                <div>You have reached 85% of your available team storage. Clear old cache files or upgrade your subscription plan to prevent disruptions.</div>
+                <div class="alert-actions">
+                  <button type="button" class="btn btn-warning" style="min-height: 2.25rem; padding: 0.35rem 0.75rem; font-size: 0.85rem;">Upgrade Plan</button>
+                  <button type="button" class="btn btn-white" style="min-height: 2.25rem; padding: 0.35rem 0.75rem; font-size: 0.85rem;">Learn More</button>
+                </div>
+              </div>
+              <button type="button" class="alert-close" aria-label="Close alert">&times;</button>
+            </div>
+          </div>
+          <div class="docs-code-container">
+            <div class="docs-code-header">
+              <span class="docs-code-lang">HTML</span>
+              <button type="button" class="docs-copy-btn">Copy</button>
+            </div>
+            <pre><code>&lt;div class="alert alert-warning" role="alert"&gt;
+  &lt;div class="alert-content"&gt;
+    &lt;div class="alert-title"&gt;Storage Limit Warning&lt;/div&gt;
+    &lt;div&gt;You have reached 85% of your available team storage.&lt;/div&gt;
+    &lt;div class="alert-actions"&gt;
+      &lt;button type="button" class="btn btn-warning"&gt;Upgrade Plan&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;button type="button" class="alert-close" aria-label="Close alert"&gt;&amp;times;&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
       </section>
 
       <!-- ============================================================ -->
@@ -1041,37 +1251,41 @@
       <section id="component-badges" class="docs-section">
         <div class="docs-section-header">
           <h2 class="docs-section-title">Badges</h2>
-          <p class="docs-lead">Compact indicator chips with uppercase typography and organic asymmetric radius.</p>
+          <p class="docs-lead">Compact indicator chips with relative <code>em</code> padding, wrapping badge groups, and ellipsis truncation.</p>
         </div>
 
         <div class="docs-component-card">
           <div class="docs-component-header">
-            <h4>Badge Variants</h4>
-            <p>Available in all theme and semantic colors.</p>
+            <h4>Badge Variants & Responsive Groups</h4>
+            <p>Available in all theme colors, with <code>.badge-group</code> and <code>.badge-truncate</code>.</p>
           </div>
           <div class="docs-preview">
-            <span class="badge badge-primary">Primary</span>
-            <span class="badge badge-secondary">Secondary</span>
-            <span class="badge badge-success">Success</span>
-            <span class="badge badge-danger">Danger</span>
-            <span class="badge badge-warning">Warning</span>
-            <span class="badge badge-info">Info</span>
-            <span class="badge badge-black">Black</span>
-            <span class="badge badge-white">White</span>
+            <div class="badge-group" style="width: 100%; margin-bottom: 0.75rem;">
+              <span class="badge badge-primary">Primary</span>
+              <span class="badge badge-secondary">Secondary</span>
+              <span class="badge badge-success">Success</span>
+              <span class="badge badge-danger">Danger</span>
+              <span class="badge badge-warning">Warning</span>
+              <span class="badge badge-info">Info</span>
+              <span class="badge badge-black">Black</span>
+              <span class="badge badge-white">White</span>
+            </div>
+            <div class="badge-group" style="width: 100%;">
+              <span class="badge badge-primary badge-truncate" title="Long badge label truncated with ellipsis">Long badge label truncated with ellipsis</span>
+              <span class="badge badge-success">Active</span>
+            </div>
           </div>
           <div class="docs-code-container">
             <div class="docs-code-header">
               <span class="docs-code-lang">HTML</span>
               <button type="button" class="docs-copy-btn">Copy</button>
             </div>
-            <pre><code>&lt;span class="badge badge-primary"&gt;Primary&lt;/span&gt;
-&lt;span class="badge badge-secondary"&gt;Secondary&lt;/span&gt;
-&lt;span class="badge badge-success"&gt;Success&lt;/span&gt;
-&lt;span class="badge badge-danger"&gt;Danger&lt;/span&gt;
-&lt;span class="badge badge-warning"&gt;Warning&lt;/span&gt;
-&lt;span class="badge badge-info"&gt;Info&lt;/span&gt;
-&lt;span class="badge badge-black"&gt;Black&lt;/span&gt;
-&lt;span class="badge badge-white"&gt;White&lt;/span&gt;</code></pre>
+            <pre><code>&lt;!-- Wrapping badge group --&gt;
+&lt;div class="badge-group"&gt;
+  &lt;span class="badge badge-primary"&gt;Primary&lt;/span&gt;
+  &lt;span class="badge badge-secondary"&gt;Secondary&lt;/span&gt;
+  &lt;span class="badge badge-primary badge-truncate"&gt;Very long label...&lt;/span&gt;
+&lt;/div&gt;</code></pre>
           </div>
         </div>
       </section>
@@ -1082,36 +1296,44 @@
       <section id="component-avatar" class="docs-section">
         <div class="docs-section-header">
           <h2 class="docs-section-title">Avatar</h2>
-          <p class="docs-lead">User representations supporting text initials, image fills, multiple sizes, and shapes.</p>
+          <p class="docs-lead">User representations with <code>flex-shrink: 0</code> and <code>aspect-ratio: 1</code> (never squish into ovals), plus overlapping avatar groups.</p>
         </div>
 
         <div class="docs-component-card">
           <div class="docs-component-header">
-            <h4>Sizes & Shapes</h4>
-            <p>Sizes: <code>.avatar-sm</code>, default (2.5rem), <code>.avatar-lg</code>. Shapes: default (circular), <code>.avatar-rounded</code>, <code>.avatar-square</code>.</p>
+            <h4>Sizes, Shapes & Overlapping Group</h4>
+            <p>Sizes: <code>.avatar-sm</code>, default (2.5rem), <code>.avatar-lg</code>. Shapes: circular, rounded, square. Group: <code>.avatar-group</code>.</p>
           </div>
-          <div class="docs-preview">
-            <span class="avatar avatar-sm avatar-primary">SM</span>
-            <span class="avatar avatar-primary">MD</span>
-            <span class="avatar avatar-lg avatar-primary">LG</span>
-            <span class="avatar avatar-rounded avatar-success">RD</span>
-            <span class="avatar avatar-square avatar-danger">SQ</span>
-            <span class="avatar avatar-warning">WA</span>
-            <span class="avatar avatar-info">IN</span>
+          <div class="docs-preview docs-preview-vertical">
+            <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; margin-bottom: 1rem;">
+              <span class="avatar avatar-sm avatar-primary">SM</span>
+              <span class="avatar avatar-primary">MD</span>
+              <span class="avatar avatar-lg avatar-primary">LG</span>
+              <span class="avatar avatar-rounded avatar-success">RD</span>
+              <span class="avatar avatar-square avatar-danger">SQ</span>
+              <span class="avatar avatar-warning">WA</span>
+            </div>
+            <div class="avatar-group">
+              <span class="avatar avatar-primary">JD</span>
+              <span class="avatar avatar-secondary">AB</span>
+              <span class="avatar avatar-success">CK</span>
+              <span class="avatar avatar-danger">MR</span>
+              <span class="avatar avatar-more">+4</span>
+            </div>
           </div>
           <div class="docs-code-container">
             <div class="docs-code-header">
               <span class="docs-code-lang">HTML</span>
               <button type="button" class="docs-copy-btn">Copy</button>
             </div>
-            <pre><code>&lt;!-- Sizes --&gt;
-&lt;span class="avatar avatar-sm avatar-primary"&gt;SM&lt;/span&gt;
-&lt;span class="avatar avatar-primary"&gt;MD&lt;/span&gt;
-&lt;span class="avatar avatar-lg avatar-primary"&gt;LG&lt;/span&gt;
-
-&lt;!-- Shapes --&gt;
-&lt;span class="avatar avatar-rounded avatar-success"&gt;RD&lt;/span&gt;
-&lt;span class="avatar avatar-square avatar-danger"&gt;SQ&lt;/span&gt;</code></pre>
+            <pre><code>&lt;!-- Overlapping Avatar Stack with +N counter --&gt;
+&lt;div class="avatar-group"&gt;
+  &lt;span class="avatar avatar-primary"&gt;JD&lt;/span&gt;
+  &lt;span class="avatar avatar-secondary"&gt;AB&lt;/span&gt;
+  &lt;span class="avatar avatar-success"&gt;CK&lt;/span&gt;
+  &lt;span class="avatar avatar-danger"&gt;MR&lt;/span&gt;
+  &lt;span class="avatar avatar-more"&gt;+4&lt;/span&gt;
+&lt;/div&gt;</code></pre>
           </div>
         </div>
       </section>
@@ -1122,25 +1344,52 @@
       <section id="component-navbar" class="docs-section">
         <div class="docs-section-header">
           <h2 class="docs-section-title">Navbar</h2>
-          <p class="docs-lead">Navigation bar header container with brand branding and link list.</p>
+          <p class="docs-lead">Responsive navigation header container with brand logo, mobile hamburger toggle, and collapsible drawer panel.</p>
         </div>
 
         <div class="docs-component-card">
           <div class="docs-component-header">
-            <h4>Navbar Component</h4>
-            <p>Responsive navbar with brand link and navigation list.</p>
+            <h4>Responsive Navbar with Mobile Collapse</h4>
+            <p>Mobile-first: brand + hamburger button on mobile (&lt;768px). Expands into horizontal navigation on desktop (<code>@include up(md)</code>).</p>
+          </div>
+          <div class="docs-preview-toolbar">
+            <span class="docs-preview-toolbar-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              Test Viewport Collapse:
+            </span>
+            <div class="docs-viewport-buttons">
+              <button type="button" class="docs-vp-btn is-active" data-viewport="full">Full (Desktop)</button>
+              <button type="button" class="docs-vp-btn" data-viewport="768">768px</button>
+              <button type="button" class="docs-vp-btn" data-viewport="375">375px (Mobile Menu)</button>
+              <button type="button" class="docs-vp-btn" data-viewport="320">320px</button>
+            </div>
           </div>
           <div class="docs-preview" style="padding: 1.5rem;">
-            <nav class="navbar" style="width: 100%;">
-              <a href="javascript:void(0)" class="navbar-brand">
-                <strong>UIForge</strong>
-              </a>
-              <ul class="nav-link">
-                <li><a href="javascript:void(0)">Overview</a></li>
-                <li><a href="javascript:void(0)">Components</a></li>
-                <li><a href="javascript:void(0)">Docs</a></li>
-              </ul>
-            </nav>
+            <div class="docs-preview-frame">
+              <nav class="navbar" style="width: 100%;">
+                <a href="javascript:void(0)" class="navbar-brand">
+                  <strong>UIForge</strong>
+                </a>
+                <button class="navbar-toggle" type="button" aria-expanded="false" aria-label="Toggle navigation menu">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                  </svg>
+                </button>
+                <div class="navbar-collapse">
+                  <ul class="navbar-nav">
+                    <li class="nav-link"><a href="javascript:void(0)">Overview</a></li>
+                    <li class="nav-link"><a href="javascript:void(0)">Components</a></li>
+                    <li class="nav-link"><a href="javascript:void(0)">Tokens</a></li>
+                    <li class="nav-link"><a href="javascript:void(0)">Docs</a></li>
+                  </ul>
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-primary" style="min-height: 2.25rem; padding: 0.4rem 0.85rem; font-size: 0.85rem;">Sign In</button>
+                  </div>
+                </div>
+              </nav>
+            </div>
           </div>
           <div class="docs-code-container">
             <div class="docs-code-header">
@@ -1148,14 +1397,19 @@
               <button type="button" class="docs-copy-btn">Copy</button>
             </div>
             <pre><code>&lt;nav class="navbar"&gt;
-  &lt;a href="#" class="navbar-brand"&gt;
-    &lt;strong&gt;UIForge&lt;/strong&gt;
-  &lt;/a&gt;
-  &lt;ul class="nav-link"&gt;
-    &lt;li&gt;&lt;a href="#overview"&gt;Overview&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="#components"&gt;Components&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="#docs"&gt;Docs&lt;/a&gt;&lt;/li&gt;
-  &lt;/ul&gt;
+  &lt;a href="#" class="navbar-brand"&gt;&lt;strong&gt;UIForge&lt;/strong&gt;&lt;/a&gt;
+  &lt;button class="navbar-toggle" type="button" aria-expanded="false" aria-label="Toggle navigation menu"&gt;
+    &lt;svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"&gt;
+      &lt;line x1="3" y1="12" x2="21" y2="12"/&gt;&lt;line x1="3" y1="6" x2="21" y2="6"/&gt;&lt;line x1="3" y1="18" x2="21" y2="18"/&gt;
+    &lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;div class="navbar-collapse"&gt;
+    &lt;ul class="navbar-nav"&gt;
+      &lt;li class="nav-link"&gt;&lt;a href="#overview"&gt;Overview&lt;/a&gt;&lt;/li&gt;
+      &lt;li class="nav-link"&gt;&lt;a href="#components"&gt;Components&lt;/a&gt;&lt;/li&gt;
+      &lt;li class="nav-link"&gt;&lt;a href="#docs"&gt;Docs&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
 &lt;/nav&gt;</code></pre>
           </div>
         </div>
@@ -1467,6 +1721,87 @@
 &lt;/form&gt;</code></pre>
     </div>
   </div>
+
+  <div class="docs-component-card">
+    <div class="docs-component-header">
+      <h4>Responsive Form Grid & Input Groups</h4>
+      <p>
+        Auto-fit multi-column layout without media queries (<code>.form-grid</code>), input groups with flex-wrapping, 16px+ inputs (preventing iOS Safari zoom), and accessible 44px tap targets.
+      </p>
+    </div>
+
+    <div class="docs-preview-toolbar">
+      <span class="docs-preview-label">Preview Width:</span>
+      <div class="docs-viewport-buttons" data-target="preview-form-grid">
+        <button type="button" class="docs-vp-btn is-active" data-width="100%">Full</button>
+        <button type="button" class="docs-vp-btn" data-width="768px">Tablet (768px)</button>
+        <button type="button" class="docs-vp-btn" data-width="375px">Mobile (375px)</button>
+        <button type="button" class="docs-vp-btn" data-width="320px">Narrow (320px)</button>
+      </div>
+    </div>
+
+    <div class="docs-preview-frame" id="preview-form-grid">
+      <div class="docs-preview docs-preview-vertical">
+        <form class="form" style="width: 100%;" onsubmit="event.preventDefault()">
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="grid-first-name">First Name</label>
+              <input class="form-input" id="grid-first-name" type="text" placeholder="Ada">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="grid-last-name">Last Name</label>
+              <input class="form-input" id="grid-last-name" type="text" placeholder="Lovelace">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="grid-username">Username Handle</label>
+            <div class="input-group">
+              <span class="input-group-text">@</span>
+              <input class="form-input" id="grid-username" type="text" placeholder="adalovelace">
+              <button class="btn btn-secondary" type="button">Check</button>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn btn-secondary btn-block-sm">Cancel</button>
+            <button type="submit" class="btn btn-primary btn-block-sm">Save Profile</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="docs-code-container">
+      <div class="docs-code-header">
+        <span class="docs-code-lang">HTML</span>
+        <button type="button" class="docs-copy-btn">Copy</button>
+      </div>
+      <pre><code>&lt;!-- Form Grid: auto-reflows to single column under 15rem with zero media queries --&gt;
+&lt;div class="form-grid"&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label class="form-label" for="first-name"&gt;First Name&lt;/label&gt;
+    &lt;input class="form-input" id="first-name" type="text"&gt;
+  &lt;/div&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label class="form-label" for="last-name"&gt;Last Name&lt;/label&gt;
+    &lt;input class="form-input" id="last-name" type="text"&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Input Group: wraps gracefully on narrow viewports --&gt;
+&lt;div class="input-group"&gt;
+  &lt;span class="input-group-text"&gt;@&lt;/span&gt;
+  &lt;input class="form-input" type="text" placeholder="username"&gt;
+  &lt;button class="btn btn-secondary" type="button"&gt;Check&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- Mobile-responsive full-width buttons --&gt;
+&lt;div class="form-actions"&gt;
+  &lt;button class="btn btn-secondary btn-block-sm"&gt;Cancel&lt;/button&gt;
+  &lt;button class="btn btn-primary btn-block-sm"&gt;Save Profile&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+  </div>
 </section>
       <!-- 4. Components: Dropdowns                                     -->
       <!-- ============================================================ -->
@@ -1478,23 +1813,33 @@
 
         <div class="docs-component-card">
           <div class="docs-component-header">
-            <h4>Dropdown Menu</h4>
-            <p>Click the toggle button to open the menu. Press <kbd>Esc</kbd> or click outside to close.</p>
+            <h4>Dropdown Menu with Viewport Boundary Protection</h4>
+            <p>Click the toggle button to open the menu. Press <kbd>Esc</kbd> or click outside to close. Menu items maintain ≥44px touch targets on mobile and automatically respect viewport edges (<code>max-width: calc(100vw - 2rem)</code>).</p>
           </div>
-          <div class="docs-preview" style="min-height: 180px; align-items: flex-start;">
-            <div class="dropdown" id="doc-demo-dropdown">
-              <button class="btn btn-primary dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="doc-demo-menu">
-                Options Menu
-              </button>
-              <ul id="doc-demo-menu" class="dropdown-menu" role="menu">
-                <li class="dropdown-header">Project Actions</li>
-                <li><a class="dropdown-item" href="javascript:void(0)" role="menuitem">Edit Component</a></li>
-                <li><a class="dropdown-item" href="javascript:void(0)" role="menuitem">Duplicate</a></li>
-                <li><a class="dropdown-item" href="javascript:void(0)" role="menuitem">Share Preview</a></li>
-                <li class="dropdown-divider"></li>
-                <li class="dropdown-header">Danger Zone</li>
-                <li><a class="dropdown-item" href="javascript:void(0)" role="menuitem">Archive Component</a></li>
-              </ul>
+          <div class="docs-preview-toolbar">
+            <span class="docs-preview-label">Preview Width:</span>
+            <div class="docs-viewport-buttons" data-target="preview-dropdown">
+              <button type="button" class="docs-vp-btn is-active" data-width="100%">Full</button>
+              <button type="button" class="docs-vp-btn" data-width="375px">Mobile (375px)</button>
+              <button type="button" class="docs-vp-btn" data-width="320px">Narrow (320px)</button>
+            </div>
+          </div>
+          <div class="docs-preview-frame" id="preview-dropdown">
+            <div class="docs-preview" style="min-height: 220px; align-items: flex-start; justify-content: flex-start;">
+              <div class="dropdown" id="doc-demo-dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="doc-demo-menu">
+                  Options Menu
+                </button>
+                <ul id="doc-demo-menu" class="dropdown-menu" role="menu">
+                  <li class="dropdown-header">Project Actions</li>
+                  <li><a class="dropdown-item" href="javascript:void(0)" role="menuitem">Edit Component</a></li>
+                  <li><a class="dropdown-item" href="javascript:void(0)" role="menuitem">Duplicate</a></li>
+                  <li><a class="dropdown-item" href="javascript:void(0)" role="menuitem">Share Preview</a></li>
+                  <li class="dropdown-divider"></li>
+                  <li class="dropdown-header">Danger Zone</li>
+                  <li><a class="dropdown-item" href="javascript:void(0)" role="menuitem">Archive Component</a></li>
+                </ul>
+              </div>
             </div>
           </div>
           <div class="docs-code-container">
@@ -1565,6 +1910,54 @@
 &lt;/nav&gt;</code></pre>
           </div>
         </div>
+
+        <div class="docs-component-card">
+          <div class="docs-component-header">
+            <h4>Responsive Condensed Pagination</h4>
+            <p>
+              On mobile viewports, non-essential page numbers automatically hide using <code>.pagination-condensed</code>, preserving Prev, Next, and the current page without overflowing. All targets maintain ≥44px touch targets.
+            </p>
+          </div>
+          <div class="docs-preview-toolbar">
+            <span class="docs-preview-label">Preview Width:</span>
+            <div class="docs-viewport-buttons" data-target="preview-pagination">
+              <button type="button" class="docs-vp-btn is-active" data-width="100%">Full</button>
+              <button type="button" class="docs-vp-btn" data-width="375px">Mobile (375px)</button>
+              <button type="button" class="docs-vp-btn" data-width="320px">Narrow (320px)</button>
+            </div>
+          </div>
+          <div class="docs-preview-frame" id="preview-pagination">
+            <div class="docs-preview">
+              <nav class="pagination-nav" aria-label="Condensed Pagination Demo">
+                <ul class="pagination pagination-condensed" data-total-pages="10">
+                  <li><button type="button" class="pagination-btn pagination-prev" aria-label="Previous page">&laquo; Prev</button></li>
+                  <li><button type="button" class="pagination-btn" data-page="1">1</button></li>
+                  <li><button type="button" class="pagination-btn is-active" data-page="2" aria-current="page">2</button></li>
+                  <li><button type="button" class="pagination-btn" data-page="3">3</button></li>
+                  <li><button type="button" class="pagination-btn" data-page="4">4</button></li>
+                  <li><button type="button" class="pagination-btn" data-page="5">5</button></li>
+                  <li><button type="button" class="pagination-btn pagination-next" aria-label="Next page">Next &raquo;</button></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="docs-code-container">
+            <div class="docs-code-header">
+              <span class="docs-code-lang">HTML</span>
+              <button type="button" class="docs-copy-btn">Copy</button>
+            </div>
+            <pre><code>&lt;!-- .pagination-condensed: hides intermediate numbers on small viewports --&gt;
+&lt;nav class="pagination-nav" aria-label="Pagination"&gt;
+  &lt;ul class="pagination pagination-condensed"&gt;
+    &lt;li&gt;&lt;button type="button" class="pagination-btn pagination-prev"&gt;&amp;laquo; Prev&lt;/button&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;button type="button" class="pagination-btn"&gt;1&lt;/button&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;button type="button" class="pagination-btn is-active" aria-current="page"&gt;2&lt;/button&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;button type="button" class="pagination-btn"&gt;3&lt;/button&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;button type="button" class="pagination-btn pagination-next"&gt;Next &amp;raquo;&lt;/button&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+          </div>
+        </div>
       </section>
 
       <!-- ============================================================ -->
@@ -1624,6 +2017,87 @@
 &lt;/div&gt;</code></pre>
           </div>
         </div>
+
+        <div class="docs-component-card">
+          <div class="docs-component-header">
+            <h4>Scrollable Multi-Item Tabs</h4>
+            <p>
+              When tab items exceed viewport width, the tab list scrolls horizontally with touch momentum and scroll-snap (<code>scroll-snap-type: x proximity</code>). Active tabs automatically center into view without messy multi-line wrapping.
+            </p>
+          </div>
+          <div class="docs-preview-toolbar">
+            <span class="docs-preview-label">Preview Width:</span>
+            <div class="docs-viewport-buttons" data-target="preview-scroll-tabs">
+              <button type="button" class="docs-vp-btn is-active" data-width="100%">Full</button>
+              <button type="button" class="docs-vp-btn" data-width="375px">Mobile (375px)</button>
+              <button type="button" class="docs-vp-btn" data-width="320px">Narrow (320px)</button>
+            </div>
+          </div>
+          <div class="docs-preview-frame" id="preview-scroll-tabs">
+            <div class="docs-preview docs-preview-vertical">
+              <div class="tabs" role="region" aria-label="Scrollable multi-item tabs">
+                <div class="tabs-nav" role="tablist">
+                  <button type="button" id="tab-nav-1" class="tab-btn is-active" role="tab" aria-selected="true" aria-controls="panel-scroll-1" tabindex="0" data-tab-target="#panel-scroll-1">
+                    Overview
+                  </button>
+                  <button type="button" id="tab-nav-2" class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-scroll-2" tabindex="-1" data-tab-target="#panel-scroll-2">
+                    Components
+                  </button>
+                  <button type="button" id="tab-nav-3" class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-scroll-3" tabindex="-1" data-tab-target="#panel-scroll-3">
+                    Design Tokens
+                  </button>
+                  <button type="button" id="tab-nav-4" class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-scroll-4" tabindex="-1" data-tab-target="#panel-scroll-4">
+                    Accessibility
+                  </button>
+                  <button type="button" id="tab-nav-5" class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-scroll-5" tabindex="-1" data-tab-target="#panel-scroll-5">
+                    Architecture
+                  </button>
+                  <button type="button" id="tab-nav-6" class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-scroll-6" tabindex="-1" data-tab-target="#panel-scroll-6">
+                    Changelog
+                  </button>
+                </div>
+                <div class="tabs-content">
+                  <div id="panel-scroll-1" class="tab-panel is-active" role="tabpanel" aria-labelledby="tab-nav-1" aria-hidden="false">
+                    <p>Overview content: components scale intrinsically across viewports.</p>
+                  </div>
+                  <div id="panel-scroll-2" class="tab-panel" role="tabpanel" aria-labelledby="tab-nav-2" aria-hidden="true">
+                    <p>Components content: robust primitives designed for real-world space constraints.</p>
+                  </div>
+                  <div id="panel-scroll-3" class="tab-panel" role="tabpanel" aria-labelledby="tab-nav-3" aria-hidden="true">
+                    <p>Tokens content: centralized fluid scales using clamp() and em-based breakpoints.</p>
+                  </div>
+                  <div id="panel-scroll-4" class="tab-panel" role="tabpanel" aria-labelledby="tab-nav-4" aria-hidden="true">
+                    <p>Accessibility: WCAG 2.2 AA compliant, 44px tap targets, 200% zoom reflow.</p>
+                  </div>
+                  <div id="panel-scroll-5" class="tab-panel" role="tabpanel" aria-labelledby="tab-nav-5" aria-hidden="true">
+                    <p>Architecture: mobile-first SCSS with intrinsic flex and grid layouts.</p>
+                  </div>
+                  <div id="panel-scroll-6" class="tab-panel" role="tabpanel" aria-labelledby="tab-nav-6" aria-hidden="true">
+                    <p>Changelog: version 1.0.0 responsive standard upgrade complete.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="docs-code-container">
+            <div class="docs-code-header">
+              <span class="docs-code-lang">HTML</span>
+              <button type="button" class="docs-copy-btn">Copy</button>
+            </div>
+            <pre><code>&lt;!-- Horizontally scrollable tabs with touch momentum and scroll-snap --&gt;
+&lt;div class="tabs" role="region" aria-label="Navigation Tabs"&gt;
+  &lt;div class="tabs-nav" role="tablist"&gt;
+    &lt;button type="button" class="tab-btn is-active" role="tab" aria-selected="true"&gt;Overview&lt;/button&gt;
+    &lt;button type="button" class="tab-btn" role="tab" aria-selected="false"&gt;Components&lt;/button&gt;
+    &lt;button type="button" class="tab-btn" role="tab" aria-selected="false"&gt;Design Tokens&lt;/button&gt;
+    &lt;button type="button" class="tab-btn" role="tab" aria-selected="false"&gt;Accessibility&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="tabs-content"&gt;
+    &lt;!-- tab panels --&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
       </section>
 
       <!-- ============================================================ -->
@@ -1638,27 +2112,38 @@
         <div class="docs-component-card">
           <div class="docs-component-header">
             <h4>12-Column Responsive Layout</h4>
-            <p>Columns automatically stack on mobile screens and divide equally at medium/large screen sizes.</p>
+            <p>Columns automatically stack on mobile screens (100% width) and divide according to span at <code>md</code> and larger breakpoints.</p>
           </div>
-          <div class="docs-preview docs-preview-vertical">
-            <div class="container-fluid" style="padding: 0;">
-              <div class="row">
-                <div class="col-12 col-md-4" style="margin-bottom: 0.75rem;">
-                  <div style="background-color: var(--uf-surface-subtle); padding: 1rem; border-radius: 0.5rem; text-align: center; border: 1px solid var(--uf-border); font-weight: 600;">col-12 col-md-4</div>
+          <div class="docs-preview-toolbar">
+            <span class="docs-preview-label">Preview Width:</span>
+            <div class="docs-viewport-buttons" data-target="preview-grid-12">
+              <button type="button" class="docs-vp-btn is-active" data-width="100%">Full</button>
+              <button type="button" class="docs-vp-btn" data-width="768px">Tablet (768px)</button>
+              <button type="button" class="docs-vp-btn" data-width="375px">Mobile (375px)</button>
+              <button type="button" class="docs-vp-btn" data-width="320px">Narrow (320px)</button>
+            </div>
+          </div>
+          <div class="docs-preview-frame" id="preview-grid-12">
+            <div class="docs-preview docs-preview-vertical">
+              <div class="container-fluid" style="padding: 0; width: 100%;">
+                <div class="row">
+                  <div class="col-12 col-md-4" style="margin-bottom: 0.75rem;">
+                    <div style="background-color: var(--uf-surface-subtle); padding: 1rem; border-radius: 0.5rem; text-align: center; border: 1px solid var(--uf-border); font-weight: 600;">col-12 col-md-4</div>
+                  </div>
+                  <div class="col-12 col-md-4" style="margin-bottom: 0.75rem;">
+                    <div style="background-color: var(--uf-surface-subtle); padding: 1rem; border-radius: 0.5rem; text-align: center; border: 1px solid var(--uf-border); font-weight: 600;">col-12 col-md-4</div>
+                  </div>
+                  <div class="col-12 col-md-4" style="margin-bottom: 0.75rem;">
+                    <div style="background-color: var(--uf-surface-subtle); padding: 1rem; border-radius: 0.5rem; text-align: center; border: 1px solid var(--uf-border); font-weight: 600;">col-12 col-md-4</div>
+                  </div>
                 </div>
-                <div class="col-12 col-md-4" style="margin-bottom: 0.75rem;">
-                  <div style="background-color: var(--uf-surface-subtle); padding: 1rem; border-radius: 0.5rem; text-align: center; border: 1px solid var(--uf-border); font-weight: 600;">col-12 col-md-4</div>
-                </div>
-                <div class="col-12 col-md-4" style="margin-bottom: 0.75rem;">
-                  <div style="background-color: var(--uf-surface-subtle); padding: 1rem; border-radius: 0.5rem; text-align: center; border: 1px solid var(--uf-border); font-weight: 600;">col-12 col-md-4</div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-12 col-md-6" style="margin-bottom: 0.75rem;">
-                  <div style="background-color: var(--uf-surface-subtle); padding: 1rem; border-radius: 0.5rem; text-align: center; border: 1px solid var(--uf-border); font-weight: 600;">col-12 col-md-6</div>
-                </div>
-                <div class="col-12 col-md-6" style="margin-bottom: 0.75rem;">
-                  <div style="background-color: var(--uf-surface-subtle); padding: 1rem; border-radius: 0.5rem; text-align: center; border: 1px solid var(--uf-border); font-weight: 600;">col-12 col-md-6</div>
+                <div class="row">
+                  <div class="col-12 col-md-6" style="margin-bottom: 0.75rem;">
+                    <div style="background-color: var(--uf-surface-subtle); padding: 1rem; border-radius: 0.5rem; text-align: center; border: 1px solid var(--uf-border); font-weight: 600;">col-12 col-md-6</div>
+                  </div>
+                  <div class="col-12 col-md-6" style="margin-bottom: 0.75rem;">
+                    <div style="background-color: var(--uf-surface-subtle); padding: 1rem; border-radius: 0.5rem; text-align: center; border: 1px solid var(--uf-border); font-weight: 600;">col-12 col-md-6</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1677,6 +2162,54 @@
 &lt;/div&gt;</code></pre>
           </div>
         </div>
+
+        <div class="docs-component-card">
+          <div class="docs-component-header">
+            <h4>Intrinsic Auto-Fit Grid (Zero Media Queries)</h4>
+            <p>
+              Uses modern CSS Grid <code>repeat(auto-fit, minmax(min(100%, 16rem), 1fr))</code> to automatically create 1, 2, 3, or 4 columns based on available container width without any viewport media queries.
+            </p>
+          </div>
+          <div class="docs-preview-toolbar">
+            <span class="docs-preview-label">Preview Width:</span>
+            <div class="docs-viewport-buttons" data-target="preview-grid-autofit">
+              <button type="button" class="docs-vp-btn is-active" data-width="100%">Full</button>
+              <button type="button" class="docs-vp-btn" data-width="768px">Tablet (768px)</button>
+              <button type="button" class="docs-vp-btn" data-width="375px">Mobile (375px)</button>
+              <button type="button" class="docs-vp-btn" data-width="320px">Narrow (320px)</button>
+            </div>
+          </div>
+          <div class="docs-preview-frame" id="preview-grid-autofit">
+            <div class="docs-preview docs-preview-vertical">
+              <div class="grid-auto-fit" style="width: 100%;">
+                <div style="background-color: var(--uf-surface-subtle); padding: 1.25rem; border-radius: 0.5rem; text-align: center; border: 1px solid var(--uf-border); font-weight: 600;">
+                  Auto Item 1
+                </div>
+                <div style="background-color: var(--uf-surface-subtle); padding: 1.25rem; border-radius: 0.5rem; text-align: center; border: 1px solid var(--uf-border); font-weight: 600;">
+                  Auto Item 2
+                </div>
+                <div style="background-color: var(--uf-surface-subtle); padding: 1.25rem; border-radius: 0.5rem; text-align: center; border: 1px solid var(--uf-border); font-weight: 600;">
+                  Auto Item 3
+                </div>
+                <div style="background-color: var(--uf-surface-subtle); padding: 1.25rem; border-radius: 0.5rem; text-align: center; border: 1px solid var(--uf-border); font-weight: 600;">
+                  Auto Item 4
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="docs-code-container">
+            <div class="docs-code-header">
+              <span class="docs-code-lang">HTML</span>
+              <button type="button" class="docs-copy-btn">Copy</button>
+            </div>
+            <pre><code>&lt;!-- Intrinsic Auto-Fit Grid: No media queries needed! --&gt;
+&lt;div class="grid-auto-fit"&gt;
+  &lt;div class="card"&gt;...&lt;/div&gt;
+  &lt;div class="card"&gt;...&lt;/div&gt;
+  &lt;div class="card"&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
       </section>
 
       <!-- ============================================================ -->
@@ -1685,7 +2218,7 @@
       <section id="utilities" class="docs-section">
         <div class="docs-section-header">
           <h2 class="docs-section-title">Utilities</h2>
-          <p class="docs-lead">Atomic utility classes generated dynamically from the design token scales.</p>
+          <p class="docs-lead">Atomic utility classes generated dynamically from design tokens and mobile-first breakpoint loops.</p>
         </div>
 
         <div class="docs-table-wrapper">
@@ -1699,37 +2232,58 @@
             </thead>
             <tbody>
               <tr>
-                <td><strong>Spacing</strong></td>
+                <td><strong>Responsive Display</strong></td>
                 <td>
-                  <code>.m-{1-5}</code>, <code>.p-{1-5}</code>, <code>.mx-{1-5}</code>, <code>.my-{1-5}</code><br>
-                  <code>.mt-{1-5}</code>, <code>.mb-{1-5}</code>, <code>.ms-{1-5}</code>, <code>.me-{1-5}</code><br>
-                  <code>.pt-{1-5}</code>, <code>.pb-{1-5}</code>, <code>.ps-{1-5}</code>, <code>.pe-{1-5}</code>
+                  <code>.d-none</code>, <code>.d-block</code>, <code>.d-flex</code>, <code>.d-grid</code><br>
+                  <code>.d-{sm|md|lg|xl}-{none|block|inline|flex|grid}</code>
                 </td>
-                <td><code>&lt;div class="p-3 mb-4"&gt;...&lt;/div&gt;</code></td>
+                <td><code>&lt;div class="d-none d-md-flex"&gt;...&lt;/div&gt;</code></td>
               </tr>
               <tr>
-                <td><strong>Display</strong></td>
+                <td><strong>Responsive Flex</strong></td>
                 <td>
-                  <code>.d-none</code>, <code>.d-block</code>, <code>.d-inline</code>, <code>.d-inline-block</code>, <code>.d-flex</code>, <code>.d-grid</code>
+                  <code>.flex-row</code>, <code>.flex-column</code>, <code>.flex-wrap</code><br>
+                  <code>.flex-{sm|md|lg|xl}-{row|column|wrap|nowrap}</code><br>
+                  <code>.justify-{sm|md|lg|xl}-{start|center|end|between}</code><br>
+                  <code>.align-{sm|md|lg|xl}-{start|center|end}</code>
                 </td>
-                <td><code>&lt;div class="d-flex align-center"&gt;...&lt;/div&gt;</code></td>
+                <td><code>&lt;div class="flex-column flex-md-row"&gt;...&lt;/div&gt;</code></td>
               </tr>
               <tr>
-                <td><strong>Flexbox</strong></td>
+                <td><strong>Responsive Text</strong></td>
                 <td>
-                  <code>.flex-row</code>, <code>.flex-column</code>, <code>.flex-wrap</code>, <code>.flex-nowrap</code><br>
-                  <code>.justify-start</code>, <code>.justify-center</code>, <code>.justify-end</code>, <code>.justify-between</code><br>
-                  <code>.align-start</code>, <code>.align-center</code>, <code>.align-end</code><br>
-                  <code>.gap-{1-5}</code>, <code>.row-gap-{1-5}</code>, <code>.column-gap-{1-5}</code>
+                  <code>.text-{sm|md|lg|xl}-{left|center|right}</code>
                 </td>
-                <td><code>&lt;div class="d-flex justify-between gap-3"&gt;...&lt;/div&gt;</code></td>
+                <td><code>&lt;p class="text-center text-md-left"&gt;...&lt;/p&gt;</code></td>
+              </tr>
+              <tr>
+                <td><strong>Accessibility</strong></td>
+                <td>
+                  <code>.visually-hidden</code><br>
+                  <code>.visually-hidden-focusable</code>
+                </td>
+                <td><code>&lt;span class="visually-hidden"&gt;Skip to content&lt;/span&gt;</code></td>
+              </tr>
+              <tr>
+                <td><strong>Fluid Spacing</strong></td>
+                <td>
+                  <code>.section-space</code> (fluid <code>clamp(1.5rem, 5vw, 4rem)</code> padding)<br>
+                  <code>.m-{1-5}</code>, <code>.p-{1-5}</code>, <code>.gap-{1-5}</code>
+                </td>
+                <td><code>&lt;section class="section-space"&gt;...&lt;/section&gt;</code></td>
+              </tr>
+              <tr>
+                <td><strong>Overflow Container</strong></td>
+                <td>
+                  <code>.overflow-x-auto</code> (accessible horizontal scroll wrapper for tables/code)
+                </td>
+                <td><code>&lt;div class="overflow-x-auto"&gt;&lt;table&gt;...&lt;/table&gt;&lt;/div&gt;</code></td>
               </tr>
               <tr>
                 <td><strong>Colors</strong></td>
                 <td>
                   <code>.text-primary</code>, <code>.text-secondary</code>, <code>.text-success</code>, <code>.text-danger</code><br>
-                  <code>.bg-primary</code>, <code>.bg-neutral-100</code>, <code>.bg-neutral-900</code><br>
-                  <code>.border-primary</code>, <code>.border-danger</code>
+                  <code>.bg-primary</code>, <code>.bg-neutral-100</code>, <code>.bg-neutral-900</code>
                 </td>
                 <td><code>&lt;p class="text-primary bg-neutral-100"&gt;...&lt;/p&gt;</code></td>
               </tr>
@@ -1737,16 +2291,9 @@
                 <td><strong>Typography</strong></td>
                 <td>
                   <code>.text-sm</code>, <code>.text-base</code>, <code>.text-lg</code>, <code>.text-xl</code>, <code>.text-2xl</code><br>
-                  <code>.fw-regular</code>, <code>.fw-medium</code>, <code>.fw-semibold</code>, <code>.fw-bold</code><br>
-                  <code>.lh-tight</code>, <code>.lh-normal</code>, <code>.lh-relaxed</code><br>
-                  <code>.ls-tight</code>, <code>.ls-normal</code>, <code>.ls-wide</code>, <code>.font-base</code>
+                  <code>.fw-regular</code>, <code>.fw-medium</code>, <code>.fw-semibold</code>, <code>.fw-bold</code>
                 </td>
-                <td><code>&lt;h2 class="text-xl fw-bold ls-tight"&gt;...&lt;/h2&gt;</code></td>
-              </tr>
-              <tr>
-                <td><strong>Borders</strong></td>
-                <td><code>.border</code></td>
-                <td><code>&lt;div class="border"&gt;...&lt;/div&gt;</code></td>
+                <td><code>&lt;h2 class="text-xl fw-bold"&gt;...&lt;/h2&gt;</code></td>
               </tr>
             </tbody>
           </table>

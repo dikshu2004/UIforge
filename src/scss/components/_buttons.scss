@@ -1,63 +1,78 @@
 @use "../variables" as variables;
 
 .btn {
-
   display: inline-flex;
-
   align-items: center;
-
   justify-content: center;
-
-  min-height: 2.75rem;
-
-  padding: 0.65rem 1.1rem;
-
+  gap: 0.5rem;
+  min-height: 2.75rem; // 44px WCAG touch target
+  max-width: 100%;
+  padding: 0.65rem 1.15rem;
   font-family: inherit;
-
   font-size: variables.$font-size-base;
-
   font-weight: variables.$font-weight-bold;
-
   line-height: variables.$line-height-tight;
-
   letter-spacing: variables.$letter-spacing-normal;
-
+  text-align: center;
+  text-decoration: none;
+  word-break: break-word;
   border: variables.$border-width-thin variables.$border-style-solid transparent;
-
   border-radius: variables.$radius-button;
-
   cursor: pointer;
-
   box-shadow: 0 0.25rem 0 rgba(15, 23, 42, 0.2);
-
   transition:
     transform variables.$transition-duration-base variables.$transition-easing-base,
     box-shadow variables.$transition-duration-base variables.$transition-easing-base,
     filter variables.$transition-duration-base variables.$transition-easing-base;
 
+  @include variables.hover {
+    filter: brightness(1.08);
+    transform: translateY(-2px);
+    box-shadow: 0 0.4rem 0 rgba(15, 23, 42, 0.2);
+  }
+
+  &:active {
+    transform: translateY(1px);
+    box-shadow: 0 0.1rem 0 rgba(15, 23, 42, 0.2);
+  }
+
+  &:focus-visible {
+    outline: variables.$focus-width solid variables.$focus-color;
+    outline-offset: variables.$focus-offset;
+  }
 }
 
-.btn:hover {
-
-  filter: brightness(1.08);
-
-  transform: translateY(-2px);
-
-  box-shadow: 0 0.4rem 0 rgba(15, 23, 42, 0.2);
-
+// Full-width button variants
+.btn-block {
+  display: flex;
+  width: 100%;
 }
 
-.btn:active {
+.btn-block-sm {
+  display: flex;
+  width: 100%;
 
-  transform: translateY(1px);
-
-  box-shadow: 0 0.1rem 0 rgba(15, 23, 42, 0.2);
-
+  @include variables.up(sm) {
+    display: inline-flex;
+    width: auto;
+  }
 }
 
-.btn:focus-visible {
-  outline: variables.$focus-width solid variables.$focus-color;
-  outline-offset: variables.$focus-offset;
+// Responsive Button Groups (wraps naturally on small screens)
+.btn-group {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  max-width: 100%;
+}
+
+.btn-group-vertical {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 20rem;
 }
 
 .btn-primary {

@@ -1,79 +1,94 @@
 @use "sass:math";
 @use "sass:map";
-
 @use "variables";
 
-.container {
-  width: 100%;
-  margin-right: auto;
-  margin-left: auto;
-  padding-right: 15px;
-  padding-left: 15px;
-  box-sizing: border-box;
-}
+// ============================================================
+// Containers
+// Intrinsic responsive sizing: fluid gutters on mobile, capped
+// on desktop with zero media queries needed.
+// ============================================================
 
-@each $bp, $max-width in variables.$container-max-widths {
-  @media (min-width: map.get(variables.$breakpoints, $bp)) {
-    .container {
-      max-width: $max-width;
-    }
-  }
+.container {
+  width: min(100% - calc(var(--uf-gutter, 1rem) * 2), var(--uf-container-max, 1280px));
+  margin-inline: auto;
+  box-sizing: border-box;
 }
 
 .container-fluid {
   width: 100%;
-  margin-right: auto;
-  margin-left: auto;
-  padding-right: 15px;
-  padding-left: 15px;
+  padding-inline: var(--uf-gutter, 1rem);
+  margin-inline: auto;
   box-sizing: border-box;
 }
+
+.container-narrow {
+  width: min(100% - calc(var(--uf-gutter, 1rem) * 2), var(--uf-content-max, 68ch));
+  margin-inline: auto;
+  box-sizing: border-box;
+}
+
+// ============================================================
+// Modern CSS Grid Auto-fit Helper
+// Responsive card/item grid with ZERO media queries
+// ============================================================
+
+.grid-auto-fit {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--uf-grid-min, 16rem)), 1fr));
+  gap: var(--uf-gutter, 1rem);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+// ============================================================
+// Flexbox 12-Column Grid
+// Mobile-first: columns stack 100% by default, min-width: 0
+// prevents text blowouts, row-gap handles vertical spacing.
+// ============================================================
 
 .row {
-
   display: flex;
-
   flex-wrap: wrap;
-
-  margin: 0 -15px;
-
+  margin-inline: calc(var(--uf-gutter, 1rem) * -0.5);
+  row-gap: var(--uf-gutter, 1rem);
 }
 
-[class^="col-"] {
-
-  padding: 0 15px;
-
+.col,
+[class*="col-"] {
+  flex: 0 0 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding-inline: calc(var(--uf-gutter, 1rem) * 0.5);
   box-sizing: border-box;
-
 }
 
+.col-auto {
+  flex: 0 0 auto;
+  width: auto;
+}
+
+// Base 12-column widths
 @for $column from 1 through 12 {
-
   .col-#{$column} {
-
-    width: math.percentage(math.div($column, 12));
-
+    flex: 0 0 math.percentage(math.div($column, 12));
+    max-width: math.percentage(math.div($column, 12));
   }
-
 }
 
-// Generate responsive column classes from the breakpoint map.
-
+// Responsive column classes generated from centralized breakpoint scale
 @each $breakpoint, $min-width in variables.$breakpoints {
-
-  @media (min-width: $min-width) {
-
-    @for $column from 1 through 12 {
-
-      .col-#{$breakpoint}-#{$column} {
-
-        width: math.percentage(math.div($column, 12));
-
-      }
-
+  @include variables.up($breakpoint) {
+    .col-#{$breakpoint}-auto {
+      flex: 0 0 auto;
+      width: auto;
     }
 
+    @for $column from 1 through 12 {
+      .col-#{$breakpoint}-#{$column} {
+        flex: 0 0 math.percentage(math.div($column, 12));
+        max-width: math.percentage(math.div($column, 12));
+      }
+    }
   }
-
 }
 

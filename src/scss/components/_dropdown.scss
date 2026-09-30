@@ -26,7 +26,11 @@
   top: 100%;
   left: 0;
   display: none;
-  min-width: 13rem;
+  min-width: 12rem;
+  max-width: calc(100vw - 2rem);
+  max-height: min(70vh, 22rem);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   margin-top: 0.35rem;
   padding: map.get(variables.$spacings, 2) 0;
   z-index: 50;
@@ -35,6 +39,20 @@
   border-radius: variables.$radius-md;
   box-shadow: var(--uf-shadow-lg, 0 0.5rem 1rem rgba(15, 23, 42, 0.12));
   list-style: none;
+  box-sizing: border-box;
+
+  &.dropdown-menu-end,
+  &.is-flipped-x {
+    left: auto;
+    right: 0;
+  }
+
+  &.is-flipped-y {
+    top: auto;
+    bottom: 100%;
+    margin-top: 0;
+    margin-bottom: 0.35rem;
+  }
 }
 
 .dropdown.is-open .dropdown-menu {
@@ -42,15 +60,23 @@
 }
 
 .dropdown-item {
-  display: block;
-  padding: 0.6rem map.get(variables.$spacings, 3);
+  display: flex;
+  align-items: center;
+  min-height: 2.75rem; // 44px touch target
+  padding: 0.55rem map.get(variables.$spacings, 3);
   color: var(--uf-text, #{variables.$neutral-800});
   text-decoration: none;
   font-size: variables.$font-size-base;
+  overflow-wrap: anywhere;
   transition: background-color 0.15s ease, color 0.15s ease;
 
-  &:hover,
-  &:focus {
+  @include variables.hover {
+    color: var(--uf-primary, #{variables.$brand-600});
+    background: var(--uf-primary-light, #{variables.$brand-100});
+  }
+
+  &:focus,
+  &:focus-visible {
     color: var(--uf-primary, #{variables.$brand-600});
     background: var(--uf-primary-light, #{variables.$brand-100});
     outline: none;

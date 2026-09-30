@@ -110,46 +110,83 @@ $wrap-values: (
   wrap: wrap
 );
 
-// Each loop turns a map entry into a class, for example .d-flex { display: flex; }.
-
+// Base display and flex utilities
 @each $name, $value in $display-values {
-
   .d-#{$name} {
-    display: $value;
+    display: $value !important;
   }
-
 }
 
 @each $name, $value in $flex-directions {
-
   .flex-#{$name} {
     flex-direction: $value;
   }
-
 }
 
 @each $name, $value in $justify-values {
-
   .justify-#{$name} {
     justify-content: $value;
   }
-
 }
 
 @each $name, $value in $align-values {
-
   .align-#{$name} {
     align-items: $value;
   }
-
 }
 
 @each $name, $value in $wrap-values {
-
   .flex-#{$name} {
     flex-wrap: $value;
   }
+}
 
+// Text Alignment
+$text-aligns: (
+  start: left,
+  center: center,
+  end: right
+);
+
+@each $name, $value in $text-aligns {
+  .text-#{$name} {
+    text-align: $value;
+  }
+}
+
+// Responsive Utility Variants generated from centralized breakpoint map
+@each $bp, $min in variables.$breakpoints {
+  @include variables.up($bp) {
+    @each $name, $value in $display-values {
+      .d-#{$bp}-#{$name} {
+        display: $value !important;
+      }
+    }
+
+    @each $name, $value in $flex-directions {
+      .flex-#{$bp}-#{$name} {
+        flex-direction: $value;
+      }
+    }
+
+    @each $name, $value in $justify-values {
+      .justify-#{$bp}-#{$name} {
+        justify-content: $value;
+      }
+    }
+
+    @each $name, $value in $align-values {
+      .align-#{$bp}-#{$name} {
+        align-items: $value;
+      }
+    }
+
+    @each $name, $value in $text-aligns {
+      .text-#{$bp}-#{$name} {
+        text-align: $value;
+      }
+    }
+  }
 }
 
 @each $key, $value in variables.$spacings {
@@ -259,8 +296,53 @@ $wrap-values: (
 }
 
 .border {
-
   border: variables.$border-width-thin variables.$border-style-solid;
-
 }
+
+// ============================================================
+// Accessibility Utilities
+// Hides elements visually while remaining accessible to screen readers
+// ============================================================
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.visually-hidden-focusable:not(:focus):not(:focus-within) {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+// ============================================================
+// Overflow & Fluid Spacing Helpers
+// ============================================================
+
+.overflow-x-auto {
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch;
+}
+
+.overflow-hidden {
+  overflow: hidden !important;
+}
+
+.section-space {
+  padding-block: var(--uf-space-section, clamp(2rem, 5vw, 4.5rem));
+}
+
 

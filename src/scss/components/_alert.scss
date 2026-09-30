@@ -5,83 +5,104 @@
 @use "../variables" as variables;
 
 .alert {
-
   position: relative;
-
   display: flex;
-
-  align-items: center;
-
-  gap: 0.75rem;
-
-  margin: map.get(variables.$spacings, 4);
-
-  padding: 1rem 1.25rem 1rem 1rem;
-
+  align-items: flex-start;
+  gap: 0.85rem;
+  width: 100%;
+  max-width: 100%;
+  margin-block: 1rem;
+  padding: 1rem 1.15rem;
+  box-sizing: border-box;
   border: variables.$border-width-thin variables.$border-style-solid;
-
   border-color: #fed7aa;
-
   border-left: 0.4rem variables.$border-style-solid variables.$warning;
-
   border-radius: variables.$radius-button;
-
   background: variables.$white;
-
   color: #7c2d12;
-
   font-size: variables.$font-size-base;
-
-  font-weight: variables.$font-weight-semibold;
-
+  font-weight: variables.$font-weight-medium;
   line-height: variables.$line-height-normal;
-
   letter-spacing: variables.$letter-spacing-normal;
-
   box-shadow: 0 0.25rem 0.75rem rgba(15, 23, 42, 0.08);
-
   transition:
     transform variables.$transition-duration-base variables.$transition-easing-base,
     box-shadow variables.$transition-duration-base variables.$transition-easing-base;
 
+  @include variables.hover {
+    box-shadow: 0 0.5rem 1.25rem rgba(15, 23, 42, 0.14);
+    transform: translateY(-2px);
+  }
+}
+
+.alert-content {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.alert-title {
+  margin: 0 0 0.25rem;
+  font-weight: variables.$font-weight-bold;
+  font-size: variables.$font-size-base;
+  color: inherit;
+}
+
+.alert-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.alert-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 2.25rem;
+  height: 2.25rem;
+  min-width: 2.25rem;
+  min-height: 2.25rem;
+  margin: -0.25rem -0.25rem 0 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  color: inherit;
+  opacity: 0.7;
+  cursor: pointer;
+  border-radius: variables.$radius-sm;
+  transition: opacity variables.$transition-duration-base variables.$transition-easing-base,
+              background-color variables.$transition-duration-base variables.$transition-easing-base;
+
+  @include variables.hover {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.06);
+  }
+
+  &:focus-visible {
+    outline: variables.$focus-width solid currentColor;
+    outline-offset: 2px;
+    opacity: 1;
+  }
 }
 
 .alert::before {
-
   display: grid;
-
   flex: 0 0 1.5rem;
-
   place-items: center;
-
   width: 1.5rem;
-
   height: 1.5rem;
-
+  margin-top: 0.15rem; // optical alignment with first line of text
   border-radius: 50%;
-
   background: #f59e0b;
-
   color: #451a03;
-
   content: "!";
-
   font-size: variables.$font-size-sm;
-
   font-weight: variables.$font-weight-bold;
-
-  line-height: variables.$line-height-tight;
-
+  line-height: 1;
   letter-spacing: variables.$letter-spacing-normal;
-
-}
-
-.alert:hover {
-
-  box-shadow: 0 0.5rem 1.25rem rgba(15, 23, 42, 0.14);
-
-  transform: translateY(-2px);
-
 }
 
 .alert.alert-primary {

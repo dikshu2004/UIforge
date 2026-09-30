@@ -1,4 +1,4 @@
-
+@use "sass:map";
 
 // Brand Colors
 // ============================================================
@@ -202,22 +202,73 @@ $focus-width: 2px;
 $focus-color: $brand-400;
 $focus-offset: 2px;
 
+// ============================================================
+// Breakpoints & Responsive Foundations
+// Mobile-first em-based scale respecting user browser settings
+// ============================================================
+
 $breakpoints: (
-  sm: 576px,
-  md: 768px,
-  lg: 992px,
-  xl: 1200px,
-  xxl: 1400px
+  sm: 36em,      // ~576px (large phones, landscape)
+  md: 48em,      // ~768px (tablets, forms multi-col, nav expands)
+  lg: 62em,      // ~992px (laptops, full layouts, sidebars)
+  xl: 75em,      // ~1200px (desktops, container max-width)
+  xxl: 87.5em    // ~1400px (wide screens)
 );
+
+$breakpoints-max: (
+  sm: 35.99875em,
+  md: 47.99875em,
+  lg: 61.99875em,
+  xl: 74.99875em
+);
+
+// Centralized Mobile-First Responsive Mixin
+@mixin up($breakpoint) {
+  $min-width: map.get($breakpoints, $breakpoint);
+  @if $min-width {
+    @media (min-width: $min-width) {
+      @content;
+    }
+  } @else {
+    @error "Unknown breakpoint `#{$breakpoint}`. Available: #{map.keys($breakpoints)}";
+  }
+}
+
+// Exception Max-Width Mixin (used sparingly for utilities)
+@mixin down($breakpoint) {
+  $max-width: map.get($breakpoints-max, $breakpoint);
+  @if $max-width {
+    @media (max-width: $max-width) {
+      @content;
+    }
+  } @else {
+    @error "Unknown breakpoint `#{$breakpoint}`. Available: #{map.keys($breakpoints-max)}";
+  }
+}
+
+// Hover Gating Mixin (prevents sticky hover on touch devices)
+@mixin hover {
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+// Touch Target Helper (WCAG recommended 44px minimum)
+@mixin touch-target {
+  min-height: 2.75rem; // 44px
+  min-width: 2.75rem;
+}
+
 // ============================================================
 // Container Max Widths
-// Used to control content width at larger screen sizes.
 // ============================================================
 
 $container-max-widths: (
-  sm: 540px,
-  md: 720px,
-  lg: 960px,
-  xl: 1140px,
-  xxl: 1320px
+  sm: 33.75rem,   // 540px
+  md: 45rem,      // 720px
+  lg: 60rem,      // 960px
+  xl: 71.25rem,   // 1140px
+  xxl: 82.5rem    // 1320px
 );

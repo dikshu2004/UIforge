@@ -2,9 +2,14 @@
 @use "../variables" as variables;
 
 .card {
-  display: block;
-  max-width: 24rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
   overflow: hidden;
+  container-type: inline-size;
+  container-name: card;
   border: variables.$border-width-thin variables.$border-style-solid var(--uf-border, #{variables.$neutral-300});
   border-radius: variables.$radius-lg;
   background: var(--uf-surface, #{variables.$neutral-100});
@@ -15,18 +20,54 @@
               background-color variables.$transition-duration-base variables.$transition-easing-base,
               border-color variables.$transition-duration-base variables.$transition-easing-base;
 
-  &:hover {
+  @include variables.hover {
     transform: translateY(-2px);
     box-shadow: var(--uf-shadow-lg, 0 0.5rem 1.25rem rgba(15, 23, 42, 0.12));
   }
 }
 
+.card-img,
+.card-image,
+.card-media {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+}
+
+// Container-query responsive horizontal card variant
+.card-horizontal {
+  @container card (min-width: 28rem) {
+    flex-direction: row;
+    align-items: stretch;
+
+    .card-img,
+    .card-image,
+    .card-media {
+      width: 38%;
+      height: 100%;
+      min-height: 100%;
+      aspect-ratio: auto;
+      flex: 0 0 38%;
+    }
+
+    .card-body {
+      width: 62%;
+    }
+  }
+}
+
 .card-body {
   padding: map.get(variables.$spacings, 4);
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
 }
 
 .card-tag {
   display: inline-block;
+  align-self: flex-start;
   margin-bottom: 0.75rem;
   padding: 0.3rem 0.65rem;
   border-radius: variables.$radius-sm;
@@ -45,6 +86,8 @@
   line-height: variables.$line-height-tight;
   letter-spacing: variables.$letter-spacing-tight;
   color: var(--uf-text, #{variables.$brand-500});
+  overflow-wrap: anywhere;
+  word-break: normal;
 }
 
 .card p {
@@ -53,13 +96,16 @@
   font-size: variables.$font-size-base;
   line-height: variables.$line-height-relaxed;
   letter-spacing: variables.$letter-spacing-normal;
+  overflow-wrap: anywhere;
 }
 
 .card-footer {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  margin-top: map.get(variables.$spacings, 4);
+  gap: 0.5rem;
+  margin-top: auto;
   padding-top: map.get(variables.$spacings, 3);
   border-top: variables.$border-width-thin variables.$border-style-solid var(--uf-border, #{variables.$neutral-300});
 }
